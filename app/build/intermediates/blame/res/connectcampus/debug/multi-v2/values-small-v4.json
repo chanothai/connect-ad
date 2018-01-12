@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/incremental/mergeConnectcampusDebugResources/merged.dir/values-small-v4/values-small-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/values-small/dimens.xml",
+                    "from": {
+                        "startLines": "3,19,14,13,15,12,16,9,8,7,6",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "68,600,434,390,485,345,531,273,226,178,131",
+                        "endColumns": "41,43,50,43,45,44,49,52,46,47,46",
+                        "endOffsets": "105,639,480,429,526,385,576,321,268,221,173"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,97,141,192,236,282,327,377,430,477,525",
+                        "endColumns": "41,43,50,43,45,44,49,52,46,47,46",
+                        "endOffsets": "92,136,187,231,277,322,372,425,472,520,567"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundGray">
+
+    <include layout="@layout/layout_appbar"/>
+
+    <include layout="@layout/content_main_menu" />
+
+    <FrameLayout
+        android:id="@+id/layout_ghost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:visibility="gone">
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/control_slide"
+        android:layout_width="@dimen/padding_medium"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="@android:color/transparent"/>
+
+</android.support.design.widget.CoordinatorLayout>

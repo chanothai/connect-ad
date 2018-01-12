@@ -1,0 +1,48 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base">
+
+    </style>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    //Style padding
+    <style name="TextPadding">
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingEnd">2dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="SpaceBody">
+        <item name="android:layout_marginTop">@dimen/margin_top_twenty</item>
+        <item name="android:padding">@dimen/padding_sixteen</item>
+    </style>
+
+    <style name="SpaceBody.marginTop_Twenty">
+        <item name="android:layout_marginTop">@dimen/margin_top_twenty</item>
+    </style>
+
+    <style name="SpaceBody.padding_sixteen">
+        <item name="android:padding">@dimen/padding_sixteen</item>
+    </style>
+
+    <style name="RatingBar" parent="android:style/Widget.Material.RatingBar.Small">
+        <item name="colorControlNormal">@color/text_link_highlight</item>
+        <item name="colorControlActivated">@color/text_link</item>
+    </style>
+
+    <style name="AppTheme.TransNav" parent="AppTheme"/>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+</resources>

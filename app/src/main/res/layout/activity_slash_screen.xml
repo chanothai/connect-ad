@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_extra_large"
+    tools:context="com.company.zicure.campusconnect.activity.SplashScreenActivity">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_margin="@dimen/padding_extra_large"
+        android:padding="@dimen/padding_extra_large"
+        android:src="@drawable/logo_connect_official"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

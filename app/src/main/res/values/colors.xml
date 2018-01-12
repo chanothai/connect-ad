@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@android:color/darker_gray</color>
+    <color name="colorPrimaryDark">@android:color/darker_gray</color>
+    <color name="colorAccent">@android:color/darker_gray</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="colorGreenNormal">#4793CD</color>
+    <color name="colorGreenGradient">#4CA1BD</color>
+    <color name="colorGreenPress">#034C64</color>
+
+    <color name="colorBlueStrongNormal">#1976D2</color>
+    <color name="colorBlueStrongPress">#0D47A1</color>
+    <color name="colorBlueStrongGradient">#42A5F5</color>
+
+    <color name="colorGrayCorner">#616161</color>
+    <color name="colorBackgroundGray">#f5f5f5</color>
+
+    <color name="text_link">#1E88E5</color>
+    <color name="text_link_highlight">#ffcc00</color>
+
+    <color name="color_dot_active">#ffffff</color>
+    <color name="color_dot_inactive">#a5a5a5</color>
+
+    <color name="color_text_link">#4793CD</color>
+
+    <color name="color_bg">#e4e4e4</color>
+
+    <color name="color_bg_tab">#fbfbfb</color>
+    <color name="color_text_tab">#a5a5a5</color>
+    <color name="color_select_tab">#f36523</color>
+
+    <color name="color_toggle">#707070</color>
+
+    <color name="start_color_btn_login_normal">#46586e</color>
+    <color name="end_color_btn_login_normal">#728296</color>
+    <color name="color_btn_login_press">#39414b</color>
+
+    <color name="background_tab_bottom">#EFEFF4</color>
+
+    <color name="bg_color_drawer">#39414b</color>
+    <color name="bg_color_drawer2">#727c89</color>
+</resources>
