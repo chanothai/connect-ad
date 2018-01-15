@@ -17,7 +17,6 @@ import gallery.zicure.company.com.modellibrary.models.bloc.ResponseBlocUser;
  * Created by 4GRYZ52 on 10/18/2016.
  */
 abstract public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuHolder> {
-
     //Properties
     private Context context = null;
     private List<ResponseBlocUser.ResultBlocUser.DataBloc.UserAccessControl.BlocUser> arrData = null;

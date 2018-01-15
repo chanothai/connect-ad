@@ -37,7 +37,6 @@ public class IDCardActivity extends BaseActivity {
         EventBusCart.getInstance().getEventBus().register(this);
         bindView();
         iniBundle();
-
     }
 
     @Override

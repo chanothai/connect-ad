@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-97:12
-INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-97:12
-INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-97:12
-INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-97:12
+ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-89:12
+INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-89:12
+INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-89:12
+INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-89:12
 MERGED from [:modellibrary] /Users/macintosh/Desktop/project_connect/Store_project/registerkey/modellibrary/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:design:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/AndroidManifest.xml:17:1-22:12
 MERGED from [com.multidots:fingerprint-auth:1.0.1] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/fingerprint-auth-1.0.1.aar/0f4d51b31e8c06facfae17898c8d3a9b/AndroidManifest.xml:2:1-13:12
@@ -44,22 +44,22 @@ MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /User
 MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/fd0fa2723d78cf6628ebd9749cb340a2/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/9f5d615b5ba795f8b96fcc7ba0216821/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/5c3a33e2442fe06d8941a91c8590c884/AndroidManifest.xml:2:1-6:12
-INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-97:12
-INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-97:12
-INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-97:12
+INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-89:12
+INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-89:12
+INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-89:12
 	package
 		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:4:5-47
 		INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-97:12
+		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-89:12
 		INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-97:12
+		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:1-89:12
 		INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:11-69
@@ -118,7 +118,7 @@ ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/ap
 	android:required
 		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:22:9-32
 application
-ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:24:5-95:19
+ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:24:5-87:19
 MERGED from [pl.tajchert:waitingdots:0.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/waitingdots-0.2.0.aar/148692255d7531bb3204120d6e35be9c/AndroidManifest.xml:11:5-12:19
 MERGED from [pl.tajchert:waitingdots:0.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/waitingdots-0.2.0.aar/148692255d7531bb3204120d6e35be9c/AndroidManifest.xml:11:5-12:19
 MERGED from [com.baoyz.pullrefreshlayout:library:1.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/a1f9a6d3c15b0890f531e7c3b64a3555/AndroidManifest.xml:11:5-12:19
@@ -243,46 +243,28 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:71:17-77
 	android:name
 		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:71:27-74
-activity#com.company.zicure.campusconnect.activity.RegisterActivity
-ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:74:9-77:58
-	android:screenOrientation
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:76:13-49
-	android:windowSoftInputMode
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:77:13-55
+activity#com.company.zicure.campusconnect.activity.BlocContentActivity
+ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:76:9-78:125
+	android:configChanges
+		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:78:13-122
 	android:name
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:75:13-54
-activity#com.company.zicure.campusconnect.activity.CheckLoginActivity
+		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:77:13-57
+activity#com.company.zicure.campusconnect.activity.IDCardActivity
 ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:80:9-82:52
 	android:screenOrientation
 		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:82:13-49
 	android:name
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:81:13-56
-activity#com.company.zicure.campusconnect.activity.BlocContentActivity
-ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:83:9-85:125
-	android:configChanges
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:85:13-122
+		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:81:13-52
+activity#com.company.zicure.campusconnect.activity.ContactListActivity
+ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:83:9-85:52
+	android:screenOrientation
+		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:85:13-49
 	android:name
 		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:84:13-57
-activity#com.company.zicure.campusconnect.activity.IDCardActivity
-ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:87:9-89:52
-	android:screenOrientation
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:89:13-49
-	android:name
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:88:13-52
-activity#com.company.zicure.campusconnect.activity.ContactListActivity
-ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:90:9-92:52
-	android:screenOrientation
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:92:13-49
-	android:name
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:91:13-57
 activity#com.company.zicure.campusconnect.activity.ConditionActivity
-ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:93:9-64
+ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:86:9-64
 	android:name
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:93:19-61
-activity#com.company.zicure.campusconnect.activity.ForgotPasswordActivity
-ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:94:9-68
-	android:name
-		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:94:19-66
+		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:86:19-61
 uses-sdk
 INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml

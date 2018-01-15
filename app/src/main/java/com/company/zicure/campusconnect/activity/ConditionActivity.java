@@ -8,15 +8,12 @@ import com.company.zicure.campusconnect.R;
 import com.company.zicure.campusconnect.customView.ButtonView;
 import com.company.zicure.campusconnect.fragment.AppMenuFragment;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
 import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
 
 public class ConditionActivity extends BaseActivity implements View.OnClickListener {
 
     /** Make: View **/
-    @Bind(R.id.btn_confirm_condition)
     ButtonView btnConfirm;
 
     /** Make: Properties **/
@@ -25,12 +22,16 @@ public class ConditionActivity extends BaseActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_condition);
-        ButterKnife.bind(this);
-        btnConfirm.setOnClickListener(this);
+        bindView();
 
         if (savedInstanceState == null){
             initCondition();
         }
+    }
+
+    private void bindView(){
+        btnConfirm = (ButtonView) findViewById(R.id.btn_confirm_condition);
+        btnConfirm.setOnClickListener(this);
     }
 
     private void initCondition(){

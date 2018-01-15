@@ -71,15 +71,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.RegisterActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateVisible" />
 
         <!-- <activity android:name="com.company.zicure.payment.activity.AuthActivity"/> -->
-        <activity
-            android:name=".activity.CheckLoginActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.BlocContentActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
@@ -91,7 +84,6 @@
             android:name=".activity.ContactListActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.ConditionActivity" />
-        <activity android:name=".activity.ForgotPasswordActivity"/>
     </application>
 
 </manifest>

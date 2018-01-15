@@ -35,8 +35,6 @@ import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
 import gallery.zicure.company.com.modellibrary.models.contact.RequestDeleteProfile;
 import gallery.zicure.company.com.modellibrary.models.contact.ResponseContactList;
@@ -46,15 +44,11 @@ import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
 import gallery.zicure.company.com.modellibrary.utilize.ToolbarManager;
 import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
 
-import static android.support.v7.widget.helper.ItemTouchHelper.RIGHT;
-
 public class ContactListActivity extends BaseActivity implements ListFriendAdapter.CallPhoneListener {
 
     /**Make: View **/
-    @Bind(R.id.toolbar)
-    Toolbar toolbarMenu;
-    @Bind(R.id.contact_list)
-    RecyclerView contactList;
+    private Toolbar toolbarMenu;
+    private RecyclerView contactList;
 
     /** Make: properties **/
     private String token = null;
@@ -68,12 +62,17 @@ public class ContactListActivity extends BaseActivity implements ListFriendAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_friend);
-        ButterKnife.bind(this);
+        bindView();
         EventBusCart.getInstance().getEventBus().register(this);
         setToolbar();
 
         contactList.setLayoutManager(new LinearLayoutManager(this));
         token = ModelCart.getInstance().getKeyModel().getToken();
+    }
+
+    private void bindView() {
+        toolbarMenu = (Toolbar) findViewById(R.id.toolbar);
+        contactList = (RecyclerView) findViewById(R.id.contact_list);
     }
 
     private void loadData() {

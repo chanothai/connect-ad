@@ -3,15 +3,18 @@ package com.company.zicure.campusconnect.fragment;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.DownloadListener;
+import android.webkit.JavascriptInterface;
 import android.webkit.URLUtil;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -25,7 +28,10 @@ import android.widget.Toast;
 
 import com.company.zicure.campusconnect.R;
 import com.company.zicure.campusconnect.activity.BlocContentActivity;
+import com.company.zicure.campusconnect.activity.LoginActivity;
 import com.company.zicure.campusconnect.activity.MainMenuActivity;
+
+import java.util.ArrayList;
 
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
 
@@ -53,6 +59,10 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
     /** Make: Properties **/
     public ValueCallback<Uri[]> mUploadMesssage = null;
     public Uri mCapturedImageURI = null;
+
+    private String JAVASCRIPT_OBJ = "javascript_obj";
+//    private String BASE_URL = "file:///android_asset/webview.html";
+    private String BASE_URL = "http://connect06.pakgon.com/core";
 
     public AppMenuFragment() {
         // Required empty public constructor
@@ -104,7 +114,16 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         progressBarLoading.setProgress(0);
         progressBarLoading.setMax(100);
         if (savedInstanceState == null) {
+            setuoDebug();
             setWebView();
+        }
+    }
+
+    private void setuoDebug(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (0 != (getActivity().getApplicationInfo().flags + getActivity().getApplicationInfo().FLAG_DEBUGGABLE)) {
+                WebView.setWebContentsDebuggingEnabled(true);
+            }
         }
     }
 
@@ -119,6 +138,7 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
 
         // improve webView performance
         webSettings.setJavaScriptEnabled(true);
+        webView.addJavascriptInterface(new JavaScriptInterface(), JAVASCRIPT_OBJ);
 
         webView.loadUrl(url);
     }
@@ -165,7 +185,22 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             webView.clearCache(true);
+            injectJavaScriptFunction();
         }
+    }
+
+    private void injectJavaScriptFunction(){
+        StringBuilder script = new StringBuilder();
+        script.append("javascript: ");
+//        script.append("window.androidObj.textToAndroid = function(message) { ");
+//        script.append(JAVASCRIPT_OBJ + ".textFromWeb(message) }");
+        script.append("class Login { ");
+        script.append("static onLogin(arg1, arg2, arg3) { ");
+        script.append(JAVASCRIPT_OBJ + ".textFromLogin(arg1, arg2, arg3) }}");
+
+        Log.d("TextFromWeb", script.toString());
+
+        webView.loadUrl(script.toString());
     }
 
     public class ChromeClient extends WebChromeClient {
@@ -179,6 +214,19 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
             }
 
             super.onProgressChanged(view, newProgress);
+        }
+    }
+
+    public class JavaScriptInterface{
+        @JavascriptInterface
+        public void textFromWeb(String fromWeb){
+            Log.d("TextFromWeb", fromWeb);
+        }
+
+        @JavascriptInterface
+        public void textFromLogin(String token, String url, String subscribeNoti){
+            Log.d("TextFromWeb", token + url+ subscribeNoti);
+            ((LoginActivity) getActivity()).store(token, url, subscribeNoti);
         }
     }
 }

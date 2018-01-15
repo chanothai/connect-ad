@@ -13,117 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_eight">
+            android:layout_height="match_parent">
 
-            <include
-                layout="@layout/content_header_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"/>
-
-            <LinearLayout
-                android:id="@+id/form_login"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingEnd="@dimen/padding_extra_large"
-                android:paddingStart="@dimen/padding_extra_large">
-
-                <com.company.zicure.campusconnect.customView.TextInputView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/padding_top_five">
-
-                    <com.company.zicure.campusconnect.customView.EditTextView
-                        android:id="@+id/username"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/text_username_th"
-                        android:inputType="text"
-                        android:textSize="@dimen/size_text_medium"
-                        android:maxLines="1"
-                        android:padding="@dimen/padding_medium"
-                        android:imeOptions="actionNext"/>
-
-                </com.company.zicure.campusconnect.customView.TextInputView>
-
-                <com.company.zicure.campusconnect.customView.TextInputView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/padding_top_five">
-
-                    <com.company.zicure.campusconnect.customView.EditTextView
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/text_password_th"
-                        android:inputType="textPassword"
-                        android:textSize="@dimen/size_text_medium"
-                        android:maxLines="1"
-                        android:padding="@dimen/padding_medium"
-                        android:imeOptions="actionDone"/>
-                </com.company.zicure.campusconnect.customView.TextInputView>
-
-                <com.company.zicure.campusconnect.customView.ButtonView
-                    android:id="@+id/btnConnect"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/btn_height"
-                    android:layout_marginEnd="@dimen/padding_large"
-                    android:layout_marginStart="@dimen/padding_large"
-                    android:layout_marginTop="@dimen/padding_small"
-                    android:text="@string/text_btn_login_th"
-                    android:textStyle="bold" />
-                
-                <com.company.zicure.campusconnect.customView.LabelView
-                    android:id="@+id/label_forgot_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/margin_padding_normal"
-                    android:paddingEnd="@dimen/margin_padding_normal"
-                    android:paddingTop="@dimen/margin_padding_normal"
-                    android:paddingBottom="@dimen/margin_padding_normal"
-                    android:textSize="@dimen/size_text_small"
-                    android:text="@string/text_forgot_password_th"
-                    android:layout_gravity="end"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:background="@color/background_tab_bottom">
-
-            <com.company.zicure.campusconnect.customView.LabelView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="end|center_vertical"
-                android:textSize="@dimen/size_text_small"
-                android:text="@string/text_ask_th"
-                android:paddingStart="@dimen/padding_four"
-                android:paddingEnd="@dimen/padding_four"/>
-
-            <com.company.zicure.campusconnect.customView.LabelView
-                android:id="@+id/txt_link"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="start|center_vertical"
-                android:textSize="@dimen/size_text_small"
-                android:textColor="@color/text_link"
-                android:textColorLink="@color/color_text_link"
-                android:text="@string/text_link_th"
-                android:paddingStart="@dimen/padding_four"
-                android:paddingEnd="@dimen/padding_four"/>
-
-        </LinearLayout>
+        </FrameLayout>
 
     </RelativeLayout>
 

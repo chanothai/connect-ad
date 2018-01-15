@@ -12,12 +12,12 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/anim/design_bottom_sheet_slide_in.xml"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-mdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable_abc_seekbar_track_material.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable/abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-mdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
@@ -28,24 +28,24 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-mdpi-v4/abc_list_pressed_holo_light.9.png"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_notification_action.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b5f3b54e08a9c544478f1aeb63b11ff2/res/layout/notification_action.xml"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-hdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_list_longpressed_holo.9.png"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable_common_google_signin_btn_icon_light_focused.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/045e66d00bb40801f6aa47bb74103587/res/drawable/common_google_signin_btn_icon_light_focused.xml"
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_notification_action.xml.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b5f3b54e08a9c544478f1aeb63b11ff2/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/anim_design_bottom_sheet_slide_out.xml.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/anim/design_bottom_sheet_slide_out.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-v21_avd_show_password.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/drawable-v21/avd_show_password.xml"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/anim_design_bottom_sheet_slide_out.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/anim/design_bottom_sheet_slide_out.xml"
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable_common_google_signin_btn_icon_light_focused.xml.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/045e66d00bb40801f6aa47bb74103587/res/drawable/common_google_signin_btn_icon_light_focused.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -58,14 +58,6 @@
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
-    },
-    {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout-v11_notification_template_big_media_narrow.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ac2851b4fa2b38f1ae101c8d48b2fa0/res/layout-v11/notification_template_big_media_narrow.xml"
-    },
-    {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/color-v23_abc_tint_switch_thumb.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ac2851b4fa2b38f1ae101c8d48b2fa0/res/color-v23/abc_tint_switch_thumb.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_merge_camera_preview_view_finder.xml.flat",
@@ -108,12 +100,12 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-xhdpi-v4/abc_ic_star_half_black_48dp.png"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_select_dialog_item_material.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/layout/select_dialog_item_material.xml"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable_common_google_signin_btn_text_dark_focused.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/045e66d00bb40801f6aa47bb74103587/res/drawable/common_google_signin_btn_text_dark_focused.xml"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_select_dialog_item_material.xml.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/layout/select_dialog_item_material.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-hdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
@@ -180,12 +172,12 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/layout/abc_screen_content_include.xml"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xxhdpi-v4_design_ic_visibility.png.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/drawable-xxhdpi-v4/design_ic_visibility.png"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-xhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xxhdpi-v4_design_ic_visibility.png.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/drawable-xxhdpi-v4/design_ic_visibility.png"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_abc_alert_dialog_material.xml.flat",
@@ -212,12 +204,12 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-xxhdpi-v4/abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-hdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-hdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-hdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-anydpi-v21_design_ic_visibility.xml.flat",
@@ -240,12 +232,12 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable/abc_btn_radio_material.xml"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_design_navigation_menu_item.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/layout/design_navigation_menu_item.xml"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-mdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_design_navigation_menu_item.xml.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/layout/design_navigation_menu_item.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
@@ -282,10 +274,6 @@
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_notification_template_part_time.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b5f3b54e08a9c544478f1aeb63b11ff2/res/layout/notification_template_part_time.xml"
-    },
-    {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_abc_action_bar_view_list_nav_layout.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ac2851b4fa2b38f1ae101c8d48b2fa0/res/layout/abc_action_bar_view_list_nav_layout.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout-v21_notification_action_tombstone.xml.flat",
@@ -404,12 +392,12 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/anim-v21/design_bottom_sheet_slide_in.xml"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xxxhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xhdpi-v4_common_full_open_on_phone.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/045e66d00bb40801f6aa47bb74103587/res/drawable-xhdpi-v4/common_full_open_on_phone.png"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xxxhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/color_abc_tint_spinner.xml.flat",
@@ -528,10 +516,6 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-mdpi-v4/abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout-v11_notification_template_big_media_narrow_custom.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ac2851b4fa2b38f1ae101c8d48b2fa0/res/layout-v11/notification_template_big_media_narrow_custom.xml"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-hdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_btn_check_to_on_mtrl_015.png"
     },
@@ -592,12 +576,12 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/drawable-xxhdpi-v4/design_ic_visibility_off.png"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_notification_media_cancel_action.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/8924c5ec188dac63c38e3bb71e6fcf51/res/layout/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/color-v23_abc_tint_default.xml.flat",
@@ -606,10 +590,6 @@
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-v21_avd_hide_password.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/drawable-v21/avd_hide_password.xml"
-    },
-    {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout-v11_notification_media_cancel_action.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ac2851b4fa2b38f1ae101c8d48b2fa0/res/layout-v11/notification_media_cancel_action.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xxhdpi-v4_abc_ic_star_black_48dp.png.flat",
@@ -622,10 +602,6 @@
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/anim_abc_fade_in.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/anim/abc_fade_in.xml"
-    },
-    {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout-v11_notification_media_action.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ac2851b4fa2b38f1ae101c8d48b2fa0/res/layout-v11/notification_media_action.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-ldrtl-xhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -968,10 +944,6 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/layout/design_navigation_menu.xml"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/anim_design_fab_in.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-25.3.1.aar/e1ac3c70c7f6fcccdb1a740fa1a86e83/res/anim/design_fab_in.xml"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_abc_popup_menu_item_layout.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/layout/abc_popup_menu_item_layout.xml"
     },
@@ -1026,10 +998,6 @@
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/anim_tooltip_enter.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/anim/tooltip_enter.xml"
-    },
-    {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout-v11_notification_template_big_media_custom.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ac2851b4fa2b38f1ae101c8d48b2fa0/res/layout-v11/notification_template_big_media_custom.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -1428,10 +1396,6 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-xxxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout-v11_notification_template_big_media.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ac2851b4fa2b38f1ae101c8d48b2fa0/res/layout-v11/notification_template_big_media.xml"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-mdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/045e66d00bb40801f6aa47bb74103587/res/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
@@ -1524,12 +1488,12 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/045e66d00bb40801f6aa47bb74103587/res/drawable/common_google_signin_btn_icon_dark_focused.xml"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b5f3b54e08a9c544478f1aeb63b11ff2/res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_notification_media_action.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/8924c5ec188dac63c38e3bb71e6fcf51/res/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b5f3b54e08a9c544478f1aeb63b11ff2/res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xxxhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
@@ -1624,10 +1588,6 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-xxxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/color_abc_tint_switch_thumb.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ac2851b4fa2b38f1ae101c8d48b2fa0/res/color/abc_tint_switch_thumb.xml"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xhdpi-v4_abc_ic_star_black_36dp.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-xhdpi-v4/abc_ic_star_black_36dp.png"
     },
@@ -1658,10 +1618,6 @@
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-mdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-mdpi-v4/abc_switch_track_mtrl_alpha.9.png"
-    },
-    {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/anim_design_fab_out.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-25.3.1.aar/e1ac3c70c7f6fcccdb1a740fa1a86e83/res/anim/design_fab_out.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
@@ -1908,12 +1864,12 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable_notification_bg.xml.flat",
-        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b5f3b54e08a9c544478f1aeb63b11ff2/res/drawable/notification_bg.xml"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/layout_notification_template_big_media.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/8924c5ec188dac63c38e3bb71e6fcf51/res/layout/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable_notification_bg.xml.flat",
+        "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b5f3b54e08a9c544478f1aeb63b11ff2/res/drawable/notification_bg.xml"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/androidTest/connectcampus/debug/drawable-xxhdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",

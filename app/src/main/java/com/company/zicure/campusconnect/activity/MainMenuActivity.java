@@ -30,6 +30,7 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,16 +58,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
 import gallery.zicure.company.com.modellibrary.models.DataModel;
 import gallery.zicure.company.com.modellibrary.models.beacon.BeaconRequest;
 import gallery.zicure.company.com.modellibrary.models.beacon.BeaconResponse;
 import gallery.zicure.company.com.modellibrary.models.bloc.RequestCheckInWork;
 import gallery.zicure.company.com.modellibrary.models.bloc.ResponseBlocUser;
-import gallery.zicure.company.com.modellibrary.models.bloc.ResponseCheckinWork;
 import gallery.zicure.company.com.modellibrary.models.drawer.SlideMenuDetail;
 import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
 import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
@@ -81,35 +78,22 @@ import io.nlopez.smartlocation.location.config.LocationParams;
 public class MainMenuActivity extends BaseActivity implements BluetoothScanManager.OnListenerScanning, OnLocationUpdatedListener {
 
     /** Make: View **/
-    //layout coordinator cover material layout
-    @Bind(R.id.liner_content)
     RelativeLayout linearLayout;
-    @Bind(R.id.layout_menu)
     RelativeLayout layoutMenu;
 
     //toolbar
-    @Bind(R.id.toolbar)
     Toolbar toolbarMenu;
-    @Bind(R.id.point)
-    LabelView point;
 
     //list view slide menu
-    @Bind(R.id.list_slide_menu)
     RecyclerView listSlideMenu;
-    @Bind(R.id.layout_ghost)
     FrameLayout layoutGhost;
-    @Bind(R.id.control_slide)
     FrameLayout controlSlide;
-    @Bind(R.id.img_profile)
     SelectableRoundedImageView imgProfile;
-    @Bind(R.id.profile_name)
     TextView profileName;
 
     //list slide menu
     private ArrayList<SlideMenuDetail> arrMenu = null;
-    @Bind(R.id.child_header_drawer)
     RelativeLayout childHeaderDrawer;
-    @Bind(R.id.header_drawer)
     RelativeLayout headerDrawer;
 
     /** Make: properties **/
@@ -135,27 +119,30 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         super.onCreate(savedInstanceState);
         root = (FlyOutContainer) getLayoutInflater().inflate(R.layout.activity_main_menu, null);
         setContentView(root);
-        ButterKnife.bind(this);
+        bindView();
         setToolbar();
         setOnTouchView();
     }
 
+    private void bindView(){
+        toolbarMenu = (Toolbar) findViewById(R.id.toolbar);
+        listSlideMenu = (RecyclerView) findViewById(R.id.list_slide_menu);
+        layoutGhost = (FrameLayout) findViewById(R.id.layout_ghost);
+        controlSlide = (FrameLayout) findViewById(R.id.control_slide);
+        imgProfile = (SelectableRoundedImageView) findViewById(R.id.img_profile);
+        profileName = (TextView) findViewById(R.id.profile_name);
+        childHeaderDrawer = (RelativeLayout) findViewById(R.id.child_header_drawer);
+        headerDrawer = (RelativeLayout) findViewById(R.id.header_drawer);
+        linearLayout = (RelativeLayout) findViewById(R.id.liner_content);
+        layoutMenu = (RelativeLayout) findViewById(R.id.layout_menu);
+    }
+
     private void initParameter(){
-        Bundle bundle = getIntent().getExtras();
-        String[] strArr = bundle.getStringArray(getString(R.string.user_secret));
-        if (strArr != null) {
-            currentToken = strArr[0];
-            currentUsername = strArr[1];
-            key = Base64.decode(strArr[2], Base64.NO_WRAP);
+        SharedPreferences preferences = getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
+        currentToken = preferences.getString(getString(R.string.token_login), null);
 
-            if (currentUsername != null && currentToken != null){
-                // set data for profile activity
-                ModelCart.getInstance().getKeyModel().setToken(currentToken);
-                ModelCart.getInstance().getKeyModel().setKey(key);
-                ModelCart.getInstance().getKeyModel().setUsername(currentUsername);
+        if (currentToken != null) {
 
-                setModelUser();
-            }
         }
     }
 
@@ -313,7 +300,6 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         try{
             if (response.getResult().getSuccess().equalsIgnoreCase("OK")){
                 String resultPoint = Integer.toString(response.getResult().getData().getUserInfo().getPoint());
-                point.setText(resultPoint);
                 ModelCart.getInstance().getUserBloc().setResult(response.getResult());
                 callHomeFragment();
                 setSlideMenuAdapter();

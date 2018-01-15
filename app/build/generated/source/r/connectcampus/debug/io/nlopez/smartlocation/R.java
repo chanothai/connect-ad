@@ -16,10 +16,10 @@ public final class R {
         public static final int common_full_open_on_phone = 0x7f070063;
     }
     public static final class id {
-        public static final int adjust_height = 0x7f08001e;
-        public static final int adjust_width = 0x7f08001f;
-        public static final int none = 0x7f0800ad;
-        public static final int normal = 0x7f0800ae;
+        public static final int adjust_height = 0x7f08001d;
+        public static final int adjust_width = 0x7f08001e;
+        public static final int none = 0x7f0800a9;
+        public static final int normal = 0x7f0800aa;
     }
     public static final class integer {
         public static final int gms_version = 0x7f090009;

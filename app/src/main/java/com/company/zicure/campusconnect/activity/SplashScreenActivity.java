@@ -15,9 +15,6 @@ import com.company.zicure.campusconnect.utility.PermissionRequest;
 import com.company.zicure.campusconnect.utility.RestoreLogin;
 import com.squareup.otto.Subscribe;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
 import gallery.zicure.company.com.modellibrary.models.BaseResponse;
 import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
@@ -33,15 +30,15 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
     private String currentUsername = null;
     private byte[] key = null;
 
-    @Bind(R.id.img_logo)
     ImageView imgLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_slash_screen);
+        setContentView(R.layout.activity_splash_screen);
         EventBusCart.getInstance().getEventBus().register(this);
-        ButterKnife.bind(this);
+
+        imgLogo = (ImageView) findViewById(R.id.img_logo);
 
         permissionRequest = new PermissionRequest(this);
     }
