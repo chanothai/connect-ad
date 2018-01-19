@@ -28,6 +28,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="true" />
+
         //Check version for google play service
         <meta-data
             android:name="com.google.android.gms.version"
@@ -77,13 +81,6 @@
             android:name=".activity.BlocContentActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 
-        <activity
-            android:name=".activity.IDCardActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.ContactListActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".activity.ConditionActivity" />
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,9 +104,9 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
     }
 
     private void bindView(View root) {
-        webView = (WebView) root.findViewById(R.id.appView);
-        progressBarLoading = (ProgressBar) root.findViewById(R.id.progress_bar_webview);
-        layoutProgress = (FrameLayout) root.findViewById(R.id.framelayout_loading);
+        webView = root.findViewById(R.id.appView);
+        progressBarLoading = root.findViewById(R.id.progress_bar_webview);
+        layoutProgress = root.findViewById(R.id.framelayout_loading);
     }
 
     @Override
@@ -114,21 +115,11 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         progressBarLoading.setProgress(0);
         progressBarLoading.setMax(100);
         if (savedInstanceState == null) {
-            setuoDebug();
             setWebView();
         }
     }
 
-    private void setuoDebug(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (0 != (getActivity().getApplicationInfo().flags + getActivity().getApplicationInfo().FLAG_DEBUGGABLE)) {
-                WebView.setWebContentsDebuggingEnabled(true);
-            }
-        }
-    }
-
     public void setWebView(){
-        webView.setDownloadListener(this);
         webView.setWebViewClient(new AppBrowser());
         webView.setWebChromeClient(new ChromeClient());
         webView.setVerticalScrollBarEnabled(true);
@@ -141,10 +132,6 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         webView.addJavascriptInterface(new JavaScriptInterface(), JAVASCRIPT_OBJ);
 
         webView.loadUrl(url);
-    }
-
-    public WebView getWebView(){
-        return webView;
     }
 
     private void downloadFile(String url, String userAgent, String contentDisposition, String mimetype) {
@@ -185,7 +172,12 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             webView.clearCache(true);
+            webView.setEnabled(view.canGoBack());
             injectJavaScriptFunction();
+
+            if (!MainMenuActivity.STACK_URL.get(0).equalsIgnoreCase(url)){
+                MainMenuActivity.STACK_URL.add(url);
+            }
         }
     }
 

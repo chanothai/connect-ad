@@ -25,7 +25,6 @@ import com.squareup.otto.Subscribe;
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
 import gallery.zicure.company.com.modellibrary.models.bloc.RequestCheckInWork;
 import gallery.zicure.company.com.modellibrary.models.bloc.ResponseCheckinWork;
-import gallery.zicure.company.com.modellibrary.models.contact.ResponseAddContact;
 import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
 import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
 import gallery.zicure.company.com.modellibrary.utilize.ToolbarManager;
@@ -127,7 +126,7 @@ public class BlocContentActivity extends BaseActivity {
         switch (item.getItemId()){
             case android.R.id.home:{
                 try{
-                    webView = getFragmentAppMenu().getWebView();
+                    webView = AppMenuFragment.webView;
                     if (webView != null && webView.canGoBack()){
                         webView.goBack();
                     }else{
@@ -167,7 +166,7 @@ public class BlocContentActivity extends BaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK){
-            webView = getFragmentAppMenu().getWebView();
+            webView = AppMenuFragment.webView;
             if (webView != null){
                 if (webView.canGoBack()){
                     webView.goBack();
@@ -187,21 +186,6 @@ public class BlocContentActivity extends BaseActivity {
         FragmentManager fm = getSupportFragmentManager();
         AppMenuFragment fragment = (AppMenuFragment) fm.findFragmentByTag(VariableConnect.appMenuFragmentKey);
         return fragment;
-    }
-
-    /********************** onEvent ***********************************/
-    @Subscribe
-    public void onEventResponseAddContact(ResponseAddContact response) {
-        if (response.getResult().getSuccess().equalsIgnoreCase("OK")){
-            Toast.makeText(this, response.getResult().getMessage(), Toast.LENGTH_SHORT).show();
-            finish();
-            overridePendingTransition(R.anim.anim_scale_in, R.anim.anim_slide_out_right);
-        }else{
-            Toast.makeText(this, response.getResult().getError(), Toast.LENGTH_SHORT).show();
-            resumeCamera();
-        }
-
-        dismissDialog();
     }
 
     @Subscribe

@@ -34,13 +34,13 @@ public class RestoreLogin {
         return token;
     }
 
-    public String getRestoreUser(){
-        String user = pref.getString(activity.getString(R.string.username), null);
+    public String getURL(){
+        String user = pref.getString("web_url", null);
         return user;
     }
 
-    public String getRestoreKey(){
-        String key = pref.getString(activity.getString(R.string.dynamic_key), null);
+    public String getSubscribe(){
+        String key = pref.getString("subscribe_noti", null);
         return key;
     }
 }

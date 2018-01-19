@@ -21,10 +21,9 @@ public class FlyOutContainer extends LinearLayout {
 
 	//View
 	private FrameLayout layoutGhost = null;
-	private RelativeLayout layoutMenu = null;
+	private LinearLayout layoutMenu = null;
 	private FrameLayout controlSlide = null;
 	private CoordinatorLayout coordinatorLayout = null;
-	private FrameLayout layoutShadowMenu = null;
 
 
 	// Layout Constants
@@ -67,12 +66,11 @@ public class FlyOutContainer extends LinearLayout {
 		this.content = this.getChildAt(1);
 
 		//bind view
-		controlSlide = (FrameLayout) content.findViewById(R.id.control_slide);
-		layoutGhost = (FrameLayout) content.findViewById(R.id.layout_ghost);
-		coordinatorLayout = (CoordinatorLayout) content.findViewById(R.id.rootLayout);
+		controlSlide = content.findViewById(R.id.control_slide);
+		layoutGhost = content.findViewById(R.id.layout_ghost);
+		coordinatorLayout = content.findViewById(R.id.rootLayout);
 
-		layoutMenu = (RelativeLayout) menu.findViewById(R.id.layout_menu);
-		layoutShadowMenu = (FrameLayout) menu.findViewById(R.id.layout_shadow_menu);
+		layoutMenu = (LinearLayout) menu.findViewById(R.id.layout_menu);
 	}
 
 	@Override
@@ -109,14 +107,11 @@ public class FlyOutContainer extends LinearLayout {
 		if (result <= 0.1){
 			result = 0.1;
 		}
-		layoutShadowMenu.setAlpha((float) result);
-		layoutShadowMenu.setClickable(true);
 	}
 
 	public void setAnimation(int target){
 		AnimatorSet animTogether = new AnimatorSet();
 		ObjectAnimator animSlideMenu = null;
-		ObjectAnimator animAlpha = null;
 		if (menuCurrentState == MenuState.OPEN){
 			if (target <= getMenuWidth() && target > (getMenuWidth() / 2)){
 				if (currentWidth > 0){
@@ -128,8 +123,6 @@ public class FlyOutContainer extends LinearLayout {
 				animSlideMenu = ObjectAnimator.ofFloat(content, View.TRANSLATION_X, currentWidth, target);
 			}
 
-			animAlpha = ObjectAnimator.ofFloat(layoutShadowMenu, View.ALPHA, 0.1f);
-			layoutShadowMenu.setClickable(false);
 		}
 		else if (menuCurrentState == MenuState.CLOSED){
 			if (target <= (getMenuWidth() / 2) && target > 0){
@@ -142,11 +135,9 @@ public class FlyOutContainer extends LinearLayout {
 				}
 			}
 			setMarginLayout(0);
-			animAlpha = ObjectAnimator.ofFloat(layoutShadowMenu, View.ALPHA, 1f);
-			layoutShadowMenu.setClickable(true);
 		}
 
-		animTogether.playTogether(animSlideMenu, animAlpha);
+		animTogether.play(animSlideMenu);
 		animTogether.setDuration(animationDuration);
 		animTogether.setInterpolator(new DecelerateInterpolator());
 		animTogether.start();

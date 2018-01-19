@@ -2,7 +2,9 @@ package com.company.zicure.campusconnect.network;
 
 
 import java.io.IOException;
+import java.util.Locale;
 
+import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -31,7 +33,7 @@ public class RetrofitAPI {
         return me;
     }
 
-    public Retrofit getRetrofit(){
+    public Retrofit getRetrofit(final String language){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -45,7 +47,9 @@ public class RetrofitAPI {
                 //Request customization: add request headers
                 Request.Builder requestBuilder = original.newBuilder()
                         .addHeader("Cache-Control", "no-cache")
-                        .addHeader("Cache-Control", "no-store");
+                        .addHeader("Cache-Control", "no-store")
+                        .addHeader("Accept-Language", language)
+                        .addHeader("Authorization", "Bearer " + ModelCart.getInstance().getKeyModel().getToken());
 
                 Request request = requestBuilder.build();
                 return chain.proceed(request);

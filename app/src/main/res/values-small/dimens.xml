@@ -18,4 +18,7 @@
 
     //height bloc
     <dimen name="height_bloc">120dp</dimen>
+
+    //icon
+    <dimen name="icon_size_small">24dp</dimen>
 </resources>

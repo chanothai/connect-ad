@@ -16,7 +16,6 @@ import com.company.zicure.campusconnect.utility.RestoreLogin;
 import com.squareup.otto.Subscribe;
 
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.models.BaseResponse;
 import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
 import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
 
@@ -26,9 +25,8 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
     private PermissionRequest permissionRequest = null;
 
     private String currentToken = null;
-    private String currentDynamicKey = null;
-    private String currentUsername = null;
-    private byte[] key = null;
+    private String currentURL = null;
+    private String currentSubscribe = null;
 
     ImageView imgLogo;
 
@@ -38,7 +36,7 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
         setContentView(R.layout.activity_splash_screen);
         EventBusCart.getInstance().getEventBus().register(this);
 
-        imgLogo = (ImageView) findViewById(R.id.img_logo);
+        imgLogo = findViewById(R.id.img_logo);
 
         permissionRequest = new PermissionRequest(this);
     }
@@ -46,23 +44,8 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
     @Override
     protected void onResume() {
         super.onResume();
-
-        ClientHttp.getInstance(this).checkVersionApp();
-    }
-
-    @Subscribe
-    public void onEventCheckVersion(BaseResponse response){
-        try{
-            if (response.getResult().getSuccess().equalsIgnoreCase("OK")){
-                if (response.getResult().getData().getVersion().equalsIgnoreCase(VariableConnect.versionAndroid)){
-                    if (!permissionRequest.requestReadStorage()){
-                        animationFadeOut();
-                    }
-                }
-            }
-        }catch (NullPointerException e){
-            e.printStackTrace();
-            dismissDialog();
+        if (!permissionRequest.requestReadStorage()){
+            animationFadeOut();
         }
     }
 
@@ -88,6 +71,7 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
     }
 
     @Override
+
     public void onAnimationStart(Animator animation) {
 
     }
@@ -99,18 +83,11 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
 
     private void checkLogin(){
         currentToken = RestoreLogin.getInstance(this).getRestoreToken();
-        currentDynamicKey = RestoreLogin.getInstance(this).getRestoreKey();
-        currentUsername = RestoreLogin.getInstance(this).getRestoreUser();
+        currentURL = RestoreLogin.getInstance(this).getURL();
+        currentSubscribe = RestoreLogin.getInstance(this).getSubscribe();
 
-        if (currentDynamicKey != null && currentToken != null && currentUsername != null && !currentUsername.isEmpty()){
-            Bundle bundle = new Bundle();
-            String[] strArr = new String[3];
-            strArr[0] = currentToken;
-            strArr[1] = currentUsername;
-            strArr[2] = currentDynamicKey;
-
-            bundle.putStringArray(getString(R.string.user_secret), strArr);
-            openActivity(MainMenuActivity.class, bundle, true);
+        if (currentSubscribe != null && currentToken != null && currentURL != null){
+            openActivity(MainMenuActivity.class, true);
         }else{
             openActivity(LoginActivity.class, true);
         }

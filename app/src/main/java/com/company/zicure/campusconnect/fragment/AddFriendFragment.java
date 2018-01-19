@@ -15,8 +15,6 @@ import com.google.gson.Gson;
 import com.google.zxing.Result;
 
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.models.contact.RequestAddContact;
-import gallery.zicure.company.com.modellibrary.models.contact.RequestAddContact.Contact;
 import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -101,18 +99,7 @@ public class AddFriendFragment extends Fragment implements ZXingScannerView.Resu
     }
 
     private void setRequestAddContact(String qrcode){
-        Contact contact = new Contact();
-        contact.setToken(ModelCart.getInstance().getKeyModel().getToken());
-        contact.setUserContact(qrcode);
 
-        RequestAddContact addContact = new RequestAddContact();
-        addContact.setContact(contact);
-
-        String resultSJON = new Gson().toJson(addContact);
-        Log.d("AddContact", resultSJON);
-
-        ((BaseActivity) getActivity()).showLoadingDialog();
-        ClientHttp.getInstance(getActivity()).requestAddContact(addContact);
     }
 
     public void resumeCamera(){

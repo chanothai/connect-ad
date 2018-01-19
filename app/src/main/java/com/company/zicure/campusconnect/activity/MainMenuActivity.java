@@ -1,17 +1,16 @@
 package com.company.zicure.campusconnect.activity;
 
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Handler;
 import android.os.PersistableBundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -21,16 +20,16 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,33 +37,32 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.company.zicure.campusconnect.R;
-import com.company.zicure.campusconnect.adapter.SlideMenuAdapter;
-import com.company.zicure.campusconnect.contents.ContentAdapterCart;
-import com.company.zicure.campusconnect.customView.LabelView;
+import com.company.zicure.campusconnect.adapter.MenuCategoryAdapter;
 import com.company.zicure.campusconnect.fragment.AppMenuFragment;
-import com.company.zicure.campusconnect.fragment.HomeFragment;
 
+import com.company.zicure.campusconnect.modelview.Item;
 import com.company.zicure.campusconnect.network.ClientHttp;
+import com.company.zicure.campusconnect.network.request.ProfileRequest;
 import com.company.zicure.campusconnect.utility.BluetoothScanManager;
 import com.company.zicure.campusconnect.utility.PermissionKeyNumber;
-import com.company.zicure.campusconnect.utility.PermissionManager;
 import com.company.zicure.campusconnect.utility.PermissionRequest;
 import com.company.zicure.campusconnect.view.viewgroup.FlyOutContainer;
-import com.google.gson.Gson;
 import com.joooonho.SelectableRoundedImageView;
 import com.squareup.otto.Subscribe;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.models.DataModel;
 import gallery.zicure.company.com.modellibrary.models.beacon.BeaconRequest;
 import gallery.zicure.company.com.modellibrary.models.beacon.BeaconResponse;
 import gallery.zicure.company.com.modellibrary.models.bloc.RequestCheckInWork;
-import gallery.zicure.company.com.modellibrary.models.bloc.ResponseBlocUser;
 import gallery.zicure.company.com.modellibrary.models.drawer.SlideMenuDetail;
+import gallery.zicure.company.com.modellibrary.models.profile.ProfileResponse;
 import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
 import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
 import gallery.zicure.company.com.modellibrary.utilize.ResizeScreen;
@@ -79,7 +77,7 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
 
     /** Make: View **/
     RelativeLayout linearLayout;
-    RelativeLayout layoutMenu;
+    LinearLayout layoutMenu;
 
     //toolbar
     Toolbar toolbarMenu;
@@ -90,9 +88,10 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
     FrameLayout controlSlide;
     SelectableRoundedImageView imgProfile;
     TextView profileName;
+    TextView profileAddress;
 
-    //list slide menu
-    private ArrayList<SlideMenuDetail> arrMenu = null;
+    //list menu
+    private ArrayList<Item> arrMenu = null;
     RelativeLayout childHeaderDrawer;
     RelativeLayout headerDrawer;
 
@@ -102,47 +101,66 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
     private int widthScreenMenu;
     int haftScreen = 0;
     private VelocityTracker velocityTracker = null; // get speed for touch
-    private DataModel model = null;
-    byte[] key = null;
+
     private String currentToken = null;
-    String currentUsername = null;
 
     private BluetoothManager btManager = null;
     private BluetoothAdapter btAdapter = null;
     private Handler scanHandler = null;
-    private boolean isScanning = false;
     private BluetoothScanManager btScanning = null;
 
-    private int i = 0;
+    public static ArrayList<String> STACK_URL = null;
+    private String geoAddress = null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBusCart.getInstance().getEventBus().register(this);
         root = (FlyOutContainer) getLayoutInflater().inflate(R.layout.activity_main_menu, null);
-        setContentView(root);
-        bindView();
-        setToolbar();
-        setOnTouchView();
+
+        if (savedInstanceState == null){
+            setContentView(root);
+            bindView();
+            setToolbar();
+            setOnTouchView();
+            initParameter();
+
+            showLoadingDialog();
+            ProfileRequest profileRequest = new ProfileRequest(this);
+            profileRequest.requestProfile();
+        }
     }
 
     private void bindView(){
-        toolbarMenu = (Toolbar) findViewById(R.id.toolbar);
-        listSlideMenu = (RecyclerView) findViewById(R.id.list_slide_menu);
-        layoutGhost = (FrameLayout) findViewById(R.id.layout_ghost);
-        controlSlide = (FrameLayout) findViewById(R.id.control_slide);
-        imgProfile = (SelectableRoundedImageView) findViewById(R.id.img_profile);
-        profileName = (TextView) findViewById(R.id.profile_name);
-        childHeaderDrawer = (RelativeLayout) findViewById(R.id.child_header_drawer);
-        headerDrawer = (RelativeLayout) findViewById(R.id.header_drawer);
-        linearLayout = (RelativeLayout) findViewById(R.id.liner_content);
-        layoutMenu = (RelativeLayout) findViewById(R.id.layout_menu);
+        toolbarMenu = findViewById(R.id.toolbar);
+        listSlideMenu = findViewById(R.id.list_slide_menu);
+        layoutGhost = findViewById(R.id.layout_ghost);
+        controlSlide = findViewById(R.id.control_slide);
+        imgProfile =  findViewById(R.id.img_profile);
+        profileName = findViewById(R.id.profile_name);
+        profileAddress = findViewById(R.id.profile_address);
+        childHeaderDrawer = findViewById(R.id.child_header_drawer);
+        headerDrawer = findViewById(R.id.header_drawer);
+        linearLayout = findViewById(R.id.liner_content);
+        layoutMenu = findViewById(R.id.layout_menu);
     }
 
     private void initParameter(){
         SharedPreferences preferences = getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
         currentToken = preferences.getString(getString(R.string.token_login), null);
+        String url = preferences.getString("web_url", null);
+        String subscribe = preferences.getString("subscribe_noti", null);
 
-        if (currentToken != null) {
+        if (MainMenuActivity.STACK_URL == null) {
+            MainMenuActivity.STACK_URL = new ArrayList<>();
+            MainMenuActivity.STACK_URL.add(url);
+        }
 
+        if (currentToken != null && url != null && subscribe != null) {
+            ModelCart.getInstance().getKeyModel().setToken(currentToken);
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, AppMenuFragment.newInstance(url), VariableConnect.appMenuFragmentKey);
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
     }
 
@@ -158,26 +176,13 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         ResizeScreen resizeScreen = new ResizeScreen(this);
 
         RelativeLayout.LayoutParams paramsIMG = (RelativeLayout.LayoutParams) imgProfile.getLayoutParams();
-        paramsIMG.height = resizeScreen.widthScreen(5);
-        paramsIMG.width = resizeScreen.widthScreen(5);
+        paramsIMG.height = resizeScreen.widthScreen(3);
+        paramsIMG.width = resizeScreen.widthScreen(3);
         imgProfile.setLayoutParams(paramsIMG);
-
-        RelativeLayout.LayoutParams paramHeader = (RelativeLayout.LayoutParams) headerDrawer.getLayoutParams();
-        paramHeader.height = resizeScreen.widthScreen(2);
-        paramHeader.width = RelativeLayout.LayoutParams.MATCH_PARENT;
-        headerDrawer.setLayoutParams(paramHeader);
 
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) childHeaderDrawer.getLayoutParams();
         params.topMargin = getStatusBarHeight() + convertPxtoDp(8);
         childHeaderDrawer.setLayoutParams(params);
-
-        RelativeLayout.LayoutParams paramHead = (RelativeLayout.LayoutParams) headerDrawer.getLayoutParams();
-        paramHead.bottomMargin = getStatusBarHeight();
-        headerDrawer.setLayoutParams(paramHead);
-
-        RelativeLayout.LayoutParams paramsMenu = (RelativeLayout.LayoutParams) listSlideMenu.getLayoutParams();
-        paramsMenu.topMargin = getStatusBarHeight() * -1;
-        listSlideMenu.setLayoutParams(paramsMenu);
     }
 
     private int convertPxtoDp(int value){
@@ -240,10 +245,7 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
     @Override
     protected void onResume() {
         super.onResume();
-        EventBusCart.getInstance().getEventBus().register(this);
-        initParameter();
         initBluetoothAdapter();
-
         //Start get location
         if (SmartLocation.with(this).location().state().locationServicesEnabled()){
             LocationParams params = new LocationParams.Builder()
@@ -259,26 +261,14 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
     @Override
     protected void onPause() {
         super.onPause();
-        btAdapter.stopLeScan(btScanning);
-        EventBusCart.getInstance().getEventBus().unregister(this);
 
         //Stop location
         SmartLocation.with(this).location().stop();
     }
 
-    public void callHomeFragment() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, new HomeFragment());
-        transaction.commit();
-    }
+    @Override
+    public void onBackPressed() {
 
-    public void setModelUser(){
-        try{
-            showLoadingDialog();
-            ClientHttp.getInstance(this).requestUserBloc(currentToken);
-        }catch (NullPointerException e){
-            e.printStackTrace();
-        }
     }
 
     /******* OnLocationUpdate ******************/
@@ -291,38 +281,30 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         locationDevice.setLatitude(String.valueOf(lat));
         locationDevice.setLongitude(String.valueOf(Long));
 
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        List<Address> addresses = null;
+        try{
+            addresses = geocoder.getFromLocation(lat, Long,1);
+            if (addresses != null || addresses.size() > 0){
+
+                for (int i = 0; i <= addresses.get(0).getMaxAddressLineIndex(); i++){
+                    geoAddress = addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality();
+                    profileAddress.setText(geoAddress);
+                    Log.d("AddressUser", addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality());
+                }
+            }
+        }catch (IOException e){
+            // Catch network or other I/O problems.
+            e.printStackTrace();
+        }catch (IllegalArgumentException e){
+            // Catch invalid latitude or longitude values.
+            e.printStackTrace();
+        }
+
         ModelCart.getInstance().getRequestCheckInWork().setLocation(locationDevice);
     }
 
     /******************* onEvent ************************************/
-    @Subscribe
-    public void onEventResponseUserBloc(ResponseBlocUser response){
-        try{
-            if (response.getResult().getSuccess().equalsIgnoreCase("OK")){
-                String resultPoint = Integer.toString(response.getResult().getData().getUserInfo().getPoint());
-                ModelCart.getInstance().getUserBloc().setResult(response.getResult());
-                callHomeFragment();
-                setSlideMenuAdapter();
-
-                if (FlyOutContainer.menuCurrentState == FlyOutContainer.MenuState.OPEN){
-                    setToggle(0,0);
-                }
-
-            }else{
-                dismissDialog();
-                SharedPreferences pref = getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = pref.edit();
-                editor.clear();
-                editor.apply();
-                openActivity(LoginActivity.class, true);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        dismissDialog();
-    }
-
     @Subscribe
     public void onEventBeaconResponse(BeaconResponse response) {
         if (response.getResult().getSuccess().equalsIgnoreCase("OK")){
@@ -334,7 +316,69 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         }
     }
 
+    @Subscribe
+    public void onEventProfileResponse(ProfileResponse response){
+        if (response.getStatus().equalsIgnoreCase("Success")){
+            ModelCart.getInstance().getProfileResult().setData(response.getResult().getData());
+            setSlideMenuAdapter(ModelCart.getInstance().getProfileResult().getData());
+        }else{
+            Toast.makeText(this, response.getResult().getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        dismissDialog();
+    }
+
     /******************************************************************/
+
+    public void setSlideMenuAdapter(ProfileResponse.ProfileResult.ProfileData dataUser){
+        String pathImg = dataUser.getDetail().getImgPath();
+        Glide.with(this)
+                .load(pathImg)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .into(imgProfile);
+
+        String screenName = dataUser.getDetail().getFirstName() + " " + dataUser.getDetail().getLastName();
+        profileName.setText(screenName);
+
+        arrMenu = new ArrayList<>();
+
+        for (int i = 0; i < 2; i++){
+            switch (i) {
+                case 0:{
+                    List<String> txtChild = new ArrayList<>();
+                    for (int j = 0; j < dataUser.getLanguage().getArrLanguage().size(); j++){
+                        txtChild.add(dataUser.getLanguage().getArrLanguage().get(j).getValue());
+                    }
+
+                    Item item = new Item(dataUser.getLanguage().getLabel(), txtChild, true);
+                    arrMenu.add(item);
+                }
+
+                break;
+                case 1:{
+                    List<String> txtChild = new ArrayList<>();
+                    for (int j = 0; j < dataUser.getLanguage().getArrLanguage().size(); j++){
+                        txtChild.add(dataUser.getMenus().get(j).getLabel());
+                    }
+
+                    Item item = new Item("", txtChild, false);
+                    arrMenu.add(item);
+                }
+                break;
+                default:{
+                    break;
+                }
+            }
+        }
+
+        MenuCategoryAdapter adapter = new MenuCategoryAdapter(arrMenu);
+        listSlideMenu.setLayoutManager(new LinearLayoutManager(this));
+        listSlideMenu.setHasFixedSize(true);
+
+        listSlideMenu.setAdapter(adapter);
+        listSlideMenu.setItemAnimator(new DefaultItemAnimator());
+    }
 
     private void setOnTouchView(){
         controlSlide.setOnTouchListener(new View.OnTouchListener() {
@@ -433,42 +477,6 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         root.toggleMenu(widthScreen, speedTouch);
     }
 
-    public void setSlideMenuAdapter(){
-        String pathImg = ModelCart.getInstance().getUserBloc().getResult().getData().getUserInfo().getImgPath();
-        Glide.with(this)
-                .load(pathImg)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .into(imgProfile);
-
-        String screenName = ModelCart.getInstance().getUserBloc().getResult().getData().getUserInfo().getFirstNameTH() + " " + ModelCart.getInstance().getUserBloc().getResult().getData().getUserInfo().getLastNameTH();
-        profileName.setText(screenName);
-
-        arrMenu = new ArrayList<>();
-        Log.d("SlideMenu",new Gson().toJson(arrMenu));
-        String[] arrTitle = {
-                getString(R.string.menu_feed_th),
-                getString(R.string.payment_th),
-                getString(R.string.logout_menu_th)};
-
-        int[] arrImg = {
-                R.drawable.ic_news_feed,
-                R.drawable.point,
-                R.drawable.exit};
-
-        for (int i = 0; i < arrTitle.length; i++){
-            SlideMenuDetail menu = new SlideMenuDetail();
-            menu.setTitle(arrTitle[i]);
-            menu.setImage(arrImg[i]);
-            arrMenu.add(menu);
-        }
-
-        ContentAdapterCart adapterCart = new ContentAdapterCart();
-        SlideMenuAdapter slideMenuAdapter = adapterCart.setSlideMenuAdapter(this,arrMenu);
-        listSlideMenu.setLayoutManager(new LinearLayoutManager(this));
-        listSlideMenu.setAdapter(slideMenuAdapter);
-        listSlideMenu.setItemAnimator(new DefaultItemAnimator());
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -488,13 +496,32 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBusCart.getInstance().getEventBus().unregister(this);
     }
 
     @Override
-    public void onBackPressed() {
-        if (FlyOutContainer.menuCurrentState == FlyOutContainer.MenuState.OPEN){
-            setToggle(0,0);
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_BACK: {
+//                    webView = AppMenuFragment.webView;
+//                    if (webView != null){
+//                        webView.goBack();
+//                    }
+                    if (STACK_URL.size() > 1) {
+                        int countStack = STACK_URL.size() - 2;
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.container, AppMenuFragment.newInstance(STACK_URL.get(countStack)), VariableConnect.appMenuFragmentKey);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+
+                        STACK_URL.remove(countStack + 1);
+                    }
+                    break;
+                }
+            }
         }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
