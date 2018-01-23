@@ -2,6 +2,7 @@ package com.company.zicure.campusconnect.adapter;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -12,13 +13,19 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.company.zicure.campusconnect.R;
+import com.company.zicure.campusconnect.activity.LoginActivity;
+import com.company.zicure.campusconnect.activity.MainMenuActivity;
 import com.company.zicure.campusconnect.customView.LabelView;
 import com.company.zicure.campusconnect.modelview.Item;
+import com.company.zicure.campusconnect.network.request.ProfileRequest;
 import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 import com.github.aakira.expandablelayout.Utils;
 
 import java.util.List;
+
+import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
+import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
 
 /**
  * Created by macintosh on 19/1/18.
@@ -101,6 +108,7 @@ public class MenuCategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context, "Sign out", Toast.LENGTH_SHORT).show();
+                        clearData();
                     }
                 });
             }
@@ -146,15 +154,31 @@ public class MenuCategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 viewHolder.menuChild.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "Change language", Toast.LENGTH_SHORT).show();
+                        ((MainMenuActivity) context).showLoadingDialog();
+                        ProfileRequest profileRequest = new ProfileRequest(context);
+                        profileRequest.requestProfile(arrItems.get(position).getCodeLanguage());
+
+                        ((MainMenuActivity)context).setToggle(0,0);
                     }
                 });
             }
+
             break;
             default:{
                 break;
             }
         }
+    }
+
+    private void clearData(){
+        SharedPreferences sharedPref = context.getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+        editor.apply();
+
+        ModelCart.getInstance().clearAllData();
+
+        ((MainMenuActivity) context).openActivity(LoginActivity.class, true);
     }
 
     private ObjectAnimator changeRotate(ImageView button, float from, float to){

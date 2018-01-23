@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Jan 17 17:48:50 ICT 2018
+#Tue Jan 23 15:24:11 ICT 2018
 4.path=fonts/GreatVibes-Regular.otf
 8.set=ASSET
 6.path=classes.dex

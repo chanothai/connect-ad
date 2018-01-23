@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Jan 17 17:48:40 ICT 2018
+#Tue Jan 23 15:24:10 ICT 2018
 2.base=/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/assets/connectcampus/debug
 5.set=ASSET
 0.path=fonts/GREAT-VIBES-LICENSE

@@ -29,6 +29,8 @@ public class ClientHttp {
     private Context context = null;
     private static ClientHttp me;
 
+    private String urlIdentityServer = "http://connect06.pakgon.com/";
+    private String language = null;
     private final String LOGAPI = "API_RESPONSE";
     private String jsonStr;
 
@@ -38,10 +40,7 @@ public class ClientHttp {
 
     public ClientHttp(Context context){
         this.context = context;
-        String urlIdentityServer = "http://connect06.pakgon.com/";
-        String language = Locale.getDefault().getDisplayLanguage().toString();
-        retrofit = RetrofitAPI.newInstance(urlIdentityServer).getRetrofit(language);
-        service = retrofit.create(LogApi.class);
+        language = Locale.getDefault().getDisplayLanguage().toString();
         gson = new GsonBuilder().disableHtmlEscaping().create();
     }
 
@@ -53,34 +52,15 @@ public class ClientHttp {
         return me;
     }
 
-    public LogApi getService(){
+    public LogApi getService(String language){
+        retrofit = RetrofitAPI.newInstance(urlIdentityServer).getRetrofit(language);
+        service = retrofit.create(LogApi.class);
         return service;
-    }
-
-    public void requestUserBloc(String authToken) {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("authToken", authToken);
-        Call<ResponseBlocUser> userBloc = service.requestUserBloc(map);
-        userBloc.enqueue(new Callback<ResponseBlocUser>() {
-            @Override
-            public void onResponse(Call<ResponseBlocUser> call, Response<ResponseBlocUser> response) {
-                try{
-                    EventBusCart.getInstance().getEventBus().post(response.body());
-                }catch(NullPointerException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBlocUser> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
     }
 
     /******* Request Check in for work ***************************/
     public void requestCheckInWork(RequestCheckInWork request){
-        Call<ResponseCheckinWork> callCheckin = service.callCheckinWork(request);
+        Call<ResponseCheckinWork> callCheckin = getService(language).callCheckinWork(request);
         callCheckin.enqueue(new Callback<ResponseCheckinWork>() {
             @Override
             public void onResponse(Call<ResponseCheckinWork> call, Response<ResponseCheckinWork> response) {
@@ -100,7 +80,7 @@ public class ClientHttp {
 
     /** Beacon Request **/
     public void requestBeaconUrl(BeaconRequest request){
-        Call<BeaconResponse> callBeaconUrl = service.callBeaconUrl(request);
+        Call<BeaconResponse> callBeaconUrl = getService(language).callBeaconUrl(request);
         callBeaconUrl.enqueue(new Callback<BeaconResponse>() {
             @Override
             public void onResponse(Call<BeaconResponse> call, Response<BeaconResponse> response) {

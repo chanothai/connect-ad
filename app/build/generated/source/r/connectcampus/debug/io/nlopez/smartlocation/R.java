@@ -13,13 +13,13 @@ public final class R {
         public static final int imageAspectRatioAdjust = 0x7f0300cb;
     }
     public static final class drawable {
-        public static final int common_full_open_on_phone = 0x7f070065;
+        public static final int common_full_open_on_phone = 0x7f070063;
     }
     public static final class id {
         public static final int adjust_height = 0x7f08001f;
         public static final int adjust_width = 0x7f080020;
-        public static final int none = 0x7f0800b3;
-        public static final int normal = 0x7f0800b4;
+        public static final int none = 0x7f0800a0;
+        public static final int normal = 0x7f0800a1;
     }
     public static final class integer {
         public static final int gms_version = 0x7f090009;

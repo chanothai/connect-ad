@@ -19,7 +19,6 @@ public class ModelCart {
     private ModelCart() {
         keyModel = new KeyModel();
         userInfo = new ResponseBlocUser();
-
         requestCheckInWork = new RequestCheckInWork.Data();
         profileResult = new ProfileResponse.ProfileResult();
     }
@@ -46,5 +45,12 @@ public class ModelCart {
 
     public RequestCheckInWork.Data getRequestCheckInWork(){
         return requestCheckInWork;
+    }
+
+    public void clearAllData(){
+        keyModel = null;
+        userInfo = null;
+        requestCheckInWork = null;
+        profileResult = null;
     }
 }

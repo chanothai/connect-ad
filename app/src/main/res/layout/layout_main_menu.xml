@@ -26,4 +26,6 @@
         android:clickable="true"
         android:background="@android:color/transparent"/>
 
+
+
 </android.support.design.widget.CoordinatorLayout>

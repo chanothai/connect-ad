@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.VelocityTrackerCompat;
@@ -79,6 +80,9 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
     RelativeLayout linearLayout;
     LinearLayout layoutMenu;
 
+    //Bottom navigation
+    private BottomNavigationView bottomBar = null;
+
     //toolbar
     Toolbar toolbarMenu;
 
@@ -125,8 +129,9 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
             initParameter();
 
             showLoadingDialog();
+            String language = Locale.getDefault().getDisplayLanguage().toString();
             ProfileRequest profileRequest = new ProfileRequest(this);
-            profileRequest.requestProfile();
+            profileRequest.requestProfile(language);
         }
     }
 
@@ -142,6 +147,8 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         headerDrawer = findViewById(R.id.header_drawer);
         linearLayout = findViewById(R.id.liner_content);
         layoutMenu = findViewById(R.id.layout_menu);
+        bottomBar = findViewById(R.id.bottom_navigation);
+        bottomBar.setAnimation(null);
     }
 
     private void initParameter(){
@@ -271,6 +278,9 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
 
     }
 
+    /******* Bottom Bar *************/
+
+
     /******* OnLocationUpdate ******************/
     @Override
     public void onLocationUpdated(Location location) {
@@ -321,6 +331,7 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         if (response.getStatus().equalsIgnoreCase("Success")){
             ModelCart.getInstance().getProfileResult().setData(response.getResult().getData());
             setSlideMenuAdapter(ModelCart.getInstance().getProfileResult().getData());
+            Toast.makeText(this, response.getStatus(), Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, response.getResult().getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -330,6 +341,8 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
 
     /******************************************************************/
 
+
+    /**** Slide Menu ***********/
     public void setSlideMenuAdapter(ProfileResponse.ProfileResult.ProfileData dataUser){
         String pathImg = dataUser.getDetail().getImgPath();
         Glide.with(this)
@@ -347,11 +360,14 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
             switch (i) {
                 case 0:{
                     List<String> txtChild = new ArrayList<>();
+                    String codeLanguage = "";
                     for (int j = 0; j < dataUser.getLanguage().getArrLanguage().size(); j++){
                         txtChild.add(dataUser.getLanguage().getArrLanguage().get(j).getValue());
+                        codeLanguage = dataUser.getLanguage().getArrLanguage().get(j).getCode();
                     }
 
                     Item item = new Item(dataUser.getLanguage().getLabel(), txtChild, true);
+                    item.setCodeLanguage(codeLanguage);
                     arrMenu.add(item);
                 }
 
@@ -380,6 +396,7 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         listSlideMenu.setItemAnimator(new DefaultItemAnimator());
     }
 
+    /***** Touch Slide Menu ************/
     private void setOnTouchView(){
         controlSlide.setOnTouchListener(new View.OnTouchListener() {
             @Override

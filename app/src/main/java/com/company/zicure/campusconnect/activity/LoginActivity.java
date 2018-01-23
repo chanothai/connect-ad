@@ -20,8 +20,6 @@ public class LoginActivity extends BaseActivity {
     /** Make: View **/
 
     /** Make: Properties **/
-
-    private String strUser = "", strPass = "";
     private SharedPreferences sharedPref = null;
 
     private String url = "http://connect06.pakgon.com/core/";
@@ -91,5 +89,6 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        MainMenuActivity.STACK_URL = null;
     }
 }

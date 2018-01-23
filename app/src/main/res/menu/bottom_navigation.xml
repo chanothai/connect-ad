@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/item_home"
+        android:enabled="true"
+        android:icon="@drawable/icon_tab_home"
+        android:iconTint="@color/colorGrayCorner"
+        android:title="หน้าหลัก" />
+
+    <item
+        android:id="@+id/item_noti"
+        android:enabled="true"
+        android:icon="@drawable/icon_tab_noti"
+        android:iconTint="@color/colorGrayCorner"
+        android:title="แจ้งเตือน" />
+
+    <item
+        android:id="@+id/item_qr"
+        android:enabled="true"
+        android:title="" />
+
+    <item
+        android:id="@+id/item_contact"
+        android:enabled="true"
+        android:icon="@drawable/icon_tab_contact"
+        android:iconTint="@color/colorGrayCorner"
+        android:title="รายชื่อ" />
+
+    <item
+        android:id="@+id/item_profile"
+        android:enabled="true"
+        android:icon="@drawable/icon_tab_profile"
+        android:iconTint="@color/colorGrayCorner"
+        android:title="โปรไฟล์" />
+</menu>

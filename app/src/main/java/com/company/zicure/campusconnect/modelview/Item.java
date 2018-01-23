@@ -7,7 +7,7 @@ import java.util.List;
  */
 
 public class Item {
-    private String text;
+    private String text, codeLanguage;
     private List<String> subText;
     private boolean isExpandable;
 
@@ -39,5 +39,13 @@ public class Item {
 
     public void setSubText(List<String> subText) {
         this.subText = subText;
+    }
+
+    public String getCodeLanguage() {
+        return codeLanguage;
+    }
+
+    public void setCodeLanguage(String codeLanguage) {
+        this.codeLanguage = codeLanguage;
     }
 }

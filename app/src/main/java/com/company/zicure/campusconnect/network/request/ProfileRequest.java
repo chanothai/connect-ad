@@ -20,8 +20,8 @@ public class ProfileRequest {
         this.context = context;
     }
 
-    public void requestProfile(){
-        Call<ProfileResponse> callProfile = ClientHttp.getInstance(context).getService().callProfile();
+    public void requestProfile(String language){
+        Call<ProfileResponse> callProfile = ClientHttp.getInstance(context).getService(language).callProfile();
         callProfile.enqueue(new Callback<ProfileResponse>() {
             @Override
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
