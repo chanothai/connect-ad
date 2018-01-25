@@ -48,9 +48,9 @@ public class ModelCart {
     }
 
     public void clearAllData(){
-        keyModel = null;
-        userInfo = null;
-        requestCheckInWork = null;
-        profileResult = null;
+        keyModel = new KeyModel();
+        userInfo = new ResponseBlocUser();
+        requestCheckInWork = new RequestCheckInWork.Data();
+        profileResult = new ProfileResponse.ProfileResult();
     }
 }

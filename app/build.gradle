@@ -44,6 +44,7 @@ android {
 }
 
 dependencies {
+    compile project(path: ':modellibrary')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibraryVersion
     compile 'com.android.support:design:' + rootProject.ext.supportLibraryVersion
@@ -54,7 +55,8 @@ dependencies {
     compile 'com.android.support:support-v4:' + rootProject.ext.supportLibraryVersion
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:' + rootProject.ext.supportLibraryVersion
-    compile project(path: ':modellibrary')
+    compile 'com.google.android.gms:play-services-nearby:11.8.0'
+
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'

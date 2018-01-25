@@ -70,7 +70,7 @@ public class ProfileResponse {
                 }
             }
 
-            public class ProfileLanguage {
+            public static class ProfileLanguage {
                 @SerializedName("label") private String label;
                 @SerializedName("list") private ArrayList<ListLanguage> arrLanguage;
 
@@ -82,16 +82,30 @@ public class ProfileResponse {
                     return arrLanguage;
                 }
 
-                public class ListLanguage {
+                public void setArrLanguage(ArrayList<ListLanguage> arrLanguage) {
+                    this.arrLanguage = arrLanguage;
+                }
+
+
+                public static class ListLanguage {
                     @SerializedName("code") private String code;
                     @SerializedName("value") private String value;
+
 
                     public String getCode() {
                         return code;
                     }
 
+                    public void setCode(String code) {
+                        this.code = code;
+                    }
+
                     public String getValue() {
                         return value;
+                    }
+
+                    public void setValue(String value) {
+                        this.value = value;
                     }
                 }
             }

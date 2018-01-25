@@ -1,9 +1,11 @@
 package com.company.zicure.campusconnect.activity;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Address;
 import android.location.Geocoder;
@@ -14,13 +16,16 @@ import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.VelocityTrackerCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
@@ -42,27 +47,31 @@ import com.company.zicure.campusconnect.adapter.MenuCategoryAdapter;
 import com.company.zicure.campusconnect.fragment.AppMenuFragment;
 
 import com.company.zicure.campusconnect.modelview.Item;
+import com.company.zicure.campusconnect.nearby.DetectBeacon;
 import com.company.zicure.campusconnect.network.ClientHttp;
 import com.company.zicure.campusconnect.network.request.ProfileRequest;
 import com.company.zicure.campusconnect.utility.BluetoothScanManager;
 import com.company.zicure.campusconnect.utility.PermissionKeyNumber;
 import com.company.zicure.campusconnect.utility.PermissionRequest;
 import com.company.zicure.campusconnect.view.viewgroup.FlyOutContainer;
+import com.google.android.gms.nearby.Nearby;
+import com.google.android.gms.nearby.messages.Message;
+import com.google.android.gms.nearby.messages.MessageFilter;
+import com.google.android.gms.nearby.messages.MessagesOptions;
+import com.google.android.gms.nearby.messages.NearbyPermissions;
+import com.google.android.gms.nearby.messages.Strategy;
+import com.google.android.gms.nearby.messages.SubscribeOptions;
 import com.joooonho.SelectableRoundedImageView;
 import com.squareup.otto.Subscribe;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.models.beacon.BeaconRequest;
 import gallery.zicure.company.com.modellibrary.models.beacon.BeaconResponse;
 import gallery.zicure.company.com.modellibrary.models.bloc.RequestCheckInWork;
-import gallery.zicure.company.com.modellibrary.models.drawer.SlideMenuDetail;
 import gallery.zicure.company.com.modellibrary.models.profile.ProfileResponse;
 import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
 import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
@@ -74,7 +83,7 @@ import io.nlopez.smartlocation.SmartLocation;
 import io.nlopez.smartlocation.location.config.LocationAccuracy;
 import io.nlopez.smartlocation.location.config.LocationParams;
 
-public class MainMenuActivity extends BaseActivity implements BluetoothScanManager.OnListenerScanning, OnLocationUpdatedListener {
+public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedListener {
 
     /** Make: View **/
     RelativeLayout linearLayout;
@@ -108,20 +117,20 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
 
     private String currentToken = null;
 
-    private BluetoothManager btManager = null;
-    private BluetoothAdapter btAdapter = null;
-    private Handler scanHandler = null;
-    private BluetoothScanManager btScanning = null;
+    public static ArrayList<String> STACK_URL;
+    private String geoAddress = null, subscribe, url;
 
-    public static ArrayList<String> STACK_URL = null;
-    private String geoAddress = null;
+    //Nearby
+    private DetectBeacon detectBeacon = null;
+    private Message mMessage = null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBusCart.getInstance().getEventBus().register(this);
         root = (FlyOutContainer) getLayoutInflater().inflate(R.layout.activity_main_menu, null);
 
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
+            MainMenuActivity.STACK_URL = new ArrayList<>();
             setContentView(root);
             bindView();
             setToolbar();
@@ -135,12 +144,12 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         }
     }
 
-    private void bindView(){
+    private void bindView() {
         toolbarMenu = findViewById(R.id.toolbar);
         listSlideMenu = findViewById(R.id.list_slide_menu);
         layoutGhost = findViewById(R.id.layout_ghost);
         controlSlide = findViewById(R.id.control_slide);
-        imgProfile =  findViewById(R.id.img_profile);
+        imgProfile = findViewById(R.id.img_profile);
         profileName = findViewById(R.id.profile_name);
         profileAddress = findViewById(R.id.profile_address);
         childHeaderDrawer = findViewById(R.id.child_header_drawer);
@@ -151,35 +160,37 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         bottomBar.setAnimation(null);
     }
 
-    private void initParameter(){
+    private void initParameter() {
         SharedPreferences preferences = getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
         currentToken = preferences.getString(getString(R.string.token_login), null);
-        String url = preferences.getString("web_url", null);
-        String subscribe = preferences.getString("subscribe_noti", null);
+        url = preferences.getString("web_url", null);
+        subscribe = preferences.getString("subscribe_noti", null);
 
-        if (MainMenuActivity.STACK_URL == null) {
-            MainMenuActivity.STACK_URL = new ArrayList<>();
-            MainMenuActivity.STACK_URL.add(url);
-        }
+        MainMenuActivity.STACK_URL.add(url);
 
         if (currentToken != null && url != null && subscribe != null) {
+            String url = "file:///android_asset/index.html"; //TEST URL
+
             ModelCart.getInstance().getKeyModel().setToken(currentToken);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.container, AppMenuFragment.newInstance(url), VariableConnect.appMenuFragmentKey);
             transaction.addToBackStack(null);
             transaction.commit();
         }
+
+        detectBeacon = new DetectBeacon(this);
+        mMessage = new Message(subscribe.getBytes());
     }
 
-    public void setToolbar(){
-        if (Build.VERSION.SDK_INT >= 21){
+    public void setToolbar() {
+        if (Build.VERSION.SDK_INT >= 21) {
             ToolbarManager manager = new ToolbarManager(this);
-            manager.setToolbar(toolbarMenu,null, getDrawable(R.drawable.menu_toggle), null);
+            manager.setToolbar(toolbarMenu, null, getDrawable(R.drawable.menu_toggle), null);
             setLayoutHeadDrawer();
         }
     }
 
-    public void setLayoutHeadDrawer(){
+    public void setLayoutHeadDrawer() {
         ResizeScreen resizeScreen = new ResizeScreen(this);
 
         RelativeLayout.LayoutParams paramsIMG = (RelativeLayout.LayoutParams) imgProfile.getLayoutParams();
@@ -192,69 +203,27 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         childHeaderDrawer.setLayoutParams(params);
     }
 
-    private int convertPxtoDp(int value){
+    private int convertPxtoDp(int value) {
         Resources resources = getResources();
-        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value,resources.getDisplayMetrics());
-        return (int)px;
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, resources.getDisplayMetrics());
+        return (int) px;
     }
 
-    private int getStatusBarHeight(){
+    private int getStatusBarHeight() {
         int result = 0;
         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0){
+        if (resourceId > 0) {
             result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
     }
 
-    private void initBluetoothAdapter() {
-        PermissionRequest pRequest = new PermissionRequest(this);
-        if (!pRequest.requestAccessLocation()) {
-            startBluetoothScan();
-        }
-    }
-
-    private void startBluetoothScan(){
-        ModelCart.getInstance().getRequestCheckInWork().setUuid("");
-        btManager = (BluetoothManager)getSystemService(Context.BLUETOOTH_SERVICE);
-        btAdapter = btManager.getAdapter();
-
-        if (btAdapter != null && btAdapter.isEnabled()) {
-            btScanning = new BluetoothScanManager(this, this);
-
-            scanHandler = new Handler();
-            scanHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    if (btAdapter != null) {
-                        btAdapter.startLeScan(btScanning);
-                    }
-                }
-            });
-        }
-    }
-
-    @Override
-    public void onResponseScan(String uuid) {
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-
-        BeaconRequest request = new BeaconRequest();
-        BeaconRequest.BeaconDetail beaconDetail = new BeaconRequest().new BeaconDetail();
-        beaconDetail.setToken(currentToken);
-        beaconDetail.setUuid(uuid);
-        beaconDetail.setTimeStamp(timeStamp);
-        request.setBeaconDetail(beaconDetail);
-
-        ClientHttp.getInstance(this).requestBeaconUrl(request);
-        ModelCart.getInstance().getRequestCheckInWork().setUuid(uuid);
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        initBluetoothAdapter();
         //Start get location
-        if (SmartLocation.with(this).location().state().locationServicesEnabled()){
+        if (SmartLocation.with(this).location().state().locationServicesEnabled()) {
             LocationParams params = new LocationParams.Builder()
                     .setAccuracy(LocationAccuracy.HIGH)
                     .setInterval(10000)
@@ -263,6 +232,15 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
             SmartLocation.with(this).location()
                     .config(params).start(this);
         }
+
+
+
+        Nearby.getMessagesClient(this).publish(mMessage);
+
+        //Subscribe
+        SubscribeOptions subscribeOptions = new SubscribeOptions.Builder()
+                .setStrategy(Strategy.BLE_ONLY).build();
+        Nearby.getMessagesClient(this).subscribe(detectBeacon, subscribeOptions);
     }
 
     @Override
@@ -359,29 +337,29 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
         for (int i = 0; i < 2; i++){
             switch (i) {
                 case 0:{
-                    List<String> txtChild = new ArrayList<>();
-                    String codeLanguage = "";
+                    ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage> listLanguage = new ArrayList<>();
                     for (int j = 0; j < dataUser.getLanguage().getArrLanguage().size(); j++){
-                        txtChild.add(dataUser.getLanguage().getArrLanguage().get(j).getValue());
-                        codeLanguage = dataUser.getLanguage().getArrLanguage().get(j).getCode();
+                        ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage content = new ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage();
+                        content.setValue(dataUser.getLanguage().getArrLanguage().get(j).getValue());
+                        content.setValue(dataUser.getLanguage().getArrLanguage().get(j).getCode());
+                        listLanguage.add(content);
                     }
 
-                    Item item = new Item(dataUser.getLanguage().getLabel(), txtChild, true);
-                    item.setCodeLanguage(codeLanguage);
+                    Item item = new Item(dataUser.getLanguage().getLabel(), listLanguage, null, true);
                     arrMenu.add(item);
+                    break;
                 }
-
-                break;
                 case 1:{
-                    List<String> txtChild = new ArrayList<>();
-                    for (int j = 0; j < dataUser.getLanguage().getArrLanguage().size(); j++){
-                        txtChild.add(dataUser.getMenus().get(j).getLabel());
+                    ArrayList<String> txtChild = new ArrayList<>();
+                    int lng = dataUser.getMenus().size();
+                    for (int k = 0; k < lng; k++){
+                        txtChild.add(dataUser.getMenus().get(k).getLabel());
                     }
 
-                    Item item = new Item("", txtChild, false);
+                    Item item = new Item("", null, txtChild, false);
                     arrMenu.add(item);
+                    break;
                 }
-                break;
                 default:{
                     break;
                 }
@@ -514,6 +492,8 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
     protected void onDestroy() {
         super.onDestroy();
         EventBusCart.getInstance().getEventBus().unregister(this);
+        Nearby.getMessagesClient(this).unpublish(mMessage);
+        Nearby.getMessagesClient(this).unsubscribe(detectBeacon);
     }
 
     @Override
@@ -557,7 +537,7 @@ public class MainMenuActivity extends BaseActivity implements BluetoothScanManag
             }
         }else if (requestCode == 114) {
             if (grantResults[0] != -1){
-                startBluetoothScan();
+
             }
         }
     }

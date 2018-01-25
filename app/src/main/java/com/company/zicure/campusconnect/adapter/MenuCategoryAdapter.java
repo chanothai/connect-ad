@@ -60,6 +60,7 @@ class MenuCategoryViewHolderWithChild extends RecyclerView.ViewHolder {
 }
 public class MenuCategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
+    private String code = null;
     private List<Item> arrItems = null;
     private Context context = null;
     private SparseBooleanArray expandState = new SparseBooleanArray();
@@ -102,7 +103,9 @@ public class MenuCategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 MenuCategoryViewHolderWithoutChild viewHolder = (MenuCategoryViewHolderWithoutChild) holder;
                 Item item = arrItems.get(position);
                 viewHolder.setIsRecyclable(false);
-                viewHolder.menuChild.setText(item.getSubText().get(0));
+
+                viewHolder.menuChild.setText(item.getMenu().get(0));
+
                 viewHolder.menuIcon.setImageResource(R.drawable.out_icon);
                 viewHolder.menuChild.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -147,16 +150,18 @@ public class MenuCategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     }
                 });
 
-                for (int i = 0; i < arrItems.get(position).getSubText().size(); i++){
-                    viewHolder.menuChild.setText(arrItems.get(position).getSubText().get(i));
-                }
+                code = arrItems.get(position).getSubText().get(0).getCode();
+
+                // issue
+                viewHolder.menuChild.setText(arrItems.get(position).getSubText().get(0).getValue());
 
                 viewHolder.menuChild.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Toast.makeText(context, code, Toast.LENGTH_SHORT).show();
                         ((MainMenuActivity) context).showLoadingDialog();
                         ProfileRequest profileRequest = new ProfileRequest(context);
-                        profileRequest.requestProfile(arrItems.get(position).getCodeLanguage());
+                        profileRequest.requestProfile(code);
 
                         ((MainMenuActivity)context).setToggle(0,0);
                     }

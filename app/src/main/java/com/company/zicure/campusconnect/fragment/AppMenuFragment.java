@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
@@ -31,10 +32,14 @@ import com.company.zicure.campusconnect.R;
 import com.company.zicure.campusconnect.activity.BlocContentActivity;
 import com.company.zicure.campusconnect.activity.LoginActivity;
 import com.company.zicure.campusconnect.activity.MainMenuActivity;
+import com.company.zicure.campusconnect.nearby.DetectBeacon;
+import com.company.zicure.campusconnect.utility.ConstanceURL;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
+import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,9 +66,9 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
     public ValueCallback<Uri[]> mUploadMesssage = null;
     public Uri mCapturedImageURI = null;
 
+    private String TAG = "TextFromWeb";
     private String JAVASCRIPT_OBJ = "javascript_obj";
 //    private String BASE_URL = "file:///android_asset/webview.html";
-    private String BASE_URL = "http://connect06.pakgon.com/core";
 
     public AppMenuFragment() {
         // Required empty public constructor
@@ -173,10 +178,21 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
             super.onPageFinished(view, url);
             webView.clearCache(true);
             webView.setEnabled(view.canGoBack());
-            injectJavaScriptFunction();
 
-            if (!MainMenuActivity.STACK_URL.get(0).equalsIgnoreCase(url)){
+            if (url.equalsIgnoreCase(ConstanceURL.URL_LOGIN)){
+                injectJavaScriptFunction();
+            }else{
+                injectJavaScriptBeaconData();
+            }
+
+            try{
+                if (!MainMenuActivity.STACK_URL.get(0).equalsIgnoreCase(url)){
+                    MainMenuActivity.STACK_URL.add(url);
+                }
+            }catch (NullPointerException e){
+                MainMenuActivity.STACK_URL = new ArrayList<>();
                 MainMenuActivity.STACK_URL.add(url);
+                e.printStackTrace();
             }
         }
     }
@@ -190,7 +206,19 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         script.append("static onLogin(arg1, arg2, arg3) { ");
         script.append(JAVASCRIPT_OBJ + ".textFromLogin(arg1, arg2, arg3) }}");
 
-        Log.d("TextFromWeb", script.toString());
+        Log.d(TAG, script.toString());
+
+        webView.loadUrl(script.toString());
+    }
+
+    private void injectJavaScriptBeaconData(){
+        StringBuilder script = new StringBuilder();
+        script.append("javascript: ");
+        script.append("class Beacon { ");
+        script.append("static getData() { ");
+        script.append(JAVASCRIPT_OBJ + ".sendData() }}");
+
+        Log.d(TAG, script.toString());
 
         webView.loadUrl(script.toString());
     }
@@ -219,6 +247,23 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         public void textFromLogin(String token, String url, String subscribeNoti){
             Log.d("TextFromWeb", token + url+ subscribeNoti);
             ((LoginActivity) getActivity()).store(token, url, subscribeNoti);
+        }
+
+        @JavascriptInterface
+        public void sendData(){
+            String beacon = new Gson().toJson(DetectBeacon.STACK_BEACON);
+            final StringBuilder script = new StringBuilder();
+            script.append("javascript: ");
+            script.append("updateBeacon('"+ beacon +"', '"+ ModelCart.getInstance().getKeyModel().getToken() +"')");
+
+            Log.d(TAG, script.toString());
+
+            webView.post(new Runnable() {
+                @Override
+                public void run() {
+                    webView.evaluateJavascript(script.toString(), null);
+                }
+            });
         }
     }
 }
