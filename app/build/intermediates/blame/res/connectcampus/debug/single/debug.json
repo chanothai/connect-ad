@@ -76,10 +76,6 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/color/abc_primary_text_material_light.xml"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-hdpi_point.png.flat",
-        "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/drawable-hdpi/point.png"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/layout_layout_appbar_show_title.xml.flat",
         "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/layout/layout_appbar_show_title.xml"
     },
@@ -440,6 +436,10 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/layout/abc_action_bar_title_item.xml"
     },
     {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-xxxhdpi_icon_tab_scan.png.flat",
+        "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/drawable-xxxhdpi/icon_tab_scan.png"
+    },
+    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable_common_google_signin_btn_icon_disabled.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/045e66d00bb40801f6aa47bb74103587/res/drawable/common_google_signin_btn_icon_disabled.xml"
     },
@@ -572,6 +572,10 @@
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable/abc_btn_borderless_material.xml"
     },
     {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-xhdpi_icon_tab_scan.png.flat",
+        "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/drawable-xhdpi/icon_tab_scan.png"
+    },
+    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/045e66d00bb40801f6aa47bb74103587/res/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
@@ -622,10 +626,6 @@
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/layout_design_layout_snackbar.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/res/layout/design_layout_snackbar.xml"
-    },
-    {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-xxhdpi_point.png.flat",
-        "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/drawable-xxhdpi/point.png"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-xxxhdpi_icon_tab_noti.png.flat",
@@ -794,6 +794,10 @@
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-hdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-hdpi_icon_tab_scan.png.flat",
+        "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/drawable-hdpi/icon_tab_scan.png"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/layout_notification_media_cancel_action.xml.flat",
@@ -1156,10 +1160,6 @@
         "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/drawable-xhdpi/logo_connect_official.png"
     },
     {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-mdpi_point.png.flat",
-        "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/drawable-mdpi/point.png"
-    },
-    {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/layout-v21_notification_template_icon_group.xml.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b5f3b54e08a9c544478f1aeb63b11ff2/res/layout-v21/notification_template_icon_group.xml"
     },
@@ -1198,10 +1198,6 @@
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-hdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
         "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/drawable-hdpi-v4/abc_text_select_handle_left_mtrl_dark.png"
-    },
-    {
-        "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/drawable-xhdpi_point.png.flat",
-        "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/drawable-xhdpi/point.png"
     },
     {
         "merged": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/res/merged/connectcampus/debug/layout_abc_screen_toolbar.xml.flat",

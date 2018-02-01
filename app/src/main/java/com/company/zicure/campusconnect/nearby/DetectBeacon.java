@@ -17,15 +17,33 @@ import java.util.ArrayList;
  */
 
 public class DetectBeacon extends MessageListener {
+    private static DetectBeacon me;
     private Context context;
     private static String TAG = "NearbyScan";
     private String body, result;
 
     private BeaconModel model = null;
-    public static ArrayList<BeaconModel> STACK_BEACON;
+    private ArrayList<BeaconModel> stackBeacon;
+    private Message mMessage = null;
 
     public DetectBeacon(Context context) {
         this.context = context;
+        stackBeacon = new ArrayList<>();
+    }
+
+    public static DetectBeacon getInstance(Context context) {
+        if (me == null){
+            me = new DetectBeacon(context);
+        }
+        return me;
+    }
+
+    public ArrayList<BeaconModel> getStackBeacon() {
+        return stackBeacon;
+    }
+
+    public void setStackBeacon(ArrayList<BeaconModel> stackBeacon){
+        this.stackBeacon = stackBeacon;
     }
 
     @Override
@@ -34,16 +52,11 @@ public class DetectBeacon extends MessageListener {
         body = new String(message.getContent());
         result = new String(body.getBytes(Charset.forName("UTF-8")));
 
-        if (STACK_BEACON == null) {
-            STACK_BEACON = new ArrayList<>();
-        }
-
         model = new BeaconModel();
         model.setDevice(result);
-        model.setDistance("");
-        STACK_BEACON.add(model);
+        stackBeacon.add(model);
 
-        Log.d(TAG, new Gson().toJson(STACK_BEACON));
+        Log.d(TAG, new Gson().toJson(stackBeacon));
     }
 
     @Override
@@ -52,12 +65,14 @@ public class DetectBeacon extends MessageListener {
         body = new String(message.getContent());
         result = new String(body.getBytes(Charset.forName("UTF-8")));
 
-        for (int i = 0; i < STACK_BEACON.size(); i++){
-            if (result.equalsIgnoreCase(STACK_BEACON.get(i).getDevice())){
-                STACK_BEACON.remove(i);
+        if (stackBeacon != null) {
+            for (int i = 0; i < stackBeacon.size(); i++){
+                if (result.equalsIgnoreCase(stackBeacon.get(i).getDevice())){
+                    stackBeacon.remove(i);
+                }
             }
         }
-        Log.d(TAG + " LOST", new Gson().toJson(STACK_BEACON));
+        Log.d(TAG + " LOST", new Gson().toJson(stackBeacon));
     }
 
     @Override
@@ -66,9 +81,9 @@ public class DetectBeacon extends MessageListener {
         String content = new String(message.getContent());
         String device = new String(content.getBytes(Charset.forName("UTF-8")));
 
-        for (int i = 0; i < STACK_BEACON.size(); i++){
-            if (device.equalsIgnoreCase(STACK_BEACON.get(i).getDevice())){
-                STACK_BEACON.get(i).setDistance(Double.toString(distance.getMeters()));
+        for (int i = 0; i < stackBeacon.size(); i++){
+            if (device.equalsIgnoreCase(stackBeacon.get(i).getDevice())){
+                stackBeacon.get(i).setDistance(Double.toString(distance.getMeters()));
             }
         }
     }
@@ -79,10 +94,18 @@ public class DetectBeacon extends MessageListener {
         String content = new String(message.getContent());
         String device = new String(content.getBytes(Charset.forName("UTF-8")));
 
-        for (int i = 0; i < STACK_BEACON.size(); i++){
-            if (device.equalsIgnoreCase(STACK_BEACON.get(i).getDevice())){
-                STACK_BEACON.get(i).setRsi(Integer.toString(bleSignal.getRssi()));
+        for (int i = 0; i < stackBeacon.size(); i++){
+            if (device.equalsIgnoreCase(stackBeacon.get(i).getDevice())){
+                stackBeacon.get(i).setRssi(Integer.toString(bleSignal.getRssi()));
             }
         }
+    }
+
+    public Message getmMessage() {
+        return mMessage;
+    }
+
+    public void setmMessage(Message mMessage) {
+        this.mMessage = mMessage;
     }
 }

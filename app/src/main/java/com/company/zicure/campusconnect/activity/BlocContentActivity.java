@@ -111,7 +111,7 @@ public class BlocContentActivity extends BaseActivity {
 
     private void iniFragmentBloc(){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container_bloc, AppMenuFragment.newInstance(urlBloc), VariableConnect.appMenuFragmentKey);
+        transaction.replace(R.id.container_bloc, AppMenuFragment.newInstance(urlBloc, true), VariableConnect.appMenuFragmentKey);
         transaction.commit();
     }
 

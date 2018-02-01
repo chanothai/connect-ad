@@ -6,6 +6,7 @@ package gallery.zicure.company.com.modellibrary.models;
 
 public class KeyModel {
     private String token;
+    private String language;
 
     public String getToken() {
         return token;
@@ -13,5 +14,13 @@ public class KeyModel {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }

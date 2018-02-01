@@ -21,6 +21,7 @@ import android.webkit.URLUtil;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -34,9 +35,13 @@ import com.company.zicure.campusconnect.activity.LoginActivity;
 import com.company.zicure.campusconnect.activity.MainMenuActivity;
 import com.company.zicure.campusconnect.nearby.DetectBeacon;
 import com.company.zicure.campusconnect.utility.ConstanceURL;
+import com.company.zicure.campusconnect.utility.StackURLController;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
 import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
@@ -50,11 +55,11 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "url";
+    private static final String state = "state";
 
     // TODO: Rename and change types of parameters
     private String url;
-    private String mParam2;
-    private String token;
+    public Boolean webviewState = null;
 
     /** Make: View **/
     public static WebView webView = null;
@@ -68,7 +73,6 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
 
     private String TAG = "TextFromWeb";
     private String JAVASCRIPT_OBJ = "javascript_obj";
-//    private String BASE_URL = "file:///android_asset/webview.html";
 
     public AppMenuFragment() {
         // Required empty public constructor
@@ -82,10 +86,11 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
      * @return A new instance of fragment AppMenuFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AppMenuFragment newInstance(String url) {
+    public static AppMenuFragment newInstance(String url, Boolean webviewState) {
         AppMenuFragment fragment = new AppMenuFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, url);
+        args.putBoolean(state, webviewState);
         fragment.setArguments(args);
         return fragment;
     }
@@ -95,6 +100,7 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             url = getArguments().getString(ARG_PARAM1);
+            webviewState = getArguments().getBoolean(state);
         }
     }
 
@@ -136,7 +142,10 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         webSettings.setJavaScriptEnabled(true);
         webView.addJavascriptInterface(new JavaScriptInterface(), JAVASCRIPT_OBJ);
 
-        webView.loadUrl(url);
+        Map<String, String> header = new HashMap<>();
+        header.put("Authorization","Bearer " + ModelCart.getInstance().getKeyModel().getToken());
+        header.put("Accept-Language", ModelCart.getInstance().getKeyModel().getLanguage()+";q=1.0");
+        webView.loadUrl(url, header);
     }
 
     private void downloadFile(String url, String userAgent, String contentDisposition, String mimetype) {
@@ -168,9 +177,17 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
     public class AppBrowser extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            webviewState = true;
             view.loadUrl(url);
             layoutProgress.setVisibility(View.VISIBLE);
             return true;
+        }
+
+        @Override
+        public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+            request.getRequestHeaders().put("Authorization","Bearer " + ModelCart.getInstance().getKeyModel().getToken());
+            request.getRequestHeaders().put("Accept-Language", ModelCart.getInstance().getKeyModel().getLanguage()+";q=1.0");
+            return super.shouldInterceptRequest(view, request);
         }
 
         @Override
@@ -179,21 +196,27 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
             webView.clearCache(true);
             webView.setEnabled(view.canGoBack());
 
-            if (url.equalsIgnoreCase(ConstanceURL.URL_LOGIN)){
+            if (url.equalsIgnoreCase(ConstanceURL.URL_LOGIN) || url.equalsIgnoreCase(ConstanceURL.URL_VERIFY)){
                 injectJavaScriptFunction();
             }else{
                 injectJavaScriptBeaconData();
             }
 
-            try{
-                if (!MainMenuActivity.STACK_URL.get(0).equalsIgnoreCase(url)){
-                    MainMenuActivity.STACK_URL.add(url);
+            if (!StackURLController.getInstance().getStackURL().get(0).equalsIgnoreCase(url)){
+                if (webviewState) {
+                    if (StackURLController.getInstance().getStackURL().size() > 1) {
+                        if (StackURLController.getInstance().getStackURL().get(1).equalsIgnoreCase(url)){
+                            StackURLController.getInstance().getStackURL().set(1, url);
+                        }else{
+                            StackURLController.getInstance().getStackURL().add(url);
+                        }
+                    }else{
+                        StackURLController.getInstance().getStackURL().add(url);
+                    }
                 }
-            }catch (NullPointerException e){
-                MainMenuActivity.STACK_URL = new ArrayList<>();
-                MainMenuActivity.STACK_URL.add(url);
-                e.printStackTrace();
             }
+
+            Log.d("STACK_URL", StackURLController.getInstance().getStackURL().toString());
         }
     }
 
@@ -244,14 +267,19 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         }
 
         @JavascriptInterface
-        public void textFromLogin(String token, String url, String subscribeNoti){
+        public void textFromLogin(final String token, final String url, final String subscribeNoti){
             Log.d("TextFromWeb", token + url+ subscribeNoti);
-            ((LoginActivity) getActivity()).store(token, url, subscribeNoti);
+            webView.post(new Runnable() {
+                @Override
+                public void run() {
+                    ((LoginActivity) getActivity()).store(token, url, subscribeNoti);
+                }
+            });
         }
 
         @JavascriptInterface
         public void sendData(){
-            String beacon = new Gson().toJson(DetectBeacon.STACK_BEACON);
+            String beacon = new Gson().toJson(DetectBeacon.getInstance(getContext()).getStackBeacon());
             final StringBuilder script = new StringBuilder();
             script.append("javascript: ");
             script.append("updateBeacon('"+ beacon +"', '"+ ModelCart.getInstance().getKeyModel().getToken() +"')");

@@ -17,33 +17,16 @@ public class PermissionRequest {
         manager = new PermissionManager(context);
     }
 
-    public boolean requestCamera(){
-        if (!manager.checkPermission(Manifest.permission.CAMERA, PermissionKeyNumber.getInstance().getPermissionCameraKey())){
-            return false;
-        }
-        return true;
-    }
-
     public boolean requestReadStorage(){
-        if (!manager.checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE,PermissionKeyNumber.getInstance().getPermissionReadStorageKey())){
+        String[] arrPermission = {Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.CAMERA,
+                Manifest.permission.CALL_PHONE};
+
+        if (!manager.checkPermission(arrPermission
+                ,PermissionKeyNumber.getInstance().getPermissionReadStorageKey())){
             return false;
         }
-        return true;
-    }
-
-    public boolean requestCallPhone() {
-        if (!manager.checkPermission(Manifest.permission.CALL_PHONE, 113)){
-            return false;
-        }
-
-        return true;
-    }
-
-    public boolean requestAccessLocation() {
-        if (!manager.checkPermission(Manifest.permission.ACCESS_FINE_LOCATION, 114)){
-            return false; // false is not request
-        }
-
         return true;
     }
 }

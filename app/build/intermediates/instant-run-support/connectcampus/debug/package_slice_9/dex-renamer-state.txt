@@ -1,4 +1,4 @@
-#Thu Jan 25 15:54:28 ICT 2018
+#Thu Feb 01 18:21:29 ICT 2018
 base.0=/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/dexMerger/connectcampus/debug/10
 path.0=classes.dex
 renamed.0=classes.dex

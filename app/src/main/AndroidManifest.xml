@@ -34,26 +34,29 @@
             android:name="android.webkit.WebView.EnableSafeBrowsing"
             android:value="true" />
 
-        //Check version for google play service
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"
             tools:replace="android:value" />
 
-        <!--//put api key for google map-->
-        <!--<meta-data-->
-            <!--android:name="com.google.android.geo.API_KEY"-->
-            <!--android:value="AIzaSyDiCs8P6sY_o4znFETccP1hJkHPjYQB204" />-->
-
         <meta-data
             android:name="com.company.zicure.campusconnect.config.GlideConfiguration"
             android:value="GlideModule" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/logo_connect" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
 
         <service android:name=".service.InstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
         <service android:name=".service.MessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -63,9 +66,11 @@
         <activity
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.MainMenuActivity"
             android:screenOrientation="portrait"
+
             android:windowSoftInputMode="adjustNothing" />
 
         <activity
@@ -78,7 +83,6 @@
             </intent-filter>
         </activity>
 
-        <!-- <activity android:name="com.company.zicure.payment.activity.AuthActivity"/> -->
         <activity
             android:name=".activity.BlocContentActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />

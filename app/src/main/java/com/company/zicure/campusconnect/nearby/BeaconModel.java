@@ -7,7 +7,7 @@ package com.company.zicure.campusconnect.nearby;
 public class BeaconModel {
     private String device;
     private String distance;
-    private String rsi;
+    private String rssi;
 
     public String getDevice() {
         return device;
@@ -25,11 +25,11 @@ public class BeaconModel {
         this.distance = distance;
     }
 
-    public String getRsi() {
-        return rsi;
+    public String getRssi() {
+        return rssi;
     }
 
-    public void setRsi(String rsi) {
-        this.rsi = rsi;
+    public void setRssi(String rssi) {
+        this.rssi = rssi;
     }
 }

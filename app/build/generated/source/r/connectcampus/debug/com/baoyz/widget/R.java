@@ -15,8 +15,8 @@ public final class R {
     public static final class id {
         public static final int circles = 0x7f08003f;
         public static final int material = 0x7f080092;
-        public static final int ring = 0x7f0800b7;
-        public static final int smartisan = 0x7f0800d3;
+        public static final int ring = 0x7f0800b6;
+        public static final int smartisan = 0x7f0800d2;
         public static final int water_drop = 0x7f080108;
     }
     public static final class styleable {

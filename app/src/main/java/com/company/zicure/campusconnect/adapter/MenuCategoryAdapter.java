@@ -150,7 +150,7 @@ public class MenuCategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     }
                 });
 
-                code = arrItems.get(position).getSubText().get(0).getCode();
+                code = arrItems.get(position).getSubText().get(0).getValue();
 
                 // issue
                 viewHolder.menuChild.setText(arrItems.get(position).getSubText().get(0).getValue());
@@ -158,10 +158,10 @@ public class MenuCategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 viewHolder.menuChild.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, code, Toast.LENGTH_SHORT).show();
-                        ((MainMenuActivity) context).showLoadingDialog();
-                        ProfileRequest profileRequest = new ProfileRequest(context);
-                        profileRequest.requestProfile(code);
+//                        Toast.makeText(context, code, Toast.LENGTH_SHORT).show();
+//                        ((MainMenuActivity) context).showLoadingDialog();
+//                        ProfileRequest profileRequest = new ProfileRequest(context);
+//                        profileRequest.requestProfile(code);
 
                         ((MainMenuActivity)context).setToggle(0,0);
                     }

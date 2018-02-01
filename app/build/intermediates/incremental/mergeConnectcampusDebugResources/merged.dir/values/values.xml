@@ -945,6 +945,7 @@
     <string name="content_alert_phone">กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก</string>
     <item format="float" name="cpb_default_rotation_speed" type="string">1</item>
     <item format="float" name="cpb_default_sweep_speed" type="string">1</item>
+    <string name="default_web_client_id" translatable="false">324794602648-m9p3c3ogd94n81oodr0lo816t7mki2lg.apps.googleusercontent.com</string>
     <string name="dialog_button_negative_th">ยกเลิก</string>
     <string name="dialog_button_positive_th">ลงทะเบียน</string>
     <string name="dialog_loading">Loading</string>
@@ -958,6 +959,12 @@
     <string name="ePayment">E-payment</string>
     <string name="email_th">อีเมล์</string>
     <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
+    <string name="firebase_database_url" translatable="false">https://connect-pk.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">324794602648</string>
+    <string name="google_api_key" translatable="false">AIzaSyANlQ9hdbdiPnjpnuBcGOa4jHhmEAkmaMY</string>
+    <string name="google_app_id" translatable="false">1:324794602648:android:fe38267721135247</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyANlQ9hdbdiPnjpnuBcGOa4jHhmEAkmaMY</string>
+    <string name="google_storage_bucket" translatable="false">connect-pk.appspot.com</string>
     <string name="header_login">Enter your number to access you drive history, favorites, and, points.</string>
     <string name="header_register">Ent</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -981,6 +988,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="phone_number_th">หมายเลขโทรศัพท์</string>
     <string name="priKey">private_key</string>
+    <string name="project_id" translatable="false">connect-pk</string>
     <string name="pubKey">public_key</string>
     <string name="pubServ_key">pubServ_key</string>
     <string name="register">REGISTER</string>

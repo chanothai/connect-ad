@@ -10,6 +10,7 @@ import android.webkit.WebView;
 
 import com.company.zicure.campusconnect.R;
 import com.company.zicure.campusconnect.fragment.AppMenuFragment;
+import com.company.zicure.campusconnect.utility.StackURLController;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class LoginActivity extends BaseActivity {
     /** Make: Properties **/
     private SharedPreferences sharedPref = null;
 
-    private String url = "http://connect06.pakgon.com/core/";
+    private String url = "http://connect05.pakgon.com/core/";
 //    private String url = "file:///android_asset/index.html";
     //file:///android_asset/webview.html
 
@@ -35,17 +36,13 @@ public class LoginActivity extends BaseActivity {
             bindView();
             sharedPref = getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
         }
-
     }
 
     private void bindView(){
-        if (MainMenuActivity.STACK_URL == null){
-            MainMenuActivity.STACK_URL = new ArrayList<>();
-            MainMenuActivity.STACK_URL.add(url);
-        }
+        StackURLController.getInstance().getStackURL().add(url);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, AppMenuFragment.newInstance(url),VariableConnect.appMenuFragmentKey);
+        transaction.replace(R.id.container, AppMenuFragment.newInstance(url, true),VariableConnect.appMenuFragmentKey);
         transaction.commit();
     }
 
@@ -67,13 +64,13 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (MainMenuActivity.STACK_URL.size() > 1) {
-            int countStack = MainMenuActivity.STACK_URL.size() - 2;
+        if (StackURLController.getInstance().getStackURL().size() > 1) {
+            int countStack = StackURLController.getInstance().getStackURL().size() - 2;
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, AppMenuFragment.newInstance(MainMenuActivity.STACK_URL.get(countStack)), VariableConnect.appMenuFragmentKey);
+            transaction.replace(R.id.container, AppMenuFragment.newInstance(StackURLController.getInstance().getStackURL().get(countStack), false), VariableConnect.appMenuFragmentKey);
             transaction.commit();
 
-            MainMenuActivity.STACK_URL.remove(countStack + 1);
+            StackURLController.getInstance().getStackURL().remove(countStack + 1);
         }else{
             super.onBackPressed();
         }
@@ -89,6 +86,5 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        MainMenuActivity.STACK_URL = null;
     }
 }
