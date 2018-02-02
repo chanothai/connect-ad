@@ -135,7 +135,7 @@
         <activity
             android:name="com.company.zicure.campusconnect.activity.BlocContentActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
-
+        <activity android:name="com.company.zicure.campusconnect.activity.ScanQRCodeActivity" />
         <!--
              FirebaseMessagingService performs security checks at runtime,
              no need for explicit permissions despite exported="true"

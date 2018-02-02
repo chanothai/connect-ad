@@ -39,6 +39,10 @@ import com.company.zicure.campusconnect.utility.StackURLController;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -142,10 +146,14 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         webSettings.setJavaScriptEnabled(true);
         webView.addJavascriptInterface(new JavaScriptInterface(), JAVASCRIPT_OBJ);
 
+        webView.loadUrl(url, getHeader());
+    }
+
+    private Map<String, String> getHeader() {
         Map<String, String> header = new HashMap<>();
         header.put("Authorization","Bearer " + ModelCart.getInstance().getKeyModel().getToken());
         header.put("Accept-Language", ModelCart.getInstance().getKeyModel().getLanguage()+";q=1.0");
-        webView.loadUrl(url, header);
+        return header;
     }
 
     private void downloadFile(String url, String userAgent, String contentDisposition, String mimetype) {
@@ -178,16 +186,9 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             webviewState = true;
-            view.loadUrl(url);
+            view.loadUrl(url, getHeader());
             layoutProgress.setVisibility(View.VISIBLE);
             return true;
-        }
-
-        @Override
-        public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-            request.getRequestHeaders().put("Authorization","Bearer " + ModelCart.getInstance().getKeyModel().getToken());
-            request.getRequestHeaders().put("Accept-Language", ModelCart.getInstance().getKeyModel().getLanguage()+";q=1.0");
-            return super.shouldInterceptRequest(view, request);
         }
 
         @Override
@@ -281,6 +282,7 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         public void sendData(){
             String beacon = new Gson().toJson(DetectBeacon.getInstance(getContext()).getStackBeacon());
             final StringBuilder script = new StringBuilder();
+            Log.d("TOKEN_USER", ModelCart.getInstance().getKeyModel().getToken());
             script.append("javascript: ");
             script.append("updateBeacon('"+ beacon +"', '"+ ModelCart.getInstance().getKeyModel().getToken() +"')");
 

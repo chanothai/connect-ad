@@ -21,7 +21,6 @@ import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
 
 public class SplashScreenActivity extends BaseActivity implements Animator.AnimatorListener{
 
-    private String authCode = null;
     private PermissionRequest permissionRequest = null;
 
     private String currentToken = null;

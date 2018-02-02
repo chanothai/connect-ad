@@ -21,6 +21,6 @@ public final class R {
         public static final int viewfinder_border_width = 0x7f09000f;
     }
     public static final class layout {
-        public static final int merge_camera_preview_view_finder = 0x7f0a003c;
+        public static final int merge_camera_preview_view_finder = 0x7f0a003d;
     }
 }

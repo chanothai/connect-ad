@@ -4,6 +4,7 @@ import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -109,7 +110,7 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     RecyclerView listSlideMenu;
     FrameLayout layoutGhost;
     FrameLayout controlSlide;
-    SelectableRoundedImageView imgProfile;
+    SelectableRoundedImageView imgProfile, btnScanQRCode;
     TextView profileName;
     TextView profileAddress;
 
@@ -182,11 +183,20 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         bottomBar.setOnNavigationItemReselectedListener(this);
         bottomBar.setOnNavigationItemSelectedListener(this);
         BottomNavigationViewHelper.disableShiftMode(bottomBar);
+
+        btnScanQRCode = findViewById(R.id.tab_scan_qrcode);
+        btnScanQRCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity(ScanQRCodeActivity.class);
+            }
+        });
     }
 
     private void initParameter() {
         SharedPreferences preferences = getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
         currentToken = preferences.getString(getString(R.string.token_login), null);
+        Log.d("TOKEN_USER", currentToken);
         url = preferences.getString("web_url", null);
         subscribe = preferences.getString("subscribe_noti", null);
 
