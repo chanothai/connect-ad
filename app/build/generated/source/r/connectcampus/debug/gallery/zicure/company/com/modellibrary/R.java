@@ -965,9 +965,9 @@ public final class R {
         public static final int cpb_default_max_sweep_angle = 0x7f090006;
         public static final int cpb_default_min_sweep_angle = 0x7f090007;
         public static final int design_snackbar_text_max_lines = 0x7f090008;
-        public static final int hide_password_duration = 0x7f09000b;
-        public static final int show_password_duration = 0x7f09000c;
-        public static final int status_bar_notification_info_maxnum = 0x7f09000d;
+        public static final int hide_password_duration = 0x7f09000a;
+        public static final int show_password_duration = 0x7f09000b;
+        public static final int status_bar_notification_info_maxnum = 0x7f09000c;
     }
     public static final class layout {
         public static final int abc_action_bar_title_item = 0x7f0a0000;

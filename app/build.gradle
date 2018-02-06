@@ -74,7 +74,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-location:11.8.0'
     compile 'com.google.android.gms:play-services-nearby:11.8.0'
 
-    compile('io.nlopez.smartlocation:library:3.2.0') {
+    compile('io.nlopez.smartlocation:library:3.3.3') {
         transitive = false
     }
 

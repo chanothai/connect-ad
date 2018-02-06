@@ -17,8 +17,8 @@ public final class R {
         public static final int view_finder_view = 0x7f080104;
     }
     public static final class integer {
-        public static final int viewfinder_border_length = 0x7f09000e;
-        public static final int viewfinder_border_width = 0x7f09000f;
+        public static final int viewfinder_border_length = 0x7f09000d;
+        public static final int viewfinder_border_width = 0x7f09000e;
     }
     public static final class layout {
         public static final int merge_camera_preview_view_finder = 0x7f0a003d;

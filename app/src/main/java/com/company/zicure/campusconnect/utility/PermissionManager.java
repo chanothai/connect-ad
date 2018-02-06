@@ -17,10 +17,18 @@ public class PermissionManager {
 
     public boolean checkPermission(String[] permission, int myPermission){
         if (ContextCompat.checkSelfPermission(context, permission[0]) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(context, new String[]{permission[0], permission[1], permission[2]}, myPermission);
+            ActivityCompat.requestPermissions(context, new String[]{permission[0], permission[1], permission[2], permission[3]}, myPermission);
             return true; // true is request permission
         }
         return false;
     }
 
+
+    public boolean checkReadPhoneState(String permission, int number){
+        if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(context, new String[]{permission}, number);
+            return true; // true is request permission
+        }
+        return false;
+    }
 }

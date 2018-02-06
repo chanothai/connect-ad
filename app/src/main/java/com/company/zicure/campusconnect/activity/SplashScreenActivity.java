@@ -44,7 +44,9 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
     protected void onResume() {
         super.onResume();
         if (!permissionRequest.requestReadStorage()){
-            animationFadeOut();
+            if (!permissionRequest.requestReadPhoneState()){
+                animationFadeOut();
+            }
         }
     }
 
@@ -64,6 +66,11 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (PermissionKeyNumber.getInstance().getPermissionReadStorageKey() == requestCode){
             if (grantResults[0] != -1){
+                permissionRequest.requestReadPhoneState();
+            }
+        }
+        else if (requestCode == 200) {
+            if (grantResults[0] != -1) {
                 animationFadeOut();
             }
         }

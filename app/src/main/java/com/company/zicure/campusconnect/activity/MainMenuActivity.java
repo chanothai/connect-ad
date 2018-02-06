@@ -14,6 +14,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -267,6 +268,17 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         ShortcutBadger.removeCount(this);
         BadgeController.getInstance(this).setCountBadge(0);
 
+        connectLocation();
+
+        Nearby.getMessagesClient(this).publish(DetectBeacon.getInstance(this).getmMessage());
+
+        //Subscribe
+        SubscribeOptions subscribeOptions = new SubscribeOptions.Builder()
+                .setStrategy(Strategy.BLE_ONLY).build();
+        Nearby.getMessagesClient(this).subscribe(DetectBeacon.getInstance(this), subscribeOptions);
+    }
+
+    private void connectLocation(){
         //Start get location
         if (SmartLocation.with(this).location().state().locationServicesEnabled()) {
             LocationParams params = new LocationParams.Builder()
@@ -275,15 +287,14 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
                     .build();
 
             SmartLocation.with(this).location()
+                    .continuous()
                     .config(params).start(this);
         }
-
-        Nearby.getMessagesClient(this).publish(DetectBeacon.getInstance(this).getmMessage());
-
-        //Subscribe
-        SubscribeOptions subscribeOptions = new SubscribeOptions.Builder()
-                .setStrategy(Strategy.BLE_ONLY).build();
-        Nearby.getMessagesClient(this).subscribe(DetectBeacon.getInstance(this), subscribeOptions);
+        /*else{
+            Intent callGPSSettingIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(callGPSSettingIntent);
+        }
+        */
     }
 
     @Override

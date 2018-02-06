@@ -19,12 +19,19 @@ public class PermissionRequest {
 
     public boolean requestReadStorage(){
         String[] arrPermission = {Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.CAMERA,
-                Manifest.permission.CALL_PHONE};
+                Manifest.permission.CALL_PHONE,
+                Manifest.permission.ACCESS_FINE_LOCATION};
 
         if (!manager.checkPermission(arrPermission
                 ,PermissionKeyNumber.getInstance().getPermissionReadStorageKey())){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean requestReadPhoneState(){
+        if (!manager.checkReadPhoneState(Manifest.permission.READ_PHONE_STATE, 200)){
             return false;
         }
         return true;
