@@ -2,199 +2,176 @@ package com.company.zicure.campusconnect.adapter;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+
 import android.content.SharedPreferences;
-import android.support.v7.widget.RecyclerView;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.company.zicure.campusconnect.R;
 import com.company.zicure.campusconnect.activity.LoginActivity;
 import com.company.zicure.campusconnect.activity.MainMenuActivity;
 import com.company.zicure.campusconnect.customView.LabelView;
 import com.company.zicure.campusconnect.modelview.Item;
-import com.company.zicure.campusconnect.network.request.ProfileRequest;
-import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
-import com.github.aakira.expandablelayout.ExpandableLinearLayout;
-import com.github.aakira.expandablelayout.Utils;
+import com.company.zicure.campusconnect.utility.RestoreLogin;
 
 import java.util.List;
 
 import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
-import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
+
 
 /**
  * Created by macintosh on 19/1/18.
  */
 
-class MenuCategoryViewHolderWithoutChild extends RecyclerView.ViewHolder {
-    public LabelView menuChild;
-    public ImageView menuIcon;
-
-    public MenuCategoryViewHolderWithoutChild(View itemView) {
-        super(itemView);
-        menuChild = itemView.findViewById(R.id.menu_child);
-        menuIcon = itemView.findViewById(R.id.menu_icon);
-    }
-}
-
-class MenuCategoryViewHolderWithChild extends RecyclerView.ViewHolder {
-    public ImageView menuIcon, menuArrow;
-    public LabelView subTitle, menuChild;
-    public RelativeLayout btnExpanded;
-    public ExpandableLinearLayout expandableLayout;
-
-    public MenuCategoryViewHolderWithChild(View itemView) {
-        super(itemView);
-        menuIcon = itemView.findViewById(R.id.menu_icon);
-        menuArrow = itemView.findViewById(R.id.menu_arrow);
-        subTitle = itemView.findViewById(R.id.sub_title);
-        menuChild = itemView.findViewById(R.id.menu_child);
-        btnExpanded = itemView.findViewById(R.id.btn_expanded);
-        expandableLayout = itemView.findViewById(R.id.expandable_layout);
-    }
-}
-public class MenuCategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-
-    private String code = null;
-    private List<Item> arrItems = null;
+public class MenuCategoryAdapter extends BaseExpandableListAdapter{
+    private List<Item> items = null;
     private Context context = null;
-    private SparseBooleanArray expandState = new SparseBooleanArray();
 
-    public MenuCategoryAdapter(List<Item> arrItems) {
-        this.arrItems = arrItems;
-
-        for (int i = 0; i < arrItems.size(); i++) {
-            expandState.append(i, false);
-        }
+    public MenuCategoryAdapter(Context context, List<Item> items) {
+        this.context = context;
+        this.items = items;
     }
 
     @Override
-    public int getItemViewType(int position) {
-        if (arrItems.get(position).isExpandable()){
-            return 1;
-        }else{
-            return 0;
-        }
+    public int getGroupCount() {
+        return items.size();
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        this.context = parent.getContext();
-        if (viewType == 0) { //Without Item
-            LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.model_menu_category_without_child, parent, false);
-            return new MenuCategoryViewHolderWithoutChild(view);
-        }else{
-            LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.model_menu_category_with_child, parent, false);
-            return new MenuCategoryViewHolderWithChild(view);
+    public int getChildrenCount(int groupPosition) {
+        switch (groupPosition) {
+            case 0:
+                return items.get(groupPosition).getArrLanguage().size();
+            case 1:
+                return items.get(groupPosition).getMenus().size();
         }
+        return 0;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        switch (holder.getItemViewType()){
-            case 0:{
-                MenuCategoryViewHolderWithoutChild viewHolder = (MenuCategoryViewHolderWithoutChild) holder;
-                Item item = arrItems.get(position);
-                viewHolder.setIsRecyclable(false);
-
-                viewHolder.menuChild.setText(item.getMenu().get(0));
-
-                viewHolder.menuIcon.setImageResource(R.drawable.out_icon);
-                viewHolder.menuChild.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context, "Sign out", Toast.LENGTH_SHORT).show();
-                        clearData();
-                    }
-                });
-            }
-            break;
-            case 1:{
-                final MenuCategoryViewHolderWithChild viewHolder = (MenuCategoryViewHolderWithChild) holder;
-                Item item = arrItems.get(position);
-                viewHolder.setIsRecyclable(false);
-                viewHolder.subTitle.setText(item.getText());
-                viewHolder.menuIcon.setImageResource(R.drawable.language_icon);
-
-                viewHolder.expandableLayout.setInRecyclerView(true);
-                viewHolder.expandableLayout.setExpanded(expandState.get(position));
-
-                viewHolder.expandableLayout.setListener(new ExpandableLayoutListenerAdapter() {
-                    @Override
-                    public void onPreOpen() {
-                        changeRotate(viewHolder.menuArrow, 0f, 90f).start();
-                        expandState.put(position, true);
-                    }
-
-                    @Override
-                    public void onPreClose() {
-                        changeRotate(viewHolder.menuArrow, 90f, 0f).start();
-                        expandState.put(position, true);
-                    }
-                });
-
-                viewHolder.menuArrow.setRotation(expandState.get(position)?90f:0f);
-
-                viewHolder.btnExpanded.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Expandable child item
-                        viewHolder.expandableLayout.toggle();
-                    }
-                });
-
-                code = arrItems.get(position).getSubText().get(0).getValue();
-
-                // issue
-                viewHolder.menuChild.setText(arrItems.get(position).getSubText().get(0).getValue());
-
-                viewHolder.menuChild.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-//                        Toast.makeText(context, code, Toast.LENGTH_SHORT).show();
-//                        ((MainMenuActivity) context).showLoadingDialog();
-//                        ProfileRequest profileRequest = new ProfileRequest(context);
-//                        profileRequest.requestProfile(code);
-
-                        ((MainMenuActivity)context).setToggle(0,0);
-                    }
-                });
-            }
-
-            break;
-            default:{
-                break;
-            }
-        }
+    public Object getGroup(int groupPosition) {
+        return items.get(groupPosition);
     }
 
-    private void clearData(){
-        SharedPreferences sharedPref = context.getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.clear();
-        editor.apply();
+    @Override
+    public Object getChild(int groupPosition, int childPosition) {
+        switch (groupPosition) {
+            case 0:
+                return items.get(groupPosition).getArrLanguage().get(childPosition);
+            case 1:
+                return items.get(groupPosition).getMenus().get(childPosition);
+        }
+        return 0;
+    }
 
-        ModelCart.getInstance().clearAllData();
+    @Override
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
 
-        ((MainMenuActivity) context).openActivity(LoginActivity.class, true);
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return childPosition;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return false;
+    }
+
+    @Override
+    public View getGroupView(int groupPosition, final boolean isExpanded, View convertView, ViewGroup parent) {
+        if (convertView == null){
+            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            switch (groupPosition) {
+                case 0:
+                    convertView = inflater.inflate(R.layout.model_menu_category_with_child, null);
+                    LabelView header = convertView.findViewById(R.id.header);
+                    header.setText(items.get(groupPosition).getHeader());
+
+                    ImageView menuIcon = convertView.findViewById(R.id.menu_icon);
+                    menuIcon.setImageResource(R.drawable.language_icon);
+
+                    ImageView menuArrow = convertView.findViewById(R.id.menu_arrow);
+
+                    if (isExpanded) {
+                        changeRotate(menuArrow, 0f, 90f).start();
+                    }else{
+                        changeRotate(menuArrow, 0f, 0f).start();
+                    }
+
+                    return convertView;
+                case 1:
+                    RelativeLayout layout = new RelativeLayout(context);
+                    return layout;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        if (convertView == null){
+            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            switch (groupPosition) {
+                case 0:
+                    convertView = inflater.inflate(R.layout.model_menu_child_view, null);
+                    LabelView child = convertView.findViewById(R.id.text_child_menu);
+                    child.setText(items.get(groupPosition).getArrLanguage().get(childPosition).getValue());
+
+                    convertView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (items.get(groupPosition).getArrLanguage().get(childPosition).getCode().equalsIgnoreCase("TH")) {
+                                ModelCart.getInstance().getKeyModel().setLanguage(items.get(groupPosition).getArrLanguage().get(childPosition).getCode());
+                                ((MainMenuActivity)context).setLanguage(items.get(groupPosition).getArrLanguage().get(childPosition).getCode());
+                            }else if (items.get(groupPosition).getArrLanguage().get(childPosition).getCode().equalsIgnoreCase("EN")){
+                                ModelCart.getInstance().getKeyModel().setLanguage(items.get(groupPosition).getArrLanguage().get(childPosition).getCode());
+                                ((MainMenuActivity)context).setLanguage(items.get(groupPosition).getArrLanguage().get(childPosition).getCode());
+                            }else{
+                                ModelCart.getInstance().getKeyModel().setLanguage("EN");
+                                ((MainMenuActivity)context).setLanguage("EN");
+                            }
+                        }
+                    });
+
+                    return convertView;
+                case 1:
+                    convertView = inflater.inflate(R.layout.model_menu_category_without_child, null);
+                    LabelView child2 = convertView.findViewById(R.id.menu_child);
+                    child2.setText(items.get(groupPosition).getMenus().get(childPosition).getLabel());
+
+                    ImageView menuIcon = convertView.findViewById(R.id.menu_icon);
+                    menuIcon.setImageResource(R.drawable.out_icon);
+
+                    convertView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ((MainMenuActivity)context).openActivity(LoginActivity.class, true);
+                            RestoreLogin.getInstance(context).clearAllData();
+
+                        }
+                    });
+                    return convertView;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
+        return true;
     }
 
     private ObjectAnimator changeRotate(ImageView button, float from, float to){
         ObjectAnimator animator = ObjectAnimator.ofFloat(button, "rotation", from, to);
         animator.setDuration(100);
-        animator.setInterpolator(Utils.createInterpolator(Utils.LINEAR_INTERPOLATOR));
         return animator;
-    }
-
-    @Override
-    public int getItemCount() {
-        return arrItems.size();
     }
 }

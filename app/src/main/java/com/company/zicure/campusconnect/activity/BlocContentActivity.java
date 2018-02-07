@@ -44,7 +44,7 @@ public class BlocContentActivity extends BaseActivity {
 
     private AppMenuFragment appMenuFragment = null;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bloc_content);
         EventBusCart.getInstance().getEventBus().register(this);

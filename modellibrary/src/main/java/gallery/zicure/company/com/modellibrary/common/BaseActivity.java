@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 
+import com.akexorcist.localizationactivity.ui.LocalizationActivity;
+
 import gallery.zicure.company.com.modellibrary.dialogs.LoadingDialogFragment;
 
 /**
  * Created by 4GRYZ52 on 10/21/2016.
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends LocalizationActivity {
 
     private static final String TAG_DIALOG_FRAGMENT = "dialog_fragment";
     private LoadingDialogFragment loadingDialogFragment = null;

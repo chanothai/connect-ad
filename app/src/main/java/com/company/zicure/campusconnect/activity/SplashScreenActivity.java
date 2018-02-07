@@ -30,7 +30,7 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
     ImageView imgLogo;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         EventBusCart.getInstance().getEventBus().register(this);
@@ -41,7 +41,7 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         if (!permissionRequest.requestReadStorage()){
             if (!permissionRequest.requestReadPhoneState()){

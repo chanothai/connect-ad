@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
+import me.leolin.shortcutbadger.ShortcutBadger;
 
 /**
  * Created by macintosh on 31/1/18.
@@ -40,5 +41,10 @@ public class BadgeController {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(BADGE_KEY, countBadge);
         editor.apply();
+    }
+
+    public void removeBadge(){
+        ShortcutBadger.removeCount(context);
+        BadgeController.getInstance(context).setCountBadge(0);
     }
 }

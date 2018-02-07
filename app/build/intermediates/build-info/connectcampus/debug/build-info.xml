@@ -7,30 +7,33 @@
     format="10"
     ir-eligibility="COMPATIBLE"
     plugin-version="3.0.1"
-    timestamp="1517891388381"
+    timestamp="1518008145051"
     token="-321073303303870280"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="744" />
+        duration="277" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="91" />
+        duration="62" />
     <task
         name="verifier"
-        duration="9" />
+        duration="2" />
 
+    <artifact
+        location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_3.apk"
+        type="SPLIT" />
     <artifact
         location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_1.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1517891217488"
+        timestamp="1517996008749"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_1.apk"
@@ -57,10 +60,10 @@
             location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_7.apk"
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_4.apk"
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
             location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_5.apk"
@@ -71,9 +74,48 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1517891388381"
+        ir-eligibility="R_CLASS_CHANGE"
+        timestamp="1518000086214"
         verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_9.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="METHOD_ADDED"
+        timestamp="1518003879189"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/outputs/apk/connectcampus/debug/app-connectcampus-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1518008145051"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_3.apk"
+            type="SPLIT" />
         <artifact
             location="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/split-apk/connectcampus/debug/slices/slice_1.apk"
             type="SPLIT" />

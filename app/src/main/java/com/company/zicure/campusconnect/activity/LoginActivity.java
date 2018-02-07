@@ -24,11 +24,9 @@ public class LoginActivity extends BaseActivity {
     private SharedPreferences sharedPref = null;
 
     private String url = "http://connect05.pakgon.com/core/";
-//    private String url = "file:///android_asset/index.html";
-    //file:///android_asset/webview.html
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 

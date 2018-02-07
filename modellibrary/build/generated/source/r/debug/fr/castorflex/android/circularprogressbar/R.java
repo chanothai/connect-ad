@@ -34,7 +34,7 @@ public final class R {
     public static final class style {
         public static int CPB = 0x7f1600b1;
         public static int CircularProgressBar = 0x7f1600b2;
-        public static int Theme_SmoothProgressBarDefaults = 0x7f160139;
+        public static int Theme_SmoothProgressBarDefaults = 0x7f160143;
     }
     public static final class styleable {
         public static int[] CircularProgressBar = { 0x7f04006f, 0x7f040070, 0x7f040071, 0x7f040072, 0x7f040073, 0x7f040074, 0x7f040075, 0x7f040076 };

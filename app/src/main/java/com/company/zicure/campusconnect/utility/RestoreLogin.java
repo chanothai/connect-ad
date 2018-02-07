@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.company.zicure.campusconnect.R;
+import com.company.zicure.campusconnect.activity.LoginActivity;
+import com.company.zicure.campusconnect.activity.MainMenuActivity;
 
+import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
 import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
 
 /**
@@ -14,23 +17,23 @@ import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
 
 public class RestoreLogin {
     private static RestoreLogin me = null;
-    private Activity activity = null;
+    private Context context = null;
     private SharedPreferences pref = null;
 
-    public RestoreLogin(Activity activity){
-        this.activity = activity;
-        pref = activity.getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
+    public RestoreLogin(Context context){
+        this.context = context;
+        pref = context.getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
     }
 
-    public static RestoreLogin getInstance(Activity activity){
+    public static RestoreLogin getInstance(Context context){
         if (me == null){
-            me = new RestoreLogin(activity);
+            me = new RestoreLogin(context);
         }
         return me;
     }
 
     public String getRestoreToken(){
-        String token = pref.getString(activity.getString(R.string.token_login), null);
+        String token = pref.getString(context.getString(R.string.token_login), null);
         return token;
     }
 
@@ -42,5 +45,13 @@ public class RestoreLogin {
     public String getSubscribe(){
         String key = pref.getString("subscribe_noti", null);
         return key;
+    }
+
+    public void clearAllData(){
+        SharedPreferences.Editor editor = pref.edit();
+        editor.clear();
+        editor.apply();
+
+        StackURLController.getInstance().clearAllStackURL();
     }
 }

@@ -8,12 +8,11 @@ MERGED from [:modellibrary] /Users/macintosh/Desktop/project_connect/Store_proje
 MERGED from [com.android.support:design:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/AndroidManifest.xml:17:1-22:12
 MERGED from [com.multidots:fingerprint-auth:1.0.1] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/fingerprint-auth-1.0.1.aar/0f4d51b31e8c06facfae17898c8d3a9b/AndroidManifest.xml:2:1-13:12
 MERGED from [pl.tajchert:waitingdots:0.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/waitingdots-0.2.0.aar/148692255d7531bb3204120d6e35be9c/AndroidManifest.xml:2:1-14:12
+MERGED from [com.akexorcist:localizationactivity:1.2.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/localizationactivity-1.2.2.aar/464e87080164424ac5879f507f6b6b62/AndroidManifest.xml:2:1-17:12
 MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:recyclerview-v7:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/ff2b3d6257e7652c00939be7f0334ff6/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:cardview-v7:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/3e1fe5240141d1f21962957d1cf715cd/AndroidManifest.xml:17:1-22:12
-MERGED from [com.github.aakira:expandable-layout:1.6.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/expandable-layout-1.6.0.aar/e4807398af46c4d1560160ed89f28e98/AndroidManifest.xml:2:1-14:12
 MERGED from [com.android.support:customtabs:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/59f4ec2c3ffb1764d7497a83898f4fdd/AndroidManifest.xml:17:1-22:12
-MERGED from [com.baoyz.pullrefreshlayout:library:1.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/a1f9a6d3c15b0890f531e7c3b64a3555/AndroidManifest.xml:2:1-14:12
 MERGED from [me.dm7.barcodescanner:zxing:1.8.4] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/zxing-1.8.4.aar/bb0de1b16e9b4b0987674ac0d3c69f60/AndroidManifest.xml:2:1-13:12
 MERGED from [me.dm7.barcodescanner:core:1.8.4] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/core-1.8.4.aar/f8dd8532c02a918797ff22fc4a7d358c/AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.firebase:firebase-messaging:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.8.0.aar/8528eac5d52554afb1793776daad83a5/AndroidManifest.xml:17:1-37:12
@@ -130,10 +129,8 @@ application
 ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:22:5-81:19
 MERGED from [pl.tajchert:waitingdots:0.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/waitingdots-0.2.0.aar/148692255d7531bb3204120d6e35be9c/AndroidManifest.xml:11:5-12:19
 MERGED from [pl.tajchert:waitingdots:0.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/waitingdots-0.2.0.aar/148692255d7531bb3204120d6e35be9c/AndroidManifest.xml:11:5-12:19
-MERGED from [com.github.aakira:expandable-layout:1.6.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/expandable-layout-1.6.0.aar/e4807398af46c4d1560160ed89f28e98/AndroidManifest.xml:12:5-20
-MERGED from [com.github.aakira:expandable-layout:1.6.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/expandable-layout-1.6.0.aar/e4807398af46c4d1560160ed89f28e98/AndroidManifest.xml:12:5-20
-MERGED from [com.baoyz.pullrefreshlayout:library:1.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/a1f9a6d3c15b0890f531e7c3b64a3555/AndroidManifest.xml:11:5-12:19
-MERGED from [com.baoyz.pullrefreshlayout:library:1.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/a1f9a6d3c15b0890f531e7c3b64a3555/AndroidManifest.xml:11:5-12:19
+MERGED from [com.akexorcist:localizationactivity:1.2.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/localizationactivity-1.2.2.aar/464e87080164424ac5879f507f6b6b62/AndroidManifest.xml:11:5-15:19
+MERGED from [com.akexorcist:localizationactivity:1.2.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/localizationactivity-1.2.2.aar/464e87080164424ac5879f507f6b6b62/AndroidManifest.xml:11:5-15:19
 MERGED from [me.dm7.barcodescanner:zxing:1.8.4] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/zxing-1.8.4.aar/bb0de1b16e9b4b0987674ac0d3c69f60/AndroidManifest.xml:11:5-20
 MERGED from [me.dm7.barcodescanner:zxing:1.8.4] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/zxing-1.8.4.aar/bb0de1b16e9b4b0987674ac0d3c69f60/AndroidManifest.xml:11:5-20
 MERGED from [me.dm7.barcodescanner:core:1.8.4] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/core-1.8.4.aar/f8dd8532c02a918797ff22fc4a7d358c/AndroidManifest.xml:11:5-20
@@ -311,18 +308,16 @@ MERGED from [com.multidots:fingerprint-auth:1.0.1] /Users/macintosh/.gradle/cach
 MERGED from [com.multidots:fingerprint-auth:1.0.1] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/fingerprint-auth-1.0.1.aar/0f4d51b31e8c06facfae17898c8d3a9b/AndroidManifest.xml:7:5-9:41
 MERGED from [pl.tajchert:waitingdots:0.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/waitingdots-0.2.0.aar/148692255d7531bb3204120d6e35be9c/AndroidManifest.xml:7:5-9:41
 MERGED from [pl.tajchert:waitingdots:0.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/waitingdots-0.2.0.aar/148692255d7531bb3204120d6e35be9c/AndroidManifest.xml:7:5-9:41
+MERGED from [com.akexorcist:localizationactivity:1.2.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/localizationactivity-1.2.2.aar/464e87080164424ac5879f507f6b6b62/AndroidManifest.xml:7:5-9:41
+MERGED from [com.akexorcist:localizationactivity:1.2.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/localizationactivity-1.2.2.aar/464e87080164424ac5879f507f6b6b62/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:recyclerview-v7:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/ff2b3d6257e7652c00939be7f0334ff6/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:recyclerview-v7:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/ff2b3d6257e7652c00939be7f0334ff6/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cardview-v7:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/3e1fe5240141d1f21962957d1cf715cd/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cardview-v7:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/3e1fe5240141d1f21962957d1cf715cd/AndroidManifest.xml:20:5-44
-MERGED from [com.github.aakira:expandable-layout:1.6.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/expandable-layout-1.6.0.aar/e4807398af46c4d1560160ed89f28e98/AndroidManifest.xml:8:5-10:41
-MERGED from [com.github.aakira:expandable-layout:1.6.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/expandable-layout-1.6.0.aar/e4807398af46c4d1560160ed89f28e98/AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.support:customtabs:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/59f4ec2c3ffb1764d7497a83898f4fdd/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:customtabs:27.0.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/59f4ec2c3ffb1764d7497a83898f4fdd/AndroidManifest.xml:20:5-44
-MERGED from [com.baoyz.pullrefreshlayout:library:1.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/a1f9a6d3c15b0890f531e7c3b64a3555/AndroidManifest.xml:7:5-9:41
-MERGED from [com.baoyz.pullrefreshlayout:library:1.2.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/a1f9a6d3c15b0890f531e7c3b64a3555/AndroidManifest.xml:7:5-9:41
 MERGED from [me.dm7.barcodescanner:zxing:1.8.4] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/zxing-1.8.4.aar/bb0de1b16e9b4b0987674ac0d3c69f60/AndroidManifest.xml:7:5-9:41
 MERGED from [me.dm7.barcodescanner:zxing:1.8.4] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/zxing-1.8.4.aar/bb0de1b16e9b4b0987674ac0d3c69f60/AndroidManifest.xml:7:5-9:41
 MERGED from [me.dm7.barcodescanner:core:1.8.4] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/core-1.8.4.aar/f8dd8532c02a918797ff22fc4a7d358c/AndroidManifest.xml:7:5-9:41
@@ -415,6 +410,12 @@ uses-permission-sdk-23#android.permission.USE_FINGERPRINT
 ADDED from [com.multidots:fingerprint-auth:1.0.1] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/fingerprint-auth-1.0.1.aar/0f4d51b31e8c06facfae17898c8d3a9b/AndroidManifest.xml:11:5-81
 	android:name
 		ADDED from [com.multidots:fingerprint-auth:1.0.1] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/fingerprint-auth-1.0.1.aar/0f4d51b31e8c06facfae17898c8d3a9b/AndroidManifest.xml:11:29-78
+activity#com.akexorcist.localizationactivity.ui.BlankDummyActivity
+ADDED from [com.akexorcist:localizationactivity:1.2.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/localizationactivity-1.2.2.aar/464e87080164424ac5879f507f6b6b62/AndroidManifest.xml:12:9-14:69
+	android:theme
+		ADDED from [com.akexorcist:localizationactivity:1.2.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/localizationactivity-1.2.2.aar/464e87080164424ac5879f507f6b6b62/AndroidManifest.xml:14:13-66
+	android:name
+		ADDED from [com.akexorcist:localizationactivity:1.2.2] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/localizationactivity-1.2.2.aar/464e87080164424ac5879f507f6b6b62/AndroidManifest.xml:13:13-85
 service#com.google.firebase.messaging.FirebaseMessagingService
 ADDED from [com.google.firebase:firebase-messaging:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.8.0.aar/8528eac5d52554afb1793776daad83a5/AndroidManifest.xml:28:9-34:19
 	android:exported

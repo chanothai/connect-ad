@@ -28,6 +28,10 @@ public class StackURLController {
         stackURL.add(subURL);
     }
 
+    public void clearAllStackURL(){
+        stackURL.clear();
+    }
+
     public ArrayList<String> getStackURL() {
         return stackURL;
     }

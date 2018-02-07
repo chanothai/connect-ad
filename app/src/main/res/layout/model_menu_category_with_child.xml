@@ -1,67 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/btn_expanded"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingStart="@dimen/padding_large"
+    android:layout_height="80dp"
+    android:background="?attr/selectableItemBackground"
     android:paddingEnd="@dimen/padding_large"
-    android:background="@android:color/black">
+    android:paddingStart="@dimen/padding_large">
 
         <ImageView
             android:id="@+id/menu_icon"
             android:layout_width="@dimen/icon_size_small"
             android:layout_height="@dimen/icon_size_small"
-            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
             android:adjustViewBounds="true"
-            android:tint="@android:color/darker_gray"
-            android:src="@drawable/ic_launcher"
             android:cropToPadding="true"
-            android:layout_centerVertical="true"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher"
+            android:tint="@android:color/darker_gray" />
 
         <com.company.zicure.campusconnect.customView.LabelView
-            android:id="@+id/sub_title"
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="56dp"
+            android:layout_toStartOf="@+id/menu_arrow"
             android:gravity="center_vertical"
             android:text="Home"
             android:textColor="@android:color/white"
-            android:layout_marginStart="56dp"
-            android:layout_marginEnd="12dp"
-            android:textSize="@dimen/size_text_medium"
-            android:layout_toStartOf="@+id/menu_arrow"
-            android:layout_centerVertical="true"/>
+            android:textSize="@dimen/size_text_medium" />
 
         <ImageView
             android:id="@+id/menu_arrow"
             android:layout_width="@dimen/icon_size_small"
             android:layout_height="@dimen/icon_size_small"
-            android:scaleType="fitCenter"
-            android:src="@drawable/arrow_next"
-            android:cropToPadding="true"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"/>
-
-        <com.github.aakira.expandablelayout.ExpandableLinearLayout
-            android:id="@+id/expandable_layout"
-            android:layout_below="@id/sub_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:ael_duration="200"
-            app:ael_expanded="false">
-
-                <com.company.zicure.campusconnect.customView.LabelView
-                    android:id="@+id/menu_child"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|center_vertical"
-                    android:padding="@dimen/padding_eight"
-                    android:layout_alignParentTop="true"
-                    android:textColor="@android:color/white"
-                    android:layout_toStartOf="@+id/menu_arrow"
-                    android:textSize="@dimen/size_text_medium" />
-
-        </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+            android:layout_centerVertical="true"
+            android:cropToPadding="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/arrow_next" />
 </RelativeLayout>

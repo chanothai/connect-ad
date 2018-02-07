@@ -72,6 +72,23 @@
                     }
                 },
                 {
+                    "source": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/res/values-th/strings.xml",
+                    "from": {
+                        "startLines": "3,4,2,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "101,149,55,196",
+                        "endColumns": "47,46,45,47",
+                        "endOffsets": "144,191,96,239"
+                    },
+                    "to": {
+                        "startLines": "40,41,42,43",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "4728,4776,4823,4869",
+                        "endColumns": "47,46,45,47",
+                        "endOffsets": "4771,4818,4864,4912"
+                    }
+                },
+                {
                     "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b5f3b54e08a9c544478f1aeb63b11ff2/res/values-th/values-th.xml",
                     "from": {
                         "startLines": "2",
@@ -98,11 +115,11 @@
                         "endOffsets": "109,158,276,384"
                     },
                     "to": {
-                        "startLines": "40,41,42,43",
+                        "startLines": "44,45,46,47",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "4728,4787,4836,4954",
+                        "startOffsets": "4917,4976,5025,5143",
                         "endColumns": "58,48,117,107",
-                        "endOffsets": "4782,4831,4949,5057"
+                        "endOffsets": "4971,5020,5138,5246"
                     }
                 }
             ]

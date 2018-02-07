@@ -17,6 +17,8 @@ import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -31,17 +33,21 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate;
+import com.akexorcist.localizationactivity.core.OnLocaleChangedListener;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.company.zicure.campusconnect.R;
@@ -59,6 +65,7 @@ import com.company.zicure.campusconnect.service.MessagingService;
 import com.company.zicure.campusconnect.utility.BluetoothScanManager;
 import com.company.zicure.campusconnect.utility.PermissionKeyNumber;
 import com.company.zicure.campusconnect.utility.PermissionRequest;
+import com.company.zicure.campusconnect.utility.RestoreLogin;
 import com.company.zicure.campusconnect.utility.StackURLController;
 import com.company.zicure.campusconnect.view.viewgroup.FlyOutContainer;
 import com.google.android.gms.nearby.Nearby;
@@ -71,6 +78,7 @@ import com.google.android.gms.nearby.messages.SubscribeOptions;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 import com.joooonho.SelectableRoundedImageView;
 import com.squareup.otto.Subscribe;
 
@@ -93,9 +101,9 @@ import io.nlopez.smartlocation.OnLocationUpdatedListener;
 import io.nlopez.smartlocation.SmartLocation;
 import io.nlopez.smartlocation.location.config.LocationAccuracy;
 import io.nlopez.smartlocation.location.config.LocationParams;
-import me.leolin.shortcutbadger.ShortcutBadger;
 
-public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedListener, BottomNavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemReselectedListener {
+public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedListener, BottomNavigationView.OnNavigationItemSelectedListener,
+        BottomNavigationView.OnNavigationItemReselectedListener, OnLocaleChangedListener {
 
     /** Make: View **/
     RelativeLayout linearLayout;
@@ -105,35 +113,30 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     private BottomNavigationView bottomBar = null;
 
     //toolbar
-    Toolbar toolbarMenu;
+    private Toolbar toolbarMenu;
 
     //list view slide menu
-    RecyclerView listSlideMenu;
-    FrameLayout layoutGhost;
-    FrameLayout controlSlide;
-    SelectableRoundedImageView imgProfile, btnScanQRCode;
-    TextView profileName;
-    TextView profileAddress;
+    private ExpandableListView listSlideMenu;
+    private FrameLayout layoutGhost,controlSlide;
+    private SelectableRoundedImageView imgProfile, btnScanQRCode;
+    private TextView profileName,profileAddress;
 
     //list menu
     private ArrayList<Item> arrMenu = null;
-    RelativeLayout childHeaderDrawer;
-    RelativeLayout headerDrawer;
+    private RelativeLayout childHeaderDrawer,headerDrawer;
+    private Context context = this;
 
     /** Make: properties **/
     //view layout
     private FlyOutContainer root;
-    private int widthScreenMenu;
-    int haftScreen = 0;
+    int haftScreen = 0,widthScreenMenu;
     private VelocityTracker velocityTracker = null; // get speed for touch
-
-    private String currentToken = null;
-
-    private String geoAddress = null, subscribe, url;
+    private String geoAddress, subscribe, url,currentToken;
 
     //Nearby
 
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        initLanguageDevice();
         super.onCreate(savedInstanceState);
         EventBusCart.getInstance().getEventBus().register(this);
         root = (FlyOutContainer) getLayoutInflater().inflate(R.layout.activity_main_menu, null);
@@ -144,27 +147,41 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
             setToolbar();
             setOnTouchView();
             initParameter();
-
-            showLoadingDialog();
-            String language = Locale.getDefault().getDisplayLanguage().toString();
-            ModelCart.getInstance().getKeyModel().setLanguage(language);
-            ProfileRequest profileRequest = new ProfileRequest(this);
-            profileRequest.requestProfile(language);
-
-            getDataNotification();
+            initRequestData(Locale.getDefault().getLanguage());
+        }else{
+            setContentView(root);
+            bindView();
+            setToolbar();
+            setOnTouchView();
+            loadData();
         }
     }
 
-    private void getDataNotification(){
-        try{
-            if (getIntent().getExtras() != null){
-                for (String key : getIntent().getExtras().keySet()) {
-                    String value = getIntent().getExtras().getString(key);
-                    Log.d("Notifications", value);
+    public void showBadge(){
+        int badge = BadgeController.getInstance(this).getCountBadge();
+        if (badge > 0) {
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    BottomNavigationMenuView bottomNavigationMenuView =
+                            (BottomNavigationMenuView) bottomBar.getChildAt(0);
+                    View v = bottomNavigationMenuView.getChildAt(1);
+                    BottomNavigationItemView itemView = (BottomNavigationItemView) v;
+
+                    View viewBadge = LayoutInflater.from(context)
+                            .inflate(R.layout.custom_notification_badge, bottomNavigationMenuView, false);
+                    itemView.addView(viewBadge);
                 }
-            }
-        }catch (NullPointerException e){
-            e.printStackTrace();
+            });
+        }
+    }
+
+    private void initLanguageDevice() {
+        String language = Locale.getDefault().getLanguage().toUpperCase();
+        if (language.equalsIgnoreCase("TH")){
+            setDefaultLanguage(Locale.getDefault().getLanguage());
+        }else{
+            setDefaultLanguage("EN");
         }
     }
 
@@ -194,19 +211,16 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         });
     }
 
-    private void initParameter() {
-        SharedPreferences preferences = getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
-        currentToken = preferences.getString(getString(R.string.token_login), null);
+    private void loadData(){
+        currentToken = RestoreLogin.getInstance(this).getRestoreToken();
         Log.d("TOKEN_USER", currentToken);
-        url = preferences.getString("web_url", null);
-        subscribe = preferences.getString("subscribe_noti", null);
+        url = RestoreLogin.getInstance(this).getURL();
+        subscribe = RestoreLogin.getInstance(this).getSubscribe();
+    }
 
-        //Subscribe FireBase
-        FirebaseApp.initializeApp(this);
-        FirebaseInstanceId.getInstance().getToken();
-        FirebaseMessaging.getInstance().subscribeToTopic(subscribe);
-        Log.d("Notification", subscribe);
-
+    private void initParameter() {
+        loadData();
+        initFireBase();
         StackURLController.getInstance().getStackURL().add(url);
         if (currentToken != null && url != null && subscribe != null) {
             ModelCart.getInstance().getKeyModel().setToken(currentToken);
@@ -217,12 +231,20 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         DetectBeacon.getInstance(this).setmMessage(new Message(subscribe.getBytes()));
     }
 
-    public void setToolbar() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            ToolbarManager manager = new ToolbarManager(this);
-            manager.setToolbar(toolbarMenu, null, getDrawable(R.drawable.menu_toggle), null);
-            setLayoutHeadDrawer();
-        }
+    public void initRequestData(String language){
+        showLoadingDialog();
+        //init language
+        ModelCart.getInstance().getKeyModel().setLanguage(language);
+        ProfileRequest profileRequest = new ProfileRequest(this);
+        profileRequest.requestProfile(language);
+    }
+
+    private void initFireBase(){
+        //Subscribe FireBase
+        FirebaseApp.initializeApp(this);
+        FirebaseInstanceId.getInstance().getToken();
+        FirebaseMessaging.getInstance().subscribeToTopic(subscribe);
+        Log.d("Notification", subscribe);
     }
 
     private void initBloc(String url, Boolean state) {
@@ -230,6 +252,14 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         transaction.replace(R.id.container, AppMenuFragment.newInstance(url,state), VariableConnect.appMenuFragmentKey);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void setToolbar() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            ToolbarManager manager = new ToolbarManager(this);
+            manager.setToolbar(toolbarMenu, null, getDrawable(R.drawable.menu_toggle), null);
+            setLayoutHeadDrawer();
+        }
     }
 
     public void setLayoutHeadDrawer() {
@@ -260,13 +290,11 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         return result;
     }
 
-
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
-        //Clear Badge Notification
-        ShortcutBadger.removeCount(this);
-        BadgeController.getInstance(this).setCountBadge(0);
+//        BadgeController.getInstance(this).removeBadge();
+        showBadge();
 
         connectLocation();
 
@@ -290,6 +318,7 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
                     .continuous()
                     .config(params).start(this);
         }
+
         /*else{
             Intent callGPSSettingIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             startActivity(callGPSSettingIntent);
@@ -310,8 +339,20 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
 
     }
 
-    /******* Bottom Bar *************/
+    /******* OnLocaleChange *************/
+    @Override
+    public void onBeforeLocaleChanged() {
+        super.onBeforeLocaleChanged();
+    }
 
+    @Override
+    public void onAfterLocaleChanged() {
+        super.onAfterLocaleChanged();
+        ProfileRequest profileRequest = new ProfileRequest(this);
+        profileRequest.requestProfile(ModelCart.getInstance().getKeyModel().getLanguage());
+
+        initBloc(StackURLController.getInstance().getStackURL().get(StackURLController.getInstance().getStackURL().size() - 1), true);
+    }
 
     /******* OnLocationUpdate ******************/
     @Override
@@ -332,10 +373,13 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
                 for (int i = 0; i <= addresses.get(0).getMaxAddressLineIndex(); i++){
                     geoAddress = addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality();
                     profileAddress.setText(geoAddress);
+
                     Log.d("AddressUser", addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality());
                 }
             }
-        }catch (IOException e){
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } catch(IOException e){
             // Catch network or other I/O problems.
             e.printStackTrace();
         }catch (IllegalArgumentException e){
@@ -381,26 +425,16 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         for (int i = 0; i < 2; i++){
             switch (i) {
                 case 0:{
-                    ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage> listLanguage = new ArrayList<>();
-                    for (int j = 0; j < dataUser.getLanguage().getArrLanguage().size(); j++){
-                        ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage content = new ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage();
-                        content.setValue(dataUser.getLanguage().getArrLanguage().get(j).getValue());
-                        content.setValue(dataUser.getLanguage().getArrLanguage().get(j).getCode());
-                        listLanguage.add(content);
-                    }
-
-                    Item item = new Item(dataUser.getLanguage().getLabel(), listLanguage, null, true);
+                    Item item = new Item(ModelCart.getInstance().getProfileResult().getData().getLanguage().getLabel(),
+                            ModelCart.getInstance().getProfileResult().getData().getLanguage().getArrLanguage(),
+                            ModelCart.getInstance().getProfileResult().getData().getMenus(), true);
                     arrMenu.add(item);
                     break;
                 }
                 case 1:{
-                    ArrayList<String> txtChild = new ArrayList<>();
-                    int lng = dataUser.getMenus().size();
-                    for (int k = 0; k < lng; k++){
-                        txtChild.add(dataUser.getMenus().get(k).getLabel());
-                    }
-
-                    Item item = new Item("", null, txtChild, false);
+                    Item item = new Item("",
+                            ModelCart.getInstance().getProfileResult().getData().getLanguage().getArrLanguage(),
+                            ModelCart.getInstance().getProfileResult().getData().getMenus(), false);
                     arrMenu.add(item);
                     break;
                 }
@@ -410,12 +444,23 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
             }
         }
 
-        MenuCategoryAdapter adapter = new MenuCategoryAdapter(arrMenu);
-        listSlideMenu.setLayoutManager(new LinearLayoutManager(this));
-        listSlideMenu.setHasFixedSize(true);
+        manageExpandMenu();
+    }
 
+    private void manageExpandMenu(){
+        MenuCategoryAdapter adapter = new MenuCategoryAdapter(this, arrMenu);
         listSlideMenu.setAdapter(adapter);
-        listSlideMenu.setItemAnimator(new DefaultItemAnimator());
+        listSlideMenu.expandGroup(1, true);
+        listSlideMenu.expandGroup(0, true);
+        listSlideMenu.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                if (groupPosition == 1){
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     /***** Touch Slide Menu ************/
@@ -599,14 +644,14 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
                 break;
             }
             case R.id.item_noti: {
-                String urlNoti = "http://connect06.pakgon.com/core/Homes/noti";
+                String urlNoti = "http://connect05.pakgon.com/core/Homes/noti";
                 initBloc(urlNoti, true);
                 StackURLController.getInstance().resetStackUrl(url, urlNoti);
                 break;
             }
 
             case R.id.item_contact: {
-                String urlContact = "http://connect06.pakgon.com/core/Homes/contact";
+                String urlContact = "http://connect05.pakgon.com/core/Homes/contact";
                 initBloc(urlContact, true);
                 StackURLController.getInstance().resetStackUrl(url, urlContact);
                 break;
@@ -634,14 +679,14 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
                 break;
             }
             case R.id.item_noti: {
-                String urlNoti = "http://connect06.pakgon.com/core/Homes/noti";
+                String urlNoti = "http://connect05.pakgon.com/core/Homes/noti";
                 initBloc(urlNoti, true);
                 StackURLController.getInstance().resetStackUrl(url, urlNoti);
                 break;
             }
 
             case R.id.item_contact: {
-                String urlContact = "http://connect06.pakgon.com/core/Homes/contact";
+                String urlContact = "http://connect05.pakgon.com/core/Homes/contact";
                 initBloc(urlContact, true);
                 StackURLController.getInstance().resetStackUrl(url, urlContact);
                 break;

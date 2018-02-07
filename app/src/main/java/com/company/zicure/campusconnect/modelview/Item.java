@@ -10,24 +10,16 @@ import gallery.zicure.company.com.modellibrary.models.profile.ProfileResponse;
  */
 
 public class Item {
-    private String text;
-    private ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage> subText;
-    private ArrayList<String> menu;
+    private String header;
+    private ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage> arrLanguage;
+    private ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileMenu> menus;
     private boolean isExpandable;
 
-    public Item(String text, ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage> subText, ArrayList<String> menu,boolean isExpandable) {
-        this.text = text;
-        this.subText = subText;
+    public Item(String header, ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage> arrLanguage, ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileMenu> menus,boolean isExpandable) {
+        this.header = header;
+        this.arrLanguage = arrLanguage;
         this.isExpandable = isExpandable;
-        this.menu = menu;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+        this.menus = menus;
     }
 
     public boolean isExpandable() {
@@ -38,19 +30,27 @@ public class Item {
         isExpandable = expandable;
     }
 
-    public ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage> getSubText() {
-        return subText;
+    public ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage> getArrLanguage() {
+        return arrLanguage;
     }
 
-    public void setSubText(ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage> subText) {
-        this.subText = subText;
+    public void setArrLanguage(ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileLanguage.ListLanguage> arrLanguage) {
+        this.arrLanguage = arrLanguage;
     }
 
-    public ArrayList<String> getMenu() {
-        return menu;
+    public ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileMenu> getMenus() {
+        return menus;
     }
 
-    public void setMenu(ArrayList<String> menu) {
-        this.menu = menu;
+    public void setMenus(ArrayList<ProfileResponse.ProfileResult.ProfileData.ProfileMenu> menus) {
+        this.menus = menus;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
     }
 }

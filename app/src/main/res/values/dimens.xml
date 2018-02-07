@@ -24,7 +24,6 @@
     <dimen name="height_image_cardview">192dp</dimen>
     <dimen name="height_detail_cardview">128dp</dimen>
 
-
     <dimen name="dialog_loading_circular_progress_size">60dp</dimen>
     <dimen name="margin_padding_normal">8dp</dimen>
     <dimen name="padding_four">4dp</dimen>
@@ -55,4 +54,6 @@
 
     //height bloc
     <dimen name="height_bloc">150dp</dimen>
+
+    <dimen name="height_rows">56dp</dimen>
 </resources>
