@@ -1,12 +1,6 @@
 package com.company.zicure.campusconnect.activity;
 
-import android.Manifest;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Address;
 import android.location.Geocoder;
@@ -14,27 +8,19 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Handler;
 import android.os.PersistableBundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.VelocityTrackerCompat;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -46,7 +32,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate;
 import com.akexorcist.localizationactivity.core.OnLocaleChangedListener;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -58,38 +43,29 @@ import com.company.zicure.campusconnect.fragment.AppMenuFragment;
 import com.company.zicure.campusconnect.modelview.Item;
 import com.company.zicure.campusconnect.nearby.BeaconModel;
 import com.company.zicure.campusconnect.nearby.DetectBeacon;
-import com.company.zicure.campusconnect.network.ClientHttp;
 import com.company.zicure.campusconnect.network.request.ProfileRequest;
 import com.company.zicure.campusconnect.service.BadgeController;
-import com.company.zicure.campusconnect.service.MessagingService;
-import com.company.zicure.campusconnect.utility.BluetoothScanManager;
+import com.company.zicure.campusconnect.utility.ContextCart;
 import com.company.zicure.campusconnect.utility.PermissionKeyNumber;
-import com.company.zicure.campusconnect.utility.PermissionRequest;
 import com.company.zicure.campusconnect.utility.RestoreLogin;
 import com.company.zicure.campusconnect.utility.StackURLController;
 import com.company.zicure.campusconnect.view.viewgroup.FlyOutContainer;
 import com.google.android.gms.nearby.Nearby;
 import com.google.android.gms.nearby.messages.Message;
-import com.google.android.gms.nearby.messages.MessageFilter;
-import com.google.android.gms.nearby.messages.MessagesOptions;
-import com.google.android.gms.nearby.messages.NearbyPermissions;
 import com.google.android.gms.nearby.messages.Strategy;
 import com.google.android.gms.nearby.messages.SubscribeOptions;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.joooonho.SelectableRoundedImageView;
 import com.squareup.otto.Subscribe;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.models.beacon.BeaconResponse;
 import gallery.zicure.company.com.modellibrary.models.bloc.RequestCheckInWork;
 import gallery.zicure.company.com.modellibrary.models.profile.ProfileResponse;
 import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
@@ -123,7 +99,7 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
 
     //list menu
     private ArrayList<Item> arrMenu = null;
-    private RelativeLayout childHeaderDrawer,headerDrawer;
+    private RelativeLayout childHeaderDrawer;
     private Context context = this;
 
     /** Make: properties **/
@@ -133,7 +109,9 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     private VelocityTracker velocityTracker = null; // get speed for touch
     private String geoAddress, subscribe, url,currentToken;
 
-    //Nearby
+    // View Badge
+    private View viewBadge;
+    private BottomNavigationItemView itemView;
 
     public void onCreate(Bundle savedInstanceState) {
         initLanguageDevice();
@@ -141,6 +119,7 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         EventBusCart.getInstance().getEventBus().register(this);
         root = (FlyOutContainer) getLayoutInflater().inflate(R.layout.activity_main_menu, null);
 
+        ContextCart.getInstance().setContext(this);
         if (savedInstanceState == null) {
             setContentView(root);
             bindView();
@@ -154,25 +133,6 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
             setToolbar();
             setOnTouchView();
             loadData();
-        }
-    }
-
-    public void showBadge(){
-        int badge = BadgeController.getInstance(this).getCountBadge();
-        if (badge > 0) {
-            new Handler().post(new Runnable() {
-                @Override
-                public void run() {
-                    BottomNavigationMenuView bottomNavigationMenuView =
-                            (BottomNavigationMenuView) bottomBar.getChildAt(0);
-                    View v = bottomNavigationMenuView.getChildAt(1);
-                    BottomNavigationItemView itemView = (BottomNavigationItemView) v;
-
-                    View viewBadge = LayoutInflater.from(context)
-                            .inflate(R.layout.custom_notification_badge, bottomNavigationMenuView, false);
-                    itemView.addView(viewBadge);
-                }
-            });
         }
     }
 
@@ -194,13 +154,13 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         profileName = findViewById(R.id.profile_name);
         profileAddress = findViewById(R.id.profile_address);
         childHeaderDrawer = findViewById(R.id.child_header_drawer);
-        headerDrawer = findViewById(R.id.header_drawer);
         linearLayout = findViewById(R.id.liner_content);
         layoutMenu = findViewById(R.id.layout_menu);
         bottomBar = findViewById(R.id.bottom_navigation);
         bottomBar.setOnNavigationItemReselectedListener(this);
         bottomBar.setOnNavigationItemSelectedListener(this);
         BottomNavigationViewHelper.disableShiftMode(bottomBar);
+        createBadgeTab();
 
         btnScanQRCode = findViewById(R.id.tab_scan_qrcode);
         btnScanQRCode.setOnClickListener(new View.OnClickListener() {
@@ -229,6 +189,54 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
 
         //Subscribe nearby
         DetectBeacon.getInstance(this).setmMessage(new Message(subscribe.getBytes()));
+    }
+
+    private void createBadgeTab(){
+        BottomNavigationMenuView bottomNavigationMenuView =
+                (BottomNavigationMenuView) bottomBar.getChildAt(0);
+        View v = bottomNavigationMenuView.getChildAt(1);
+        itemView = (BottomNavigationItemView) v;
+        viewBadge = LayoutInflater.from(context)
+                .inflate(R.layout.custom_notification_badge, bottomNavigationMenuView, false);
+    }
+
+    private void checkDataNotify(){
+        if (getIntent().getExtras() != null) {
+            String value = getIntent().getExtras().getString("check_notification", null);
+            Log.d("Notification_Object", value);
+
+            if (value != null) {
+                BadgeController.getInstance(this).setCountBadge(Integer.parseInt(value));
+                if (itemView.getChildAt(2) == null){
+                    itemView.addView(viewBadge);
+                }
+            }
+        }else{
+            showBadge();
+        }
+    }
+
+    public void showBadge(){
+        int badge = BadgeController.getInstance(this).getCountBadge();
+        if (badge > 0) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (itemView.getChildAt(2) == null){
+                        itemView.addView(viewBadge);
+                    }
+                }
+            });
+        }
+    }
+
+    public void hideBadge() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                itemView.removeViewAt(2);
+            }
+        });
     }
 
     public void initRequestData(String language){
@@ -293,11 +301,9 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     @Override
     public void onResume() {
         super.onResume();
-//        BadgeController.getInstance(this).removeBadge();
-        showBadge();
+        checkDataNotify();
 
         connectLocation();
-
         Nearby.getMessagesClient(this).publish(DetectBeacon.getInstance(this).getmMessage());
 
         //Subscribe

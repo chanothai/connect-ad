@@ -5,12 +5,17 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.company.zicure.campusconnect.R;
 import com.company.zicure.campusconnect.activity.MainMenuActivity;
+import com.company.zicure.campusconnect.utility.ContextCart;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -39,7 +44,12 @@ public class MessagingService extends FirebaseMessagingService {
 
         //Check if messages contains a data payload.
         if (remoteMessage.getData().size() > 0){
-            Log.i(TAG, "Message data payload: " + remoteMessage.getData().get("function"));
+            Log.i(TAG, "Message data payload: " + remoteMessage.getData().get("check_notification"));
+            String remote = remoteMessage.getData().get("check_notification");
+            if (remote != null) {
+                int badge = Integer.parseInt(remote);
+                countBadgeOnForeground(badge);
+            }
         }
 
         //Check if message contains a notification payload.
@@ -53,32 +63,35 @@ public class MessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(String title, String body){
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        if (!title.equalsIgnoreCase("check notification")) {
+            Intent intent = new Intent(this, MainMenuActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                    PendingIntent.FLAG_ONE_SHOT);
 
-        PackageManager pm = getPackageManager();
-        Intent launcherIntent = pm.getLaunchIntentForPackage(getApplicationContext().getPackageName());
+//            PackageManager pm = getPackageManager();
+//            Intent launcherIntent = pm.getLaunchIntentForPackage(getApplicationContext().getPackageName());
+            Intent launcherIntent = new Intent(this, MainMenuActivity.class);
 
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(launcherIntent.getComponent());
-        stackBuilder.addNextIntent(launcherIntent);
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+            stackBuilder.addParentStack(launcherIntent.getComponent());
+            stackBuilder.addNextIntent(launcherIntent);
 
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this,"fcm_default_channel")
-                        .setContentIntent(pendingIntent)
-                        .setSmallIcon(R.drawable.logo_connect)
-                        .setContentTitle(title)
-                        .setContentText(body)
-                        .setPriority(NotificationCompat.PRIORITY_HIGH)
-                        .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                        .setDefaults(NotificationCompat.VISIBILITY_PUBLIC)
-                        .setAutoCancel(true);
+            NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(this,"fcm_default_channel")
+                            .setContentIntent(pendingIntent)
+                            .setSmallIcon(R.drawable.logo_connect)
+                            .setContentTitle(title)
+                            .setContentText(body)
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                            .setDefaults(NotificationCompat.VISIBILITY_PUBLIC)
+                            .setAutoCancel(true);
 
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(1, mBuilder.build());
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManager.notify(1, mBuilder.build());
+        }
     }
 
     private void countBadge(){
@@ -86,10 +99,21 @@ public class MessagingService extends FirebaseMessagingService {
         badge += 1;
 
         if (badge > 0) {
-            BadgeController.getInstance(this).setCountBadge(badge);
             ShortcutBadger.applyCount(this, badge);
         }else{
             ShortcutBadger.removeCount(this);
+        }
+    }
+
+    private void countBadgeOnForeground(int badge){
+        if (badge > 0){
+            BadgeController.getInstance(this).setCountBadge(badge);
+            ShortcutBadger.applyCount(this, badge);
+            ((MainMenuActivity) ContextCart.getInstance().getContext()).showBadge();
+        }else{
+            BadgeController.getInstance(this).setCountBadge(badge);
+            ShortcutBadger.applyCount(this, badge);
+            ((MainMenuActivity) ContextCart.getInstance().getContext()).hideBadge();
         }
     }
 }

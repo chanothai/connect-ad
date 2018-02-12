@@ -157,8 +157,6 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
     }
 
     private void downloadFile(String url, String userAgent, String contentDisposition, String mimetype) {
-        String[] currencyFile = url.split("/");
-
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
         request.setMimeType(mimetype);
 

@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -23,9 +24,7 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
 
     private PermissionRequest permissionRequest = null;
 
-    private String currentToken = null;
-    private String currentURL = null;
-    private String currentSubscribe = null;
+    private String currentToken = null, currentURL = null,currentSubscribe = null;
 
     ImageView imgLogo;
 
@@ -36,7 +35,6 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
         EventBusCart.getInstance().getEventBus().register(this);
 
         imgLogo = findViewById(R.id.img_logo);
-
         permissionRequest = new PermissionRequest(this);
     }
 
