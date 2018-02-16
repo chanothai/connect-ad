@@ -11,6 +11,9 @@ import android.webkit.WebView;
 import com.company.zicure.campusconnect.R;
 import com.company.zicure.campusconnect.fragment.AppMenuFragment;
 import com.company.zicure.campusconnect.utility.StackURLController;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
@@ -23,7 +26,7 @@ public class LoginActivity extends BaseActivity {
     /** Make: Properties **/
     private SharedPreferences sharedPref = null;
 
-    private String url = "http://connect05.pakgon.com/core/";
+    private String url = "http://connect05.pakgon.com/core/", subscribe;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,11 +48,16 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void store(String token, String url, String subscribeNoti){
+        this.subscribe = subscribeNoti;
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(getString(R.string.token_login), token);
+        editor.putString("token", token);
         editor.putString("web_url", url);
         editor.putString("subscribe_noti", subscribeNoti);
         editor.apply();
+
+        FirebaseApp.initializeApp(this);
+        FirebaseInstanceId.getInstance().getToken();
+        FirebaseMessaging.getInstance().subscribeToTopic(subscribe);
 
         openActivity(MainMenuActivity.class, true);
     }
@@ -84,5 +92,6 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(subscribe);
     }
 }

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.company.zicure.campusconnect.R;
 import com.company.zicure.campusconnect.network.ClientHttp;
+import com.company.zicure.campusconnect.service.BadgeController;
 import com.company.zicure.campusconnect.utility.PermissionKeyNumber;
 import com.company.zicure.campusconnect.utility.PermissionRequest;
 import com.company.zicure.campusconnect.utility.RestoreLogin;
@@ -24,7 +25,7 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
 
     private PermissionRequest permissionRequest = null;
 
-    private String currentToken = null, currentURL = null,currentSubscribe = null;
+    private String currentToken = null, currentURL = null,currentSubscribe = null, value = null;
 
     ImageView imgLogo;
 
@@ -36,6 +37,13 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
 
         imgLogo = findViewById(R.id.img_logo);
         permissionRequest = new PermissionRequest(this);
+
+        if (getIntent().getExtras() != null) {
+            value = getIntent().getExtras().getString("badge", null);
+            if (value != null) {
+                Log.d("Notification_Object", value);
+            }
+        }
     }
 
     @Override
@@ -91,7 +99,13 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
         currentSubscribe = RestoreLogin.getInstance(this).getSubscribe();
 
         if (currentSubscribe != null && currentToken != null && currentURL != null){
-            openActivity(MainMenuActivity.class, true);
+            if (value != null) {
+                Bundle bundle = new Bundle();
+                bundle.putString("check_notification", value);
+                openActivity(MainMenuActivity.class,bundle, true);
+            }else{
+                openActivity(MainMenuActivity.class, true);
+            }
         }else{
             openActivity(LoginActivity.class, true);
         }

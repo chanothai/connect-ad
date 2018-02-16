@@ -30,12 +30,6 @@ public class MessagingService extends FirebaseMessagingService {
     private String TAG = "tag_messaging";
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        countBadge();
-    }
-
-    @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         //Handle FCM messages here.
@@ -44,11 +38,18 @@ public class MessagingService extends FirebaseMessagingService {
 
         //Check if messages contains a data payload.
         if (remoteMessage.getData().size() > 0){
-            Log.i(TAG, "Message data payload: " + remoteMessage.getData().get("check_notification"));
-            String remote = remoteMessage.getData().get("check_notification");
+            String remote = remoteMessage.getData().get("badge");
+            String title = remoteMessage.getData().get("title");
+            String body = remoteMessage.getData().get("body");
+            Log.i(TAG, "Message data payload: " + remote + ", " + title +", "+ body);
+
             if (remote != null) {
                 int badge = Integer.parseInt(remote);
                 countBadgeOnForeground(badge);
+            }
+
+            if (!title.isEmpty() && !body.isEmpty()) {
+                sendNotification(title, body);
             }
         }
 
@@ -70,9 +71,8 @@ public class MessagingService extends FirebaseMessagingService {
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                     PendingIntent.FLAG_ONE_SHOT);
 
-//            PackageManager pm = getPackageManager();
-//            Intent launcherIntent = pm.getLaunchIntentForPackage(getApplicationContext().getPackageName());
-            Intent launcherIntent = new Intent(this, MainMenuActivity.class);
+            PackageManager pm = getPackageManager();
+            Intent launcherIntent = pm.getLaunchIntentForPackage(getApplicationContext().getPackageName());
 
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
             stackBuilder.addParentStack(launcherIntent.getComponent());
@@ -94,26 +94,17 @@ public class MessagingService extends FirebaseMessagingService {
         }
     }
 
-    private void countBadge(){
-        int badge = BadgeController.getInstance(this).getCountBadge();
-        badge += 1;
-
-        if (badge > 0) {
-            ShortcutBadger.applyCount(this, badge);
-        }else{
-            ShortcutBadger.removeCount(this);
-        }
-    }
-
     private void countBadgeOnForeground(int badge){
-        if (badge > 0){
-            BadgeController.getInstance(this).setCountBadge(badge);
-            ShortcutBadger.applyCount(this, badge);
-            ((MainMenuActivity) ContextCart.getInstance().getContext()).showBadge();
-        }else{
-            BadgeController.getInstance(this).setCountBadge(badge);
-            ShortcutBadger.applyCount(this, badge);
-            ((MainMenuActivity) ContextCart.getInstance().getContext()).hideBadge();
+        try {
+            if (badge > 0){
+                BadgeController.getInstance(this).setCountBadge(badge);
+                ((MainMenuActivity) ContextCart.getInstance().getContext()).showBadge();
+            }else{
+                BadgeController.getInstance(this).setCountBadge(badge);
+                ((MainMenuActivity) ContextCart.getInstance().getContext()).hideBadge();
+            }
+        }catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 }

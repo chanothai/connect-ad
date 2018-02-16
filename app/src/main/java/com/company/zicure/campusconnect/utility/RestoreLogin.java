@@ -33,7 +33,7 @@ public class RestoreLogin {
     }
 
     public String getRestoreToken(){
-        String token = pref.getString(context.getString(R.string.token_login), null);
+        String token = pref.getString("token", null);
         return token;
     }
 

@@ -1,5 +1,7 @@
 package com.company.zicure.campusconnect.interfaces;
 
+import com.company.zicure.campusconnect.network.request.ProfileRequest;
+
 import java.util.Map;
 
 import gallery.zicure.company.com.modellibrary.models.beacon.BeaconRequest;

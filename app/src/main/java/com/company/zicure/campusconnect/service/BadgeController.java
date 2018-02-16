@@ -41,6 +41,7 @@ public class BadgeController {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(BADGE_KEY, countBadge);
         editor.apply();
+        ShortcutBadger.applyCount(context, countBadge);
     }
 
     public void removeBadge(){

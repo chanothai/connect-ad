@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/b6734abe24af72cb6b1f75a28c80d03a/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ac2ce6027755bcf49442e70597bec0feb9064f68">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/41.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/org.glassfish/javax.annotation/10.0-b28/30eb3b3cc9cb0863a4edaea5a7575f8ace1b96ba/javax.annotation-10.0-b28.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="30eb3b3cc9cb0863a4edaea5a7575f8ace1b96ba">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/28.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/0aca3c9c1609c8e2519a776c517ac14b/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bcd0bcdef85b31a656af76e39c0c95ce70800772">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/22.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/library-3.3.3.aar/634757c892fe35022cebd87754c639e4/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7e7f4a5c0daaed9480dc47bf026ec62f0d685c35">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.3.1/19047bdb6a4fc00a44124f64ca98e88fc204e7e3/okhttp-3.3.1.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="19047bdb6a4fc00a44124f64ca98e88fc204e7e3">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/46.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="04cd0cacbedcb338f64665b88bad64d145325fbd">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.0.3/7d7f60c4783872861222166f6164215f8951c7b1/common-1.0.3.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7d7f60c4783872861222166f6164215f8951c7b1">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/58.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/ff2b3d6257e7652c00939be7f0334ff6/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9296d6f092fcdba4fafb6ac26546a39babdab46a">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.8.0.aar/8528eac5d52554afb1793776daad83a5/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c44026185adf61f12630db36ac6781481f559e7c">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.2.0.aar/4a4b7706b59e3bd9a406a677d4437513/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d4ce6303165f20650850673bd5891fbcca80caae">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/824061a2f3688a5838ac1b22109a4faf/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="122de0d704f76d2bb5cb9db66e00fe90a0a41e78">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/5b2c8c72f55ef0fc464b14d51e49a635/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="caa03787689212c10939f308a55a8dc8a3333ed2">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/42.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-11.8.0.aar/902ebc5e8a8a89c6169b05ca4c806806/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="541e0b6826726943a93e78613feaa4c6e7915e35">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/34b4fd94ab99ecd3b8851cf5e2721a9d/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="031cc16b7b6e77b3c050134ecab9fa5c2640a069">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.8.0/5ea7af56cc7c567ed9856d99efb30740e9b17ff/okio-1.8.0.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/61.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.21.aar/918ebd9de15bde0e6fc262ceeb090985/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="34cc5a7a8157e8e840d601b5236a7f495ab0e838">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/fingerprint-auth-1.0.1.aar/0f4d51b31e8c06facfae17898c8d3a9b/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1e6226a8404b0482b3133c9bbcbe3f64446a78f2">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/59f4ec2c3ffb1764d7497a83898f4fdd/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="cdebcd9e0580b35115f655f8dc8ed7a66a8ef0fc">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b5f3b54e08a9c544478f1aeb63b11ff2/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b432e82447a3af781e927b9ba0bbb9fe2a496d4a">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/43.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/8e05672d62a9d866179ddca5af5c34a0/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d2af2ef4d987d753f2e8ee2d1480ab964d5c7273">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/045e66d00bb40801f6aa47bb74103587/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="233d88c6f961d2a84758dfe27b7af61318190c7b">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/45.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.1.0/aa557d71ead91cbf26e0c316a0f593d168303309/converter-gson-2.1.0.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-location-11.8.0.aar/949708307483e7f1f4866374637d5f28/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f0f484b1a18c1676984dfea4e572ceffda2f3b78">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/ba63ed5c781ca21aca176c3aa0e32476/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fe3916317a699975bcce0cba2d13fd2d8cf88922">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.0.0/a2d487452376193fc8c103dd2b9bd5f2b1b44563/common-1.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/59.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/e56f087f1b7c93f60618385f8cb5a31a/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="42c9659c973e311ffdb645ed057e5053e0ab5c78">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/da02dc8af9e716ae4d6174223a0db970/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7cc5473b9cf4ea159a263cd477fb3ecb2987b96">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/51.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/03fe136559f4cbb0011ee908614d1c86/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ed6560f31a6a40b5965f5879d8f2eab1f68def05">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/39.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.2.1/2287494d4f5f9f3a9a2bb6980e3f32053721b315/core-3.2.1.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2287494d4f5f9f3a9a2bb6980e3f32053721b315">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/47.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/com.squareup/otto/1.3.8/cf615176cd1177edf71d3c9605f8dc148fede6be/otto-1.3.8.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="cf615176cd1177edf71d3c9605f8dc148fede6be">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/29.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/modellibrary/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="cd63bd1d0d162afa8e5c5c90e4e45c60b1a2ef10">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/62.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/cce9eff57fa115d36a07b0f1d4841314/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e6aeff19a2ce1eb896557be73cb9ceb56f8d1cf3">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/7474be976d2dafaf488764d67a0bb1ca/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="264ad23f9752aabecfa41115c52a25a023a08839">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/transition-27.0.2.aar/88ce67986d74f67ec0cd14e09d8bab5c/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a5fa2e3704f51b30b7b47e12a3a2909728799583">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/36.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/3e1fe5240141d1f21962957d1cf715cd/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="14bfdbf5594d4d7c320de20831849050788ab1e3">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/5af9ba3e9f4d5977fabee24863ea15a2/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5ad3911825107d8dd4b017fdecebfd23c08048dd">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/6c9b06f1711ce39b18e5e48a9ddf8cba/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="618f75fe11febf263e3234c7da7dc892232a5608">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/37.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/selectableroundedimageview-1.0.1.aar/1384f3fca63c6ffc7c8a1577df6ae1f6/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1b915694304bc4a4003b7e7b65577b4f0b514b06">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/30.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a559e582ee40eaa391cb77f3c9b04cd0/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/8924c5ec188dac63c38e3bb71e6fcf51/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="25c8cb628374f9a2d59ff9e1172753751e9a9f84">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/40.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.0/c4ba5371a29ac9b2ad6129b1d39ea38750043eff/gson-2.8.0.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/27.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/31.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/library-circular-1.1.0.aar/3a8a0e6a801eafe13ab982e5addb1937/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="92b3f2b3c9174fc475de2f7c509e874e633e1937">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/35.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/localizationactivity-1.2.2.aar/464e87080164424ac5879f507f6b6b62/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3da24fa4579e5eb746720252b6c4324f7b2b91ed">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/27.0.2/b9ef4342c934a1a8b107506273dc8061662a322/support-annotations-27.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0b9ef4342c934a1a8b107506273dc8061662a322">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/44.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/zxing-1.8.4.aar/bb0de1b16e9b4b0987674ac0d3c69f60/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="68ef1daf85c69fca8fddf7bbb947fc51cc9f8ca3">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/2de7cd8b95b7021b1d597f049bcb422055119f2c/retrofit-2.1.0.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/3.3.1/99ce730034c6f5aaed710d1e0e9df95e8714ed5f/logging-interceptor-3.3.1.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="99ce730034c6f5aaed710d1e0e9df95e8714ed5f">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/core-1.8.4.aar/f8dd8532c02a918797ff22fc4a7d358c/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="af8d42f1f020e936b8cd9f5cb6c75993194895a3">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/macintosh/.gradle/caches/transforms-1/files-1.1/waitingdots-0.2.0.aar/148692255d7531bb3204120d6e35be9c/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="23"
+        optimize="true"
+        revision="26.0.2"
+        sha1="cd83623b203ce6e77f4f1c7e38b295df89e0a6f3">
+        <dex dex="/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/transforms/preDex/connectcampus/release/3.jar" />
+    </item>
+
+</items>

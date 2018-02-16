@@ -40,5 +40,5 @@ ext {
     junitVersion = "4.12"
 
     versionName = "1.0.2"
-    versionCode = 10
+    versionCode = 11
 }

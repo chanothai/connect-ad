@@ -18,6 +18,7 @@ MERGED from [me.dm7.barcodescanner:core:1.8.4] /Users/macintosh/.gradle/caches/t
 MERGED from [com.google.firebase:firebase-messaging:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.8.0.aar/8528eac5d52554afb1793776daad83a5/AndroidManifest.xml:17:1-37:12
 MERGED from [com.google.android.gms:play-services-location:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-location-11.8.0.aar/949708307483e7f1f4866374637d5f28/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-nearby:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-11.8.0.aar/902ebc5e8a8a89c6169b05ca4c806806/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.firebase:firebase-crash:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.8.0.aar/4c622fde768238b7e7575229d64037a1/AndroidManifest.xml:17:1-27:12
 MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/c4436ef1737d6b8c378ddb8dd29cbc39/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/e56f087f1b7c93f60618385f8cb5a31a/AndroidManifest.xml:17:1-54:12
 MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/824061a2f3688a5838ac1b22109a4faf/AndroidManifest.xml:17:1-40:12
@@ -44,6 +45,7 @@ MERGED from [com.android.support:support-compat:27.0.2] /Users/macintosh/.gradle
 MERGED from [com.google.firebase:firebase-messaging-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-messaging-license-11.8.0.aar/6dc892234a0e882e70d114f224a8c3f1/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-location-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-location-license-11.8.0.aar/5ccac844b7128b732143a1d309f23814/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-nearby-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-license-11.8.0.aar/9cefb12a2845cc48cc3eee942b7d81e0/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-crash-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-license-11.8.0.aar/ae9b4ef8372d0146ab377ac02f2f7e84/AndroidManifest.xml:2:1-6:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/da02dc8af9e716ae4d6174223a0db970/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/b4675ad9c4f13b09da83bb42e8fc48d0/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/dfcad9cf039483aad9a9804220efb0b3/AndroidManifest.xml:2:1-6:12
@@ -73,6 +75,8 @@ INJECTED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey
 		ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
 ADDED from /Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/src/main/AndroidManifest.xml:6:5-67
+MERGED from [com.google.firebase:firebase-crash:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.8.0.aar/4c622fde768238b7e7575229d64037a1/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-crash:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.8.0.aar/4c622fde768238b7e7575229d64037a1/AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/e56f087f1b7c93f60618385f8cb5a31a/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/e56f087f1b7c93f60618385f8cb5a31a/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/824061a2f3688a5838ac1b22109a4faf/AndroidManifest.xml:23:5-67
@@ -141,6 +145,8 @@ MERGED from [com.google.android.gms:play-services-location:11.8.0] /Users/macint
 MERGED from [com.google.android.gms:play-services-location:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-location-11.8.0.aar/949708307483e7f1f4866374637d5f28/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-nearby:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-11.8.0.aar/902ebc5e8a8a89c6169b05ca4c806806/AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.gms:play-services-nearby:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-11.8.0.aar/902ebc5e8a8a89c6169b05ca4c806806/AndroidManifest.xml:9:5-20
+MERGED from [com.google.firebase:firebase-crash:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.8.0.aar/4c622fde768238b7e7575229d64037a1/AndroidManifest.xml:24:5-25:19
+MERGED from [com.google.firebase:firebase-crash:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.8.0.aar/4c622fde768238b7e7575229d64037a1/AndroidManifest.xml:24:5-25:19
 MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/c4436ef1737d6b8c378ddb8dd29cbc39/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/c4436ef1737d6b8c378ddb8dd29cbc39/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/e56f087f1b7c93f60618385f8cb5a31a/AndroidManifest.xml:27:5-52:19
@@ -171,6 +177,8 @@ MERGED from [com.google.android.gms:play-services-location-license:11.8.0] /User
 MERGED from [com.google.android.gms:play-services-location-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-location-license-11.8.0.aar/5ccac844b7128b732143a1d309f23814/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-nearby-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-license-11.8.0.aar/9cefb12a2845cc48cc3eee942b7d81e0/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-nearby-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-license-11.8.0.aar/9cefb12a2845cc48cc3eee942b7d81e0/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-crash-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-license-11.8.0.aar/ae9b4ef8372d0146ab377ac02f2f7e84/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-crash-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-license-11.8.0.aar/ae9b4ef8372d0146ab377ac02f2f7e84/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/b4675ad9c4f13b09da83bb42e8fc48d0/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/b4675ad9c4f13b09da83bb42e8fc48d0/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/dfcad9cf039483aad9a9804220efb0b3/AndroidManifest.xml:5:5-20
@@ -328,6 +336,8 @@ MERGED from [com.google.android.gms:play-services-location:11.8.0] /Users/macint
 MERGED from [com.google.android.gms:play-services-location:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-location-11.8.0.aar/949708307483e7f1f4866374637d5f28/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-nearby:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-11.8.0.aar/902ebc5e8a8a89c6169b05ca4c806806/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-nearby:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-11.8.0.aar/902ebc5e8a8a89c6169b05ca4c806806/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-crash:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.8.0.aar/4c622fde768238b7e7575229d64037a1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-crash:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.8.0.aar/4c622fde768238b7e7575229d64037a1/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/c4436ef1737d6b8c378ddb8dd29cbc39/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/c4436ef1737d6b8c378ddb8dd29cbc39/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/e56f087f1b7c93f60618385f8cb5a31a/AndroidManifest.xml:20:5-44
@@ -380,6 +390,8 @@ MERGED from [com.google.android.gms:play-services-location-license:11.8.0] /User
 MERGED from [com.google.android.gms:play-services-location-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-location-license-11.8.0.aar/5ccac844b7128b732143a1d309f23814/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-nearby-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-license-11.8.0.aar/9cefb12a2845cc48cc3eee942b7d81e0/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-nearby-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/play-services-nearby-license-11.8.0.aar/9cefb12a2845cc48cc3eee942b7d81e0/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-crash-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-license-11.8.0.aar/ae9b4ef8372d0146ab377ac02f2f7e84/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-crash-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-crash-license-11.8.0.aar/ae9b4ef8372d0146ab377ac02f2f7e84/AndroidManifest.xml:4:5-43
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/da02dc8af9e716ae4d6174223a0db970/AndroidManifest.xml:20:5-22:41
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/da02dc8af9e716ae4d6174223a0db970/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/macintosh/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/b4675ad9c4f13b09da83bb42e8fc48d0/AndroidManifest.xml:4:5-43

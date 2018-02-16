@@ -43,6 +43,7 @@ import com.company.zicure.campusconnect.fragment.AppMenuFragment;
 import com.company.zicure.campusconnect.modelview.Item;
 import com.company.zicure.campusconnect.nearby.BeaconModel;
 import com.company.zicure.campusconnect.nearby.DetectBeacon;
+import com.company.zicure.campusconnect.network.ClientHttp;
 import com.company.zicure.campusconnect.network.request.ProfileRequest;
 import com.company.zicure.campusconnect.service.BadgeController;
 import com.company.zicure.campusconnect.utility.ContextCart;
@@ -182,6 +183,8 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         loadData();
         initFireBase();
         StackURLController.getInstance().getStackURL().add(url);
+
+//        String urlTest = "file:///android_asset/index.html";
         if (currentToken != null && url != null && subscribe != null) {
             ModelCart.getInstance().getKeyModel().setToken(currentToken);
             initBloc(url, true);
@@ -202,11 +205,10 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
 
     private void checkDataNotify(){
         if (getIntent().getExtras() != null) {
-            String value = getIntent().getExtras().getString("check_notification", null);
-            Log.d("Notification_Object", value);
+            String badge = getIntent().getExtras().getString("badge", null);
+            Log.d("Notification_Object", badge);
 
-            if (value != null) {
-                BadgeController.getInstance(this).setCountBadge(Integer.parseInt(value));
+            if (badge != null) {
                 if (itemView.getChildAt(2) == null){
                     itemView.addView(viewBadge);
                 }
@@ -355,6 +357,9 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     public void onAfterLocaleChanged() {
         super.onAfterLocaleChanged();
         ProfileRequest profileRequest = new ProfileRequest(this);
+
+        ProfileRequest.Request request = new ProfileRequest.Request();
+        request.setAction("change language");
         profileRequest.requestProfile(ModelCart.getInstance().getKeyModel().getLanguage());
 
         initBloc(StackURLController.getInstance().getStackURL().get(StackURLController.getInstance().getStackURL().size() - 1), true);
@@ -412,7 +417,6 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     }
 
     /******************************************************************/
-
 
     /**** Slide Menu ***********/
     public void setSlideMenuAdapter(ProfileResponse.ProfileResult.ProfileData dataUser){
@@ -650,21 +654,21 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
                 break;
             }
             case R.id.item_noti: {
-                String urlNoti = "http://connect05.pakgon.com/core/Homes/noti";
+                String urlNoti = ClientHttp.urlIdentityServer + "/core/Homes/noti";
                 initBloc(urlNoti, true);
                 StackURLController.getInstance().resetStackUrl(url, urlNoti);
                 break;
             }
 
             case R.id.item_contact: {
-                String urlContact = "http://connect05.pakgon.com/core/Homes/contact";
+                String urlContact = ClientHttp.urlIdentityServer + "/core/Homes/contact";
                 initBloc(urlContact, true);
                 StackURLController.getInstance().resetStackUrl(url, urlContact);
                 break;
             }
 
             case R.id.item_profile: {
-                String urlContact = "http://connect05.pakgon.com/core/Profiles";
+                String urlContact = ClientHttp.urlIdentityServer + "/core/Profiles";
                 initBloc(urlContact, true);
                 StackURLController.getInstance().resetStackUrl(url, urlContact);
                 break;
@@ -685,21 +689,21 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
                 break;
             }
             case R.id.item_noti: {
-                String urlNoti = "http://connect05.pakgon.com/core/Homes/noti";
+                String urlNoti = ClientHttp.urlIdentityServer + "/core/Homes/noti";
                 initBloc(urlNoti, true);
                 StackURLController.getInstance().resetStackUrl(url, urlNoti);
                 break;
             }
 
             case R.id.item_contact: {
-                String urlContact = "http://connect05.pakgon.com/core/Homes/contact";
+                String urlContact = ClientHttp.urlIdentityServer + "/core/Homes/contact";
                 initBloc(urlContact, true);
                 StackURLController.getInstance().resetStackUrl(url, urlContact);
                 break;
             }
 
             case R.id.item_profile: {
-                String urlContact = "http://connect05.pakgon.com/core/Profiles";
+                String urlContact = ClientHttp.urlIdentityServer + "/core/Profiles";
                 initBloc(urlContact, true);
                 StackURLController.getInstance().resetStackUrl(url, urlContact);
                 break;

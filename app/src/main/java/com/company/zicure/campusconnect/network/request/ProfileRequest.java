@@ -1,8 +1,10 @@
 package com.company.zicure.campusconnect.network.request;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.company.zicure.campusconnect.network.ClientHttp;
+import com.google.gson.Gson;
 
 import gallery.zicure.company.com.modellibrary.models.profile.ProfileResponse;
 import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
@@ -22,6 +24,7 @@ public class ProfileRequest {
 
     public void requestProfile(String language){
         Call<ProfileResponse> callProfile = ClientHttp.getInstance(context).getService(language).callProfile();
+
         callProfile.enqueue(new Callback<ProfileResponse>() {
             @Override
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
@@ -37,5 +40,17 @@ public class ProfileRequest {
                 t.printStackTrace();
             }
         });
+    }
+
+    public static class Request {
+        private String action;
+
+        public String getAction() {
+            return action;
+        }
+
+        public void setAction(String action) {
+            this.action = action;
+        }
     }
 }

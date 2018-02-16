@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Connect</string>
+
     <string name="tab_home">หน้าหลัก</string>
     <string name="tab_alert">แจ้งเตือน</string>
     <string name="tab_contact">ติดต่อ</string>

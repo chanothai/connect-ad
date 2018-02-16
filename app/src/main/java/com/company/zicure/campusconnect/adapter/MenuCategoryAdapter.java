@@ -17,11 +17,13 @@ import com.company.zicure.campusconnect.activity.LoginActivity;
 import com.company.zicure.campusconnect.activity.MainMenuActivity;
 import com.company.zicure.campusconnect.customView.LabelView;
 import com.company.zicure.campusconnect.modelview.Item;
+import com.company.zicure.campusconnect.service.BadgeController;
 import com.company.zicure.campusconnect.utility.RestoreLogin;
 
 import java.util.List;
 
 import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
+import me.leolin.shortcutbadger.ShortcutBadger;
 
 
 /**
@@ -155,7 +157,7 @@ public class MenuCategoryAdapter extends BaseExpandableListAdapter{
                         public void onClick(View v) {
                             ((MainMenuActivity)context).openActivity(LoginActivity.class, true);
                             RestoreLogin.getInstance(context).clearAllData();
-
+                            BadgeController.getInstance(context).removeBadge();
                         }
                     });
                     return convertView;

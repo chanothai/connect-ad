@@ -29,7 +29,7 @@ public class ClientHttp {
     private Context context = null;
     private static ClientHttp me;
 
-    private String urlIdentityServer = "http://connect06.pakgon.com/";
+    public static String urlIdentityServer = "http://connect05.pakgon.com/";
     private String language = null;
     private final String LOGAPI = "API_RESPONSE";
     private String jsonStr;
