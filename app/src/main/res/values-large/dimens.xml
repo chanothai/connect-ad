@@ -3,6 +3,4 @@
     <dimen name="height_bloc">180dp</dimen>
     //icon
     <dimen name="icon_size_small">48dp</dimen>
-
-    <dimen name="height_rows">80dp</dimen>
 </resources>

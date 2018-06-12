@@ -1,1 +1,1 @@
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":10},"path":"app-connectcampus-debug.apk","properties":{"packageId":"com.company.zicure.campusconnect","split":"","minSdkVersion":"23"}}]
+[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":13,"versionName":"2","enabled":true,"outputFile":"app-connectcampus-debug.apk","fullName":"connectcampusDebug","baseName":"connectcampus-debug"},"path":"app-connectcampus-debug.apk","properties":{}}]
