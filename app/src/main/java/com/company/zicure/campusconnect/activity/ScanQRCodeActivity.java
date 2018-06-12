@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentTransaction;
 import com.company.zicure.campusconnect.R;
 import com.company.zicure.campusconnect.fragment.AddFriendFragment;
 
-import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
+import com.company.zicure.campusconnect.common.BaseActivity;
+import com.company.zicure.campusconnect.utility.VariableConnect;
 
 public class ScanQRCodeActivity extends BaseActivity {
 

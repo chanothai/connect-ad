@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/incremental/mergeConnectcampusDebugResources/merged.dir/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "/Users/macintosh/Desktop/project_connect/android/github/connect-ad/app/build/intermediates/incremental/mergeConnectcampusDebugResources/merged.dir/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/eb92eaec11279ffb1e0c4e27b35e5e95/res/values-en-rXC/values-en-rXC.xml",
+                    "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/be0d17e25c2beb19177a9582340fe067/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

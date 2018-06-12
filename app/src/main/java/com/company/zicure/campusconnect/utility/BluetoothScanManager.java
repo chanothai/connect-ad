@@ -5,8 +5,6 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.util.Log;
 
-import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
-
 /**
  * Created by Pakgon on 9/18/2017 AD.
  */

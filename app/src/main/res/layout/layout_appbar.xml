@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/appbar_layout"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    android:theme="@style/AppTheme.AppBarOverlay">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_scrollFlags="enterAlways"
-        android:background="@android:color/white">
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="enterAlways|snap"
+        android:background="@android:color/white"
+        app:popupTheme="@style/AppTheme.PopupOverlay" >
 
         <ImageView
             android:layout_width="?attr/actionBarSize"

@@ -1,9 +1,8 @@
 package com.company.zicure.campusconnect.modelview;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import gallery.zicure.company.com.modellibrary.models.profile.ProfileResponse;
+import com.company.zicure.campusconnect.models.profile.ProfileResponse;
 
 /**
  * Created by macintosh on 19/1/18.

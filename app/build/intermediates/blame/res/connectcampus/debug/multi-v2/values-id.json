@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/incremental/mergeConnectcampusDebugResources/merged.dir/values-id/values-id.xml",
+            "outputFile": "/Users/macintosh/Desktop/project_connect/android/github/connect-ad/app/build/intermediates/incremental/mergeConnectcampusDebugResources/merged.dir/values-id/values-id.xml",
             "map": [
                 {
-                    "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.2.0.aar/4a4b7706b59e3bd9a406a677d4437513/res/values-id/values-id.xml",
+                    "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.2.0.aar/00d6b2e0d2e0757853f3d3dbf7363aa1/res/values-id/values-id.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

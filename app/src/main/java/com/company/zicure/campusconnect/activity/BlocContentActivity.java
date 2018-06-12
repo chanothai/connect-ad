@@ -22,13 +22,13 @@ import com.company.zicure.campusconnect.fragment.AppMenuFragment;
 import com.company.zicure.campusconnect.network.ClientHttp;
 import com.squareup.otto.Subscribe;
 
-import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.models.bloc.RequestCheckInWork;
-import gallery.zicure.company.com.modellibrary.models.bloc.ResponseCheckinWork;
-import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
-import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
-import gallery.zicure.company.com.modellibrary.utilize.ToolbarManager;
-import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
+import com.company.zicure.campusconnect.common.BaseActivity;
+import com.company.zicure.campusconnect.models.bloc.RequestCheckInWork;
+import com.company.zicure.campusconnect.models.bloc.ResponseCheckinWork;
+import com.company.zicure.campusconnect.utility.EventBusCart;
+import com.company.zicure.campusconnect.utility.ModelCart;
+import com.company.zicure.campusconnect.utility.ToolbarManager;
+import com.company.zicure.campusconnect.utility.VariableConnect;
 
 public class BlocContentActivity extends BaseActivity {
     /** Make: View **/

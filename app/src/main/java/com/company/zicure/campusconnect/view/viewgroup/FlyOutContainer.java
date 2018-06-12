@@ -16,13 +16,11 @@ import com.company.zicure.campusconnect.R;
 public class FlyOutContainer extends LinearLayout {
 
 	// References to groups contained in this view.
-	private View menu;
-	private View content;
+	private View menu = null;
+	private View content = null;
 
 	//View
 	private FrameLayout layoutGhost = null;
-	private LinearLayout layoutMenu = null;
-	private FrameLayout controlSlide = null;
 	private CoordinatorLayout coordinatorLayout = null;
 
 
@@ -55,7 +53,6 @@ public class FlyOutContainer extends LinearLayout {
 
 	public FlyOutContainer(Context context) {
 		super(context);
-
 	}
 
 	@Override
@@ -66,11 +63,8 @@ public class FlyOutContainer extends LinearLayout {
 		this.content = this.getChildAt(1);
 
 		//bind view
-		controlSlide = content.findViewById(R.id.control_slide);
 		layoutGhost = content.findViewById(R.id.layout_ghost);
 		coordinatorLayout = content.findViewById(R.id.rootLayout);
-
-		layoutMenu = (LinearLayout) menu.findViewById(R.id.layout_menu);
 	}
 
 	@Override
@@ -78,17 +72,14 @@ public class FlyOutContainer extends LinearLayout {
 							int bottom) {
 		if (changed)
 			this.calculateChildDimensions();
-
 		this.menu.layout(left, top, right - menuMargin, bottom);
-
-		this.content.layout(left + this.currentContentOffset, top, right
-				+ this.currentContentOffset, bottom);
-
+		this.content.layout(left + this.currentContentOffset, top, right + this.currentContentOffset, bottom);
 	}
 
 	private void openning(){
 		menuCurrentState = MenuState.OPEN; //Content is opening
 		layoutGhost.setVisibility(View.VISIBLE);
+		this.menu.setVisibility(View.VISIBLE);
 	}
 
 	private void closing(){

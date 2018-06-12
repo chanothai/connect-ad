@@ -21,4 +21,7 @@
 
     //icon
     <dimen name="icon_size_small">24dp</dimen>
+
+    <dimen name="height_rows">38dp</dimen>
+    <dimen name="height_head_rows">64dp</dimen>
 </resources>

@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="@dimen/height_rows"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_head_rows"
     android:background="@android:color/black">
+
 
     <com.company.zicure.campusconnect.customView.LabelView
         android:id="@+id/text_child_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="start|end"
-        android:textSize="@dimen/size_text_medium"
+        android:padding="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_centerVertical="true"
+        android:gravity="center|start"
+        android:text="Home"
         android:textColor="@android:color/white"
-        android:padding="@dimen/icon_size_small"/>
+        android:textSize="@dimen/size_text_medium" />
 </RelativeLayout>

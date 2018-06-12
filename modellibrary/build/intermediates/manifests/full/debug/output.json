@@ -1,1 +1,1 @@
-[{"outputType":{"type":"MERGED_MANIFESTS"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":11},"path":"AndroidManifest.xml","properties":{"packageId":"gallery.zicure.company.com.modellibrary","split":""}}]
+[{"outputType":{"type":"MERGED_MANIFESTS"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":13,"versionName":"2","enabled":true,"outputFile":"modellibrary-debug.aar","fullName":"debug","baseName":"debug"},"path":"AndroidManifest.xml","properties":{"packageId":"gallery.zicure.company.com.modellibrary","split":""}}]

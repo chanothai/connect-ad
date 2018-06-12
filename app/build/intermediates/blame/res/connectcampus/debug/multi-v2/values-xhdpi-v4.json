@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macintosh/Desktop/project_connect/Store_project/registerkey/app/build/intermediates/incremental/mergeConnectcampusDebugResources/merged.dir/values-xhdpi-v4/values-xhdpi-v4.xml",
+            "outputFile": "/Users/macintosh/Desktop/project_connect/android/github/connect-ad/app/build/intermediates/incremental/mergeConnectcampusDebugResources/merged.dir/values-xhdpi-v4/values-xhdpi-v4.xml",
             "map": [
                 {
-                    "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/core-1.8.4.aar/f8dd8532c02a918797ff22fc4a7d358c/res/values-xhdpi-v4/values-xhdpi-v4.xml",
+                    "source": "/Users/macintosh/.gradle/caches/transforms-1/files-1.1/core-1.8.4.aar/f412355ab33bb8b4faed6a552de5e311/res/values-xhdpi-v4/values-xhdpi-v4.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

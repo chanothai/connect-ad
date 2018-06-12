@@ -2,15 +2,13 @@ package com.company.zicure.campusconnect.fragment;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +18,6 @@ import android.webkit.JavascriptInterface;
 import android.webkit.URLUtil;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -30,31 +26,26 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.company.zicure.campusconnect.R;
-import com.company.zicure.campusconnect.activity.BlocContentActivity;
 import com.company.zicure.campusconnect.activity.LoginActivity;
-import com.company.zicure.campusconnect.activity.MainMenuActivity;
 import com.company.zicure.campusconnect.nearby.DetectBeacon;
-import com.company.zicure.campusconnect.utility.ConstanceURL;
+import com.company.zicure.campusconnect.network.ClientHttp;
 import com.company.zicure.campusconnect.utility.StackURLController;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
+import com.company.zicure.campusconnect.utility.ModelCart;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AppMenuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+//commu-uat.connect.pakgon.com
+    //connect-uat.pakgon.com
 public class AppMenuFragment extends Fragment implements DownloadListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,7 +67,6 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
     public Uri mCapturedImageURI = null;
 
     private String TAG = "TextFromWeb";
-    private String JAVASCRIPT_OBJ = "javascript_obj";
 
     public AppMenuFragment() {
         // Required empty public constructor
@@ -118,6 +108,11 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         return root;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
     private void bindView(View root) {
         webView = root.findViewById(R.id.appView);
         progressBarLoading = root.findViewById(R.id.progress_bar_webview);
@@ -134,17 +129,38 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         }
     }
 
+    private void checkSession() {
+        if (StackURLController.getInstance().getStackURL().size() == 4) {
+            try{
+                String[] splitURL = StackURLController.getInstance().getStackURL().get(3).split("/users");
+                if (splitURL[0].equalsIgnoreCase(ClientHttp.URL_OAUTH) && ModelCart.getInstance().getKeyModel().getToken() != null) {
+                    url = "http://connect-uat.pakgon.com/users/reautorize";
+                    setWebView();
+                    StackURLController.getInstance().getStackURL().clear();
+                    StackURLController.getInstance().getStackURL().add(splitURL[0]);
+                }
+            }catch (NullPointerException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void setWebView(){
         webView.setWebViewClient(new AppBrowser());
-        webView.setWebChromeClient(new ChromeClient());
+        webView.setWebChromeClient(new AppBrowserChrome());
         webView.setVerticalScrollBarEnabled(true);
         webView.setClickable(true);
         webView.requestFocus(View.FOCUS_DOWN);
+
         webSettings = webView.getSettings();
+        webView.setScrollY(webView.getScrollY() - 10);
 
         // improve webView performance
+        webSettings.setAppCacheEnabled(false);
         webSettings.setJavaScriptEnabled(true);
-        webView.addJavascriptInterface(new JavaScriptInterface(), JAVASCRIPT_OBJ);
+
+        webView.addJavascriptInterface(new JavaScriptInterface(), "Login");
+        webView.addJavascriptInterface(new JavaScriptInterface(), "Beacon");
 
         webView.loadUrl(url, getHeader());
     }
@@ -180,6 +196,59 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         downloadFile(url, userAgent, contentDisposition, mimetype);
     }
 
+    public class AppBrowserChrome extends WebChromeClient {
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            layoutProgress.setVisibility(View.VISIBLE);
+            progressBarLoading.setProgress(newProgress);
+
+            if (newProgress == 100){
+                layoutProgress.setVisibility(View.GONE);
+            }
+
+            super.onProgressChanged(view, newProgress);
+        }
+
+        @Override
+        public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
+            mUploadMesssage = filePathCallback;
+
+            File imageStoragePath = new File(
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                    "Connect"
+            );
+            if (!imageStoragePath.exists()) {
+                imageStoragePath.mkdirs();
+            }
+
+            try {
+                File file = File.createTempFile(String.valueOf(System.currentTimeMillis()), ".jpg", imageStoragePath);
+                mCapturedImageURI = Uri.fromFile(file);
+
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturedImageURI);
+                }
+
+                Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
+                contentSelectionIntent.setType("image/*");
+
+                Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
+                chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
+                chooserIntent.putExtra(Intent.EXTRA_TITLE, "Image Chooser");
+                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] { takePictureIntent });
+
+                startActivityForResult(chooserIntent, 2500);
+                return true;
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                return false;
+            }
+        }
+    }
+
     public class AppBrowser extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -194,12 +263,6 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
             super.onPageFinished(view, url);
             webView.clearCache(true);
             webView.setEnabled(view.canGoBack());
-
-            if (url.equalsIgnoreCase(ConstanceURL.URL_LOGIN) || url.equalsIgnoreCase(ConstanceURL.URL_VERIFY)){
-                injectJavaScriptFunction();
-            }else{
-                injectJavaScriptBeaconData();
-            }
 
             if (!StackURLController.getInstance().getStackURL().get(0).equalsIgnoreCase(url)){
                 if (webviewState) {
@@ -216,46 +279,8 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
             }
 
             Log.d("STACK_URL", StackURLController.getInstance().getStackURL().toString());
-        }
-    }
 
-    private void injectJavaScriptFunction(){
-        StringBuilder script = new StringBuilder();
-        script.append("javascript: ");
-//        script.append("window.androidObj.textToAndroid = function(message) { ");
-//        script.append(JAVASCRIPT_OBJ + ".textFromWeb(message) }");
-        script.append("class Login { ");
-        script.append("static onLogin(arg1, arg2, arg3) { ");
-        script.append(JAVASCRIPT_OBJ + ".textFromLogin(arg1, arg2, arg3) }}");
-
-        Log.d(TAG, script.toString());
-
-        webView.loadUrl(script.toString());
-    }
-
-    private void injectJavaScriptBeaconData(){
-        StringBuilder script = new StringBuilder();
-        script.append("javascript: ");
-        script.append("class Beacon { ");
-        script.append("static getData() { ");
-        script.append(JAVASCRIPT_OBJ + ".sendData() }}");
-
-        Log.d(TAG, script.toString());
-
-        webView.loadUrl(script.toString());
-    }
-
-    public class ChromeClient extends WebChromeClient {
-        @Override
-        public void onProgressChanged(WebView view, int newProgress) {
-            layoutProgress.setVisibility(View.VISIBLE);
-            progressBarLoading.setProgress(newProgress);
-
-            if (newProgress == 100){
-                layoutProgress.setVisibility(View.GONE);
-            }
-
-            super.onProgressChanged(view, newProgress);
+            checkSession();
         }
     }
 
@@ -266,7 +291,7 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         }
 
         @JavascriptInterface
-        public void textFromLogin(final String token, final String url, final String subscribeNoti){
+        public void onLogin(final String token, final String url, final String subscribeNoti){
             Log.d("TextFromWeb", token + url+ subscribeNoti);
             webView.post(new Runnable() {
                 @Override
@@ -277,7 +302,7 @@ public class AppMenuFragment extends Fragment implements DownloadListener{
         }
 
         @JavascriptInterface
-        public void sendData(){
+        public void getData(){
             String beacon = new Gson().toJson(DetectBeacon.getInstance(getContext()).getStackBeacon());
             final StringBuilder script = new StringBuilder();
             Log.d("TOKEN_USER", ModelCart.getInstance().getKeyModel().getToken());

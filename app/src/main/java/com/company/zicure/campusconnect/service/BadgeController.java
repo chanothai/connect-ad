@@ -3,7 +3,7 @@ package com.company.zicure.campusconnect.service;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
+import com.company.zicure.campusconnect.utility.VariableConnect;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
 /**

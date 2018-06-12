@@ -6,7 +6,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
-import android.os.Handler;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
@@ -43,17 +42,19 @@ import com.company.zicure.campusconnect.fragment.AppMenuFragment;
 import com.company.zicure.campusconnect.modelview.Item;
 import com.company.zicure.campusconnect.nearby.BeaconModel;
 import com.company.zicure.campusconnect.nearby.DetectBeacon;
+import com.company.zicure.campusconnect.nearby.SubscribeObtionModel;
 import com.company.zicure.campusconnect.network.ClientHttp;
 import com.company.zicure.campusconnect.network.request.ProfileRequest;
 import com.company.zicure.campusconnect.service.BadgeController;
 import com.company.zicure.campusconnect.utility.ContextCart;
 import com.company.zicure.campusconnect.utility.PermissionKeyNumber;
-import com.company.zicure.campusconnect.utility.RestoreLogin;
+import com.company.zicure.campusconnect.utility.SharedPreference;
 import com.company.zicure.campusconnect.utility.StackURLController;
 import com.company.zicure.campusconnect.view.viewgroup.FlyOutContainer;
 import com.google.android.gms.nearby.Nearby;
-import com.google.android.gms.nearby.messages.Message;
+import com.google.android.gms.nearby.messages.MessageListener;
 import com.google.android.gms.nearby.messages.Strategy;
+import com.google.android.gms.nearby.messages.SubscribeCallback;
 import com.google.android.gms.nearby.messages.SubscribeOptions;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -66,14 +67,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.models.bloc.RequestCheckInWork;
-import gallery.zicure.company.com.modellibrary.models.profile.ProfileResponse;
-import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
-import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
-import gallery.zicure.company.com.modellibrary.utilize.ResizeScreen;
-import gallery.zicure.company.com.modellibrary.utilize.ToolbarManager;
-import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
+import com.company.zicure.campusconnect.common.BaseActivity;
+import com.company.zicure.campusconnect.models.bloc.RequestCheckInWork;
+import com.company.zicure.campusconnect.models.profile.ProfileResponse;
+import com.company.zicure.campusconnect.utility.EventBusCart;
+import com.company.zicure.campusconnect.utility.ModelCart;
+import com.company.zicure.campusconnect.utility.ResizeScreen;
+import com.company.zicure.campusconnect.utility.ToolbarManager;
+import com.company.zicure.campusconnect.utility.VariableConnect;
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
 import io.nlopez.smartlocation.SmartLocation;
 import io.nlopez.smartlocation.location.config.LocationAccuracy;
@@ -110,6 +111,9 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     private VelocityTracker velocityTracker = null; // get speed for touch
     private String geoAddress, subscribe, url,currentToken;
 
+    public SubscribeOptions subscribeOptions = null;
+    private MessageListener messageListener = null;
+
     // View Badge
     private View viewBadge;
     private BottomNavigationItemView itemView;
@@ -117,7 +121,11 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     public void onCreate(Bundle savedInstanceState) {
         initLanguageDevice();
         super.onCreate(savedInstanceState);
-        EventBusCart.getInstance().getEventBus().register(this);
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            EventBusCart.getInstance().getEventBus().register(this);
+        }
+
         root = (FlyOutContainer) getLayoutInflater().inflate(R.layout.activity_main_menu, null);
 
         ContextCart.getInstance().setContext(this);
@@ -127,7 +135,6 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
             setToolbar();
             setOnTouchView();
             initParameter();
-            initRequestData(Locale.getDefault().getLanguage());
         }else{
             setContentView(root);
             bindView();
@@ -173,10 +180,10 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     }
 
     private void loadData(){
-        currentToken = RestoreLogin.getInstance(this).getRestoreToken();
+        currentToken = SharedPreference.getInstance(this).getRestoreToken();
         Log.d("TOKEN_USER", currentToken);
-        url = RestoreLogin.getInstance(this).getURL();
-        subscribe = RestoreLogin.getInstance(this).getSubscribe();
+        url = SharedPreference.getInstance(this).getURL();
+        subscribe = SharedPreference.getInstance(this).getSubscribe();
     }
 
     private void initParameter() {
@@ -184,14 +191,12 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         initFireBase();
         StackURLController.getInstance().getStackURL().add(url);
 
-//        String urlTest = "file:///android_asset/index.html";
         if (currentToken != null && url != null && subscribe != null) {
             ModelCart.getInstance().getKeyModel().setToken(currentToken);
             initBloc(url, true);
         }
 
-        //Subscribe nearby
-        DetectBeacon.getInstance(this).setmMessage(new Message(subscribe.getBytes()));
+        subscribe();
     }
 
     private void createBadgeTab(){
@@ -206,9 +211,8 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     private void checkDataNotify(){
         if (getIntent().getExtras() != null) {
             String badge = getIntent().getExtras().getString("badge", null);
-            Log.d("Notification_Object", badge);
-
             if (badge != null) {
+                BadgeController.getInstance(this).setCountBadge(Integer.parseInt(badge));
                 if (itemView.getChildAt(2) == null){
                     itemView.addView(viewBadge);
                 }
@@ -236,13 +240,14 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                itemView.removeViewAt(2);
+                if (itemView.getChildAt(2) != null) {
+                    itemView.removeViewAt(2);
+                }
             }
         });
     }
 
     public void initRequestData(String language){
-        showLoadingDialog();
         //init language
         ModelCart.getInstance().getKeyModel().setLanguage(language);
         ProfileRequest profileRequest = new ProfileRequest(this);
@@ -300,18 +305,42 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         return result;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        checkDataNotify();
-
-        connectLocation();
-        Nearby.getMessagesClient(this).publish(DetectBeacon.getInstance(this).getmMessage());
-
+    private void subscribe(){
         //Subscribe
         SubscribeOptions subscribeOptions = new SubscribeOptions.Builder()
                 .setStrategy(Strategy.BLE_ONLY).build();
-        Nearby.getMessagesClient(this).subscribe(DetectBeacon.getInstance(this), subscribeOptions);
+
+        if (messageListener == null) {
+            messageListener = DetectBeacon.getInstance(this);
+        }
+
+        final SubscribeOptions options = new SubscribeOptions.Builder()
+                .setCallback(new SubscribeCallback() {
+                    @Override
+                    public void onExpired() {
+                        super.onExpired();
+                        Log.i("NearbyScan", "No longer subscribing");
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                DetectBeacon.getInstance(context).setStackBeacon(new ArrayList<BeaconModel>());
+                                Nearby.getMessagesClient(context).subscribe(messageListener, SubscribeObtionModel.getInstance().getOptions());
+                            }
+                        });
+                    }
+                }).build();
+
+
+        SubscribeObtionModel.getInstance().setOptions(options);
+        Nearby.getMessagesClient(this).subscribe(messageListener,options);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initRequestData(Locale.getDefault().getLanguage());
+        checkDataNotify();
+        connectLocation();
     }
 
     private void connectLocation(){
@@ -362,7 +391,8 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         request.setAction("change language");
         profileRequest.requestProfile(ModelCart.getInstance().getKeyModel().getLanguage());
 
-        initBloc(StackURLController.getInstance().getStackURL().get(StackURLController.getInstance().getStackURL().size() - 1), true);
+        String url = StackURLController.getInstance().getStackURL().get(StackURLController.getInstance().getStackURL().size() - 1);
+        initBloc(url, true);
     }
 
     /******* OnLocationUpdate ******************/
@@ -421,7 +451,7 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     /**** Slide Menu ***********/
     public void setSlideMenuAdapter(ProfileResponse.ProfileResult.ProfileData dataUser){
         String pathImg = dataUser.getDetail().getImgPath();
-        Glide.with(this)
+        Glide.with(context.getApplicationContext())
                 .load(pathImg)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
@@ -467,8 +497,9 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 if (groupPosition == 1){
                     return true;
+                }else{
+                    return false;
                 }
-                return false;
             }
         });
     }
@@ -583,11 +614,15 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (Build.VERSION.SDK_INT >= 24) {
+            EventBusCart.getInstance().getEventBus().unregister(this);
+        }
+
+//        Nearby.getMessagesClient(this).unpublish(DetectBeacon.getInstance(this).getmMessage());
+        Nearby.getMessagesClient(this).unsubscribe(DetectBeacon.getInstance(this));
+
         //Subscribe firebase
         FirebaseMessaging.getInstance().unsubscribeFromTopic(subscribe);
-        EventBusCart.getInstance().getEventBus().unregister(this);
-        Nearby.getMessagesClient(this).unpublish(DetectBeacon.getInstance(this).getmMessage());
-        Nearby.getMessagesClient(this).unsubscribe(DetectBeacon.getInstance(this));
     }
 
     @Override
@@ -595,10 +630,6 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (keyCode) {
                 case KeyEvent.KEYCODE_BACK: {
-//                    webView = AppMenuFragment.webView;
-//                    if (webView != null){
-//                        webView.goBack();
-//                    }
 
                     if (StackURLController.getInstance().getStackURL().size() > 1) {
                         int countStack = StackURLController.getInstance().getStackURL().size() - 2;
@@ -654,21 +685,27 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
                 break;
             }
             case R.id.item_noti: {
-                String urlNoti = ClientHttp.urlIdentityServer + "/core/Homes/noti";
+                String urlNoti = "http://commu-uat.connect.pakgon.com/Notis/notiindex";
                 initBloc(urlNoti, true);
                 StackURLController.getInstance().resetStackUrl(url, urlNoti);
+
+                //badge
+                if (itemView != null) {
+                    this.hideBadge();
+                    BadgeController.getInstance(context).removeBadge();
+                }
                 break;
             }
 
             case R.id.item_contact: {
-                String urlContact = ClientHttp.urlIdentityServer + "/core/Homes/contact";
+                String urlContact = ClientHttp.URL_SERVER + "/core/Homes/contact";
                 initBloc(urlContact, true);
                 StackURLController.getInstance().resetStackUrl(url, urlContact);
                 break;
             }
 
             case R.id.item_profile: {
-                String urlContact = ClientHttp.urlIdentityServer + "/core/Profiles";
+                String urlContact = ClientHttp.URL_SERVER + "/core/Profiles";
                 initBloc(urlContact, true);
                 StackURLController.getInstance().resetStackUrl(url, urlContact);
                 break;
@@ -689,21 +726,28 @@ public class MainMenuActivity extends BaseActivity implements OnLocationUpdatedL
                 break;
             }
             case R.id.item_noti: {
-                String urlNoti = ClientHttp.urlIdentityServer + "/core/Homes/noti";
+                String urlNoti = "http://commu-uat.connect.pakgon.com/Notis/notiindex";
                 initBloc(urlNoti, true);
                 StackURLController.getInstance().resetStackUrl(url, urlNoti);
+
+                //badge
+                if (itemView != null) {
+                    this.hideBadge();
+                    BadgeController.getInstance(context).removeBadge();
+                }
+
                 break;
             }
 
             case R.id.item_contact: {
-                String urlContact = ClientHttp.urlIdentityServer + "/core/Homes/contact";
+                String urlContact = ClientHttp.URL_SERVER + "/core/Homes/contact";
                 initBloc(urlContact, true);
                 StackURLController.getInstance().resetStackUrl(url, urlContact);
                 break;
             }
 
             case R.id.item_profile: {
-                String urlContact = ClientHttp.urlIdentityServer + "/core/Profiles";
+                String urlContact = ClientHttp.URL_SERVER + "/core/Profiles";
                 initBloc(urlContact, true);
                 StackURLController.getInstance().resetStackUrl(url, urlContact);
                 break;

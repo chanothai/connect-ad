@@ -5,20 +5,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.KeyEvent;
-import android.webkit.WebView;
 
 import com.company.zicure.campusconnect.R;
 import com.company.zicure.campusconnect.fragment.AppMenuFragment;
+import com.company.zicure.campusconnect.network.ClientHttp;
 import com.company.zicure.campusconnect.utility.StackURLController;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.messaging.FirebaseMessaging;
 
-import java.util.ArrayList;
-
-import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
+import com.company.zicure.campusconnect.common.BaseActivity;
+import com.company.zicure.campusconnect.utility.VariableConnect;
 
 public class LoginActivity extends BaseActivity {
     /** Make: View **/
@@ -26,13 +20,12 @@ public class LoginActivity extends BaseActivity {
     /** Make: Properties **/
     private SharedPreferences sharedPref = null;
 
-    private String url = "http://connect05.pakgon.com/core/", subscribe;
+    private String url = ClientHttp.URL_SIGNIN;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         if (savedInstanceState == null){
             bindView();
             sharedPref = getSharedPreferences(VariableConnect.keyFile, Context.MODE_PRIVATE);
@@ -48,16 +41,11 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void store(String token, String url, String subscribeNoti){
-        this.subscribe = subscribeNoti;
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("token", token);
         editor.putString("web_url", url);
         editor.putString("subscribe_noti", subscribeNoti);
         editor.apply();
-
-        FirebaseApp.initializeApp(this);
-        FirebaseInstanceId.getInstance().getToken();
-        FirebaseMessaging.getInstance().subscribeToTopic(subscribe);
 
         openActivity(MainMenuActivity.class, true);
     }
@@ -80,18 +68,10 @@ public class LoginActivity extends BaseActivity {
         }else{
             super.onBackPressed();
         }
-
-//        if (AppMenuFragment.webView != null){
-//            if (AppMenuFragment.webView.canGoBack()){
-//                AppMenuFragment.webView.goBack();
-//            }else{
-//                super.onBackPressed();
-//            }
-//        }
     }
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        FirebaseMessaging.getInstance().unsubscribeFromTopic(subscribe);
+
     }
 }

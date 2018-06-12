@@ -4,18 +4,13 @@ package com.company.zicure.campusconnect.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.company.zicure.campusconnect.R;
-import com.company.zicure.campusconnect.network.ClientHttp;
-import com.google.gson.Gson;
 import com.google.zxing.Result;
 
-import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 /**

@@ -1,16 +1,14 @@
 package com.company.zicure.campusconnect.interfaces;
 
-import com.company.zicure.campusconnect.network.request.ProfileRequest;
-
 import java.util.Map;
 
-import gallery.zicure.company.com.modellibrary.models.beacon.BeaconRequest;
-import gallery.zicure.company.com.modellibrary.models.beacon.BeaconResponse;
-import gallery.zicure.company.com.modellibrary.models.bloc.RequestCheckInWork;
-import gallery.zicure.company.com.modellibrary.models.bloc.ResponseBlocUser;
-import gallery.zicure.company.com.modellibrary.models.bloc.ResponseCheckinWork;
+import com.company.zicure.campusconnect.models.beacon.BeaconRequest;
+import com.company.zicure.campusconnect.models.beacon.BeaconResponse;
+import com.company.zicure.campusconnect.models.bloc.RequestCheckInWork;
+import com.company.zicure.campusconnect.models.bloc.ResponseBlocUser;
+import com.company.zicure.campusconnect.models.bloc.ResponseCheckinWork;
 
-import gallery.zicure.company.com.modellibrary.models.profile.ProfileResponse;
+import com.company.zicure.campusconnect.models.profile.ProfileResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;

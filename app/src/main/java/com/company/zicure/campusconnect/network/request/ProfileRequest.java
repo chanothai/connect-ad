@@ -1,13 +1,11 @@
 package com.company.zicure.campusconnect.network.request;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.company.zicure.campusconnect.network.ClientHttp;
-import com.google.gson.Gson;
 
-import gallery.zicure.company.com.modellibrary.models.profile.ProfileResponse;
-import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
+import com.company.zicure.campusconnect.models.profile.ProfileResponse;
+import com.company.zicure.campusconnect.utility.EventBusCart;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

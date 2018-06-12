@@ -24,7 +24,6 @@ public class DetectBeacon extends MessageListener {
 
     private BeaconModel model = null;
     private ArrayList<BeaconModel> stackBeacon;
-    private Message mMessage = null;
 
     public DetectBeacon(Context context) {
         this.context = context;
@@ -48,7 +47,6 @@ public class DetectBeacon extends MessageListener {
 
     @Override
     public void onFound(Message message) {
-        super.onFound(message);
         body = new String(message.getContent());
         result = new String(body.getBytes(Charset.forName("UTF-8")));
 
@@ -56,12 +54,11 @@ public class DetectBeacon extends MessageListener {
         model.setDevice(result);
         stackBeacon.add(model);
 
-        Log.d(TAG, new Gson().toJson(stackBeacon));
+        Log.d(TAG + " Found", new Gson().toJson(stackBeacon));
     }
 
     @Override
     public void onLost(Message message) {
-        super.onLost(message);
         body = new String(message.getContent());
         result = new String(body.getBytes(Charset.forName("UTF-8")));
 
@@ -77,7 +74,6 @@ public class DetectBeacon extends MessageListener {
 
     @Override
     public void onDistanceChanged(Message message, Distance distance) {
-        super.onDistanceChanged(message, distance);
         String content = new String(message.getContent());
         String device = new String(content.getBytes(Charset.forName("UTF-8")));
 
@@ -90,7 +86,6 @@ public class DetectBeacon extends MessageListener {
 
     @Override
     public void onBleSignalChanged(Message message, BleSignal bleSignal) {
-        super.onBleSignalChanged(message, bleSignal);
         String content = new String(message.getContent());
         String device = new String(content.getBytes(Charset.forName("UTF-8")));
 
@@ -99,13 +94,5 @@ public class DetectBeacon extends MessageListener {
                 stackBeacon.get(i).setRssi(Integer.toString(bleSignal.getRssi()));
             }
         }
-    }
-
-    public Message getmMessage() {
-        return mMessage;
-    }
-
-    public void setmMessage(Message mMessage) {
-        this.mMessage = mMessage;
     }
 }

@@ -71,13 +71,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/connectcampus/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/connectcampus/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/connectcampus/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testConnectcampus/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testConnectcampus/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testConnectcampus/assets" type="java-test-resource" />
@@ -85,6 +78,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testConnectcampus/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testConnectcampus/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testConnectcampus/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestConnectcampus/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/assets" type="java-resource" />
@@ -134,6 +134,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
@@ -141,79 +142,77 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/shaders" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/splits-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/reports" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="me.leolin:ShortcutBadger-1.1.21" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-crash-11.8.0" level="project" />
-    <orderEntry type="library" name="com.android.support:animated-vector-drawable-27.0.2" level="project" />
-    <orderEntry type="library" name="com.google.android.gms:play-services-nearby-license-11.8.0" level="project" />
-    <orderEntry type="library" name="com.google.code.gson:gson:2.8.0@jar" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-iid-11.8.0" level="project" />
-    <orderEntry type="library" name="com.squareup.okio:okio:1.8.0@jar" level="project" />
-    <orderEntry type="library" name="com.joooonho:selectableroundedimageview-1.0.1" level="project" />
-    <orderEntry type="library" name="com.google.android.gms:play-services-base-license-11.8.0" level="project" />
-    <orderEntry type="library" name="com.squareup.retrofit2:retrofit:2.1.0@jar" level="project" />
-    <orderEntry type="library" name="io.nlopez.smartlocation:library-3.3.3" level="project" />
-    <orderEntry type="library" name="com.google.android.gms:play-services-basement-license-11.8.0" level="project" />
-    <orderEntry type="library" name="com.android.support:customtabs-27.0.2" level="project" />
-    <orderEntry type="library" name="com.android.support.constraint:constraint-layout-solver:1.0.2@jar" level="project" />
-    <orderEntry type="library" name="com.android.support.constraint:constraint-layout-1.0.2" level="project" />
-    <orderEntry type="library" name="com.squareup.okhttp3:logging-interceptor:3.3.1@jar" level="project" />
-    <orderEntry type="library" name="android.arch.lifecycle:runtime-1.0.3" level="project" />
-    <orderEntry type="library" name="com.android.support:support-vector-drawable-27.0.2" level="project" />
-    <orderEntry type="library" name="com.squareup.okhttp3:okhttp:3.3.1@jar" level="project" />
-    <orderEntry type="library" name="com.android.support:cardview-v7-27.0.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="org.hamcrest:hamcrest-core:1.3@jar" level="project" />
-    <orderEntry type="library" name="com.google.android.gms:play-services-basement-11.8.0" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-messaging-license-11.8.0" level="project" />
-    <orderEntry type="library" name="android.arch.core:common:1.0.0@jar" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-common-11.8.0" level="project" />
-    <orderEntry type="library" name="com.android.support:support-core-ui-27.0.2" level="project" />
-    <orderEntry type="library" name="com.android.support:support-compat-27.0.2" level="project" />
-    <orderEntry type="library" name="com.google.android.gms:play-services-tasks-11.8.0" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-common-license-11.8.0" level="project" />
-    <orderEntry type="library" name="pl.tajchert:waitingdots-0.2.0" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-core-11.8.0" level="project" />
-    <orderEntry type="library" name="com.google.android.gms:play-services-location-license-11.8.0" level="project" />
-    <orderEntry type="library" name="me.dm7.barcodescanner:core-1.8.4" level="project" />
-    <orderEntry type="library" name="com.android.support:support-fragment-27.0.2" level="project" />
-    <orderEntry type="library" name="com.android.support:support-media-compat-27.0.2" level="project" />
-    <orderEntry type="library" name="com.google.android.gms:play-services-base-11.8.0" level="project" />
-    <orderEntry type="library" name="me.dm7.barcodescanner:zxing-1.8.4" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-analytics-impl-11.8.0" level="project" />
-    <orderEntry type="library" name="com.android.support:support-v4-27.0.2" level="project" />
-    <orderEntry type="library" name="com.android.support:appcompat-v7-27.0.2" level="project" />
-    <orderEntry type="library" name="com.android.support:support-annotations:27.0.2@jar" level="project" />
-    <orderEntry type="library" name="com.android.support:design-27.0.2" level="project" />
-    <orderEntry type="library" name="org.glassfish:javax.annotation:10.0-b28@jar" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-iid-license-11.8.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="junit:junit:4.12@jar" level="project" />
-    <orderEntry type="library" name="com.akexorcist:localizationactivity-1.2.2" level="project" />
-    <orderEntry type="library" name="com.google.zxing:core:3.2.1@jar" level="project" />
-    <orderEntry type="library" name="com.android.support:transition-27.0.2" level="project" />
-    <orderEntry type="library" name="com.multidots:fingerprint-auth-1.0.1" level="project" />
-    <orderEntry type="library" name="com.journeyapps:zxing-android-embedded-3.2.0" level="project" />
-    <orderEntry type="library" name="com.android.support:recyclerview-v7-27.0.2" level="project" />
-    <orderEntry type="library" name="com.squareup:otto:1.3.8@jar" level="project" />
-    <orderEntry type="library" name="com.google.android.gms:play-services-nearby-11.8.0" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-analytics-11.8.0" level="project" />
-    <orderEntry type="library" name="com.squareup.retrofit2:converter-gson:2.1.0@jar" level="project" />
-    <orderEntry type="library" name="android.arch.lifecycle:common:1.0.3@jar" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-messaging-11.8.0" level="project" />
-    <orderEntry type="library" name="com.google.android.gms:play-services-location-11.8.0" level="project" />
-    <orderEntry type="library" name="com.android.support:support-core-utils-27.0.2" level="project" />
-    <orderEntry type="library" name="com.github.castorflex.smoothprogressbar:library-circular-1.1.0" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-crash-license-11.8.0" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-analytics-license-11.8.0" level="project" />
-    <orderEntry type="library" name="com.google.firebase:firebase-analytics-impl-license-11.8.0" level="project" />
-    <orderEntry type="library" name="com.github.bumptech.glide:glide:3.7.0@jar" level="project" />
-    <orderEntry type="library" name="com.google.android.gms:play-services-tasks-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support.constraint:constraint-layout-solver:1.0.2@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:transition-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: me.dm7.barcodescanner:zxing-1.8.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.joooonho:selectableroundedimageview-1.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup:otto:1.3.8@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:cardview-v7-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-compat-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.retrofit2:retrofit:2.1.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.journeyapps:zxing-android-embedded-3.2.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-core-utils-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-messaging-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-nearby-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.castorflex.smoothprogressbar:library-circular-1.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-iid-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-crash-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-messaging-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-location-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-analytics-impl-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-common-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.bumptech.glide:glide:3.7.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: pl.tajchert:waitingdots-0.2.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-v4-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.retrofit2:converter-gson:2.1.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: io.nlopez.smartlocation:library-3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okhttp3:logging-interceptor:3.3.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-common-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-location-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-analytics-impl-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-analytics-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-analytics-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:customtabs-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp:3.3.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-core-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.multidots:fingerprint-auth-1.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: android.arch.core:common:1.0.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:recyclerview-v7-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-media-compat-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-core-ui-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-iid-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.glassfish:javax.annotation:10.0-b28@jar" level="project" />
+    <orderEntry type="library" name="Gradle: me.leolin:ShortcutBadger-1.1.21" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-annotations:27.0.2@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-crash-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-fragment-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.8.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.zxing:core:3.2.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support.constraint:constraint-layout-1.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-base-11.8.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.12@jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:design-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.akexorcist:localizationactivity-1.2.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-base-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7-27.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-nearby-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: me.dm7.barcodescanner:core-1.8.4" level="project" />
+    <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime-1.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: android.arch.lifecycle:common:1.0.3@jar" level="project" />
     <orderEntry type="module" module-name="modellibrary" />
   </component>
 </module>

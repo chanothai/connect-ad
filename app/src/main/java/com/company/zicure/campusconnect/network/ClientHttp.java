@@ -1,21 +1,18 @@
 package com.company.zicure.campusconnect.network;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.company.zicure.campusconnect.interfaces.LogApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.HashMap;
 import java.util.Locale;
 
-import gallery.zicure.company.com.modellibrary.models.beacon.BeaconRequest;
-import gallery.zicure.company.com.modellibrary.models.beacon.BeaconResponse;
-import gallery.zicure.company.com.modellibrary.models.bloc.RequestCheckInWork;
-import gallery.zicure.company.com.modellibrary.models.bloc.ResponseBlocUser;
-import gallery.zicure.company.com.modellibrary.models.bloc.ResponseCheckinWork;
-import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
+import com.company.zicure.campusconnect.models.beacon.BeaconRequest;
+import com.company.zicure.campusconnect.models.beacon.BeaconResponse;
+import com.company.zicure.campusconnect.models.bloc.RequestCheckInWork;
+import com.company.zicure.campusconnect.models.bloc.ResponseCheckinWork;
+import com.company.zicure.campusconnect.utility.EventBusCart;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,7 +26,10 @@ public class ClientHttp {
     private Context context = null;
     private static ClientHttp me;
 
-    public static String urlIdentityServer = "http://connect05.pakgon.com/";
+    public static String URL_API = "http://connect05.pakgon.com/";
+    public static String URL_SERVER = "http://connect-uat.pakgon.com";
+    public static String URL_SIGNIN = "http://connect-uat.pakgon.com/users/signin";
+    public static String URL_OAUTH = "http://oauth-uat.connect.pakgon.com";
     private String language = null;
     private final String LOGAPI = "API_RESPONSE";
     private String jsonStr;
@@ -52,10 +52,19 @@ public class ClientHttp {
         return me;
     }
 
-    public LogApi getService(String language){
-        retrofit = RetrofitAPI.newInstance(urlIdentityServer).getRetrofit(language);
+    private LogApi setRetrofit(Retrofit retrofit) {
         service = retrofit.create(LogApi.class);
         return service;
+    }
+
+    public LogApi getService(String language){
+        retrofit = RetrofitAPI.newInstance(URL_API).getRetrofit(language);
+        return setRetrofit(retrofit);
+    }
+
+    public LogApi getServiceOATH(String language) {
+        retrofit = RetrofitAPI.newInstance(URL_SERVER).getRetrofit(language);
+        return setRetrofit(retrofit);
     }
 
     /******* Request Check in for work ***************************/

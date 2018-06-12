@@ -2,9 +2,8 @@ package com.company.zicure.campusconnect.network;
 
 
 import java.io.IOException;
-import java.util.Locale;
 
-import gallery.zicure.company.com.modellibrary.utilize.ModelCart;
+import com.company.zicure.campusconnect.utility.ModelCart;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

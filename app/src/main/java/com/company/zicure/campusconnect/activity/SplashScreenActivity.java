@@ -10,16 +10,12 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.company.zicure.campusconnect.R;
-import com.company.zicure.campusconnect.network.ClientHttp;
-import com.company.zicure.campusconnect.service.BadgeController;
 import com.company.zicure.campusconnect.utility.PermissionKeyNumber;
 import com.company.zicure.campusconnect.utility.PermissionRequest;
-import com.company.zicure.campusconnect.utility.RestoreLogin;
-import com.squareup.otto.Subscribe;
+import com.company.zicure.campusconnect.utility.SharedPreference;
 
-import gallery.zicure.company.com.modellibrary.common.BaseActivity;
-import gallery.zicure.company.com.modellibrary.utilize.EventBusCart;
-import gallery.zicure.company.com.modellibrary.utilize.VariableConnect;
+import com.company.zicure.campusconnect.common.BaseActivity;
+import com.company.zicure.campusconnect.utility.EventBusCart;
 
 public class SplashScreenActivity extends BaseActivity implements Animator.AnimatorListener{
 
@@ -94,14 +90,14 @@ public class SplashScreenActivity extends BaseActivity implements Animator.Anima
     }
 
     private void checkLogin(){
-        currentToken = RestoreLogin.getInstance(this).getRestoreToken();
-        currentURL = RestoreLogin.getInstance(this).getURL();
-        currentSubscribe = RestoreLogin.getInstance(this).getSubscribe();
+        currentToken = SharedPreference.getInstance(this).getRestoreToken();
+        currentURL = SharedPreference.getInstance(this).getURL();
+        currentSubscribe = SharedPreference.getInstance(this).getSubscribe();
 
         if (currentSubscribe != null && currentToken != null && currentURL != null){
             if (value != null) {
                 Bundle bundle = new Bundle();
-                bundle.putString("check_notification", value);
+                bundle.putString("badge", value);
                 openActivity(MainMenuActivity.class,bundle, true);
             }else{
                 openActivity(MainMenuActivity.class, true);

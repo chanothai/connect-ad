@@ -4,7 +4,8 @@
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundGray">
+    android:background="@color/colorBackgroundGray"
+    android:fitsSystemWindows="true">
 
     <include layout="@layout/layout_appbar"/>
 
@@ -16,6 +17,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:clickable="true"
+        android:focusable="true"
         android:visibility="gone">
     </FrameLayout>
 
@@ -24,6 +26,7 @@
         android:layout_width="@dimen/padding_medium"
         android:layout_height="match_parent"
         android:clickable="true"
+        android:focusable="true"
         android:background="@android:color/transparent"/>
 
 

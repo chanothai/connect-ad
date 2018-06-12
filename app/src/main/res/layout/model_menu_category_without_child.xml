@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="@dimen/height_head_rows"
     android:paddingStart="@dimen/padding_large"
     android:paddingEnd="@dimen/padding_large"
     android:background="@android:color/black">
@@ -22,7 +22,7 @@
     <com.company.zicure.campusconnect.customView.LabelView
         android:id="@+id/menu_child"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/height_head_rows"
         android:gravity="center_vertical"
         android:text="Home"
         android:textColor="@android:color/white"

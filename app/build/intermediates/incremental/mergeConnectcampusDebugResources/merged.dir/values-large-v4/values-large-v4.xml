@@ -8,7 +8,6 @@
     <item name="abc_dialog_min_width_major" type="dimen">55%</item>
     <item name="abc_dialog_min_width_minor" type="dimen">80%</item>
     <dimen name="height_bloc">180dp</dimen>
-    <dimen name="height_rows">80dp</dimen>
     <dimen name="icon_size_small">48dp</dimen>
     <style name="Base.Theme.AppCompat.DialogWhenLarge" parent="Base.Theme.AppCompat.Dialog.FixedSize"/>
     <style name="Base.Theme.AppCompat.Light.DialogWhenLarge" parent="Base.Theme.AppCompat.Light.Dialog.FixedSize"/>

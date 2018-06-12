@@ -30,6 +30,12 @@ public class MessagingService extends FirebaseMessagingService {
     private String TAG = "tag_messaging";
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        countBadgeOnBackground();
+    }
+
+    @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         //Handle FCM messages here.
@@ -46,10 +52,7 @@ public class MessagingService extends FirebaseMessagingService {
             if (remote != null) {
                 int badge = Integer.parseInt(remote);
                 countBadgeOnForeground(badge);
-            }
-
-            if (!title.isEmpty() && !body.isEmpty()) {
-                sendNotification(title, body);
+//                sendNotification(title, body);
             }
         }
 
@@ -106,5 +109,12 @@ public class MessagingService extends FirebaseMessagingService {
         }catch (NullPointerException e) {
             e.printStackTrace();
         }
+    }
+
+    private void countBadgeOnBackground(){
+        int badge = BadgeController.getInstance(this).getCountBadge();
+        badge += 1;
+
+        BadgeController.getInstance(this).setCountBadge(badge);
     }
 }
